@@ -5,9 +5,9 @@ Navigate with arrow keys, expand/collapse with Enter or Space.
 
 from dataclasses import dataclass
 from pathlib import Path
-from typing import Callable, Generator, Iterable, List, Optional, Tuple
+from typing import Generator, Iterable, Optional, Tuple
 
-from gitignore_parser import parse_gitignore
+import pygit2
 from prompt_toolkit.data_structures import Point
 from prompt_toolkit.formatted_text import FormattedText
 from prompt_toolkit.key_binding import KeyBindings
@@ -22,6 +22,20 @@ class Settings:
     use_git_ignore: bool = True
 
 
+def use_gitignore(
+    repo: pygit2.Repository, root_folder: Path
+) -> Generator[Path, None, None]:
+    """check whether any child inside the root_folder is being git-ignored."""
+
+    as_path = Path(repo.workdir)
+
+    for child in root_folder.iterdir():
+        rel_path = str(child.relative_to(as_path))
+        if repo.path_is_ignored(rel_path):
+            continue
+        yield child
+
+
 class TreeNode:
     """Represents a node in the file tree."""
 
@@ -29,16 +43,18 @@ class TreeNode:
         self,
         path: Path,
         *,
-        gitignore_parser: Callable[[Path], bool] | None,
         parent: Optional["TreeNode"],
         expanded: bool = False,
+        use_gitignore: bool,
+        git_repo: pygit2.Repository | None,
     ):
         self.path = path
-        self.gitignore_parser = gitignore_parser
+        self.use_gitignore = use_gitignore
         self.parent = parent
-        self.children: List["TreeNode"] = []
+        self.children: tuple["TreeNode", ...] = ()
         self.expanded = expanded
         self.is_directory = path.is_dir()
+        self._git_repo = git_repo
 
     def get_name(self) -> str:
         """Get the display name for this node."""
@@ -49,15 +65,19 @@ class TreeNode:
         if not self.is_directory or self.children:
             return
 
-        children = self.path.iterdir()
-        if self.gitignore_parser:
-            children = (child for child in children if not self.gitignore_parser(child))
+        if self._git_repo and self.use_gitignore:
+            children = use_gitignore(self._git_repo, self.path)
+        else:
+            children = self.path.iterdir()
 
         self.children = tuple(
-            (
-                TreeNode(child, gitignore_parser=self.gitignore_parser, parent=self)
-                for child in sorted(children)
+            TreeNode(
+                child,
+                use_gitignore=self.use_gitignore,
+                parent=self,
+                git_repo=self._git_repo,
             )
+            for child in sorted(children)
         )
 
     def toggle_expanded(self):
@@ -113,19 +133,17 @@ class FileTreeViewer:
         self._selected_index = idx
 
     def _init_root_node(self) -> TreeNode:
-        if self._settings.use_git_ignore:
-            gitignore_file = self.root_path / ".gitignore"
-            gitignore_parser = (
-                parse_gitignore(gitignore_file) if gitignore_file.exists() else None
-            )
+        if (self.root_path / ".git").exists():
+            repository = pygit2.Repository(self.root_path)
         else:
-            gitignore_parser = None
+            repository = None
 
         root_node = TreeNode(
             self.root_path,
-            gitignore_parser=gitignore_parser,
-            expanded=True,
             parent=None,
+            expanded=True,
+            use_gitignore=self._settings.use_git_ignore,
+            git_repo=repository,
         )
         root_node.load_children()
         return root_node

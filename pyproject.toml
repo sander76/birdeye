@@ -8,8 +8,8 @@ authors = [
 ]
 requires-python = ">=3.13"
 dependencies = [
-    "gitignore-parser>=0.1.12",
     "prompt-toolkit>=3.0.51",
+    "pygit2>=1.19.0",
 ]
 
 [project.scripts]

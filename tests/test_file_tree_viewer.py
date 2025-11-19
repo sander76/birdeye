@@ -1,7 +1,7 @@
 from pathlib import Path
 
+import pygit2
 import pytest
-from gitignore_parser import parse_gitignore
 
 from navl.cli import parse_args
 from navl.file_tree_viewer import FileTreeViewer, Settings, TreeNode
@@ -12,6 +12,22 @@ def test_path(tmp_path: Path):
     (tmp_path / "src" / "docs").mkdir(exist_ok=True, parents=True)
     (tmp_path / "src" / "my_lib").mkdir(exist_ok=True, parents=True)
     (tmp_path / "src" / "main.py").touch()
+
+    (tmp_path / ".gitignore").touch()
+    (tmp_path / ".gitignore").write_text("**/main.py")
+
+    # Initialize git repo and add files
+    repo = pygit2.init_repository(tmp_path)
+
+    # Add files to the repo
+    repo.index.add_all()
+    repo.index.write()
+
+    # Create initial commit
+    signature = pygit2.Signature("Test User", "test@example.com")
+    tree = repo.index.write_tree()
+    repo.create_commit("HEAD", signature, signature, "Initial commit", tree, [])
+
     return tmp_path
 
 
@@ -64,36 +80,31 @@ def test_collect_visible_nodes(test_path: Path):
     ]
 
 
-def test_gitignore_same_level(test_path: Path):
+def test_gitignore_root_level(test_path: Path):
     # file to ignore is on the same level as the gitignore file.
 
-    git_ignore_file = test_path / "src" / ".gitignore"
-    git_ignore_file.write_text("**/main.py")
-
     node = TreeNode(
-        test_path / "src",
-        gitignore_parser=parse_gitignore(git_ignore_file),
+        test_path,
         parent=None,
+        use_gitignore=True,
+        git_repo=pygit2.Repository(test_path),
     )
     node.load_children()
 
     assert set([child.path for child in node.children]) == {
-        test_path / "src" / ".gitignore",
-        test_path / "src" / "docs",
-        test_path / "src" / "my_lib",
+        test_path / ".gitignore",
+        test_path / "src",
     }
 
 
 def test_gitignore_higher_level(test_path: Path):
     # file to ignore is on a level lower than the gitignore file.
 
-    git_ignore_file = test_path / ".gitignore"
-    git_ignore_file.write_text("**/main.py")
-
     node = TreeNode(
         test_path / "src",
-        gitignore_parser=parse_gitignore(git_ignore_file),
         parent=None,
+        use_gitignore=True,
+        git_repo=pygit2.Repository(test_path),
     )
     node.load_children()
 
@@ -109,8 +120,9 @@ def test_no_use_gitignore(test_path: Path):
 
     node = TreeNode(
         test_path / "src",
-        gitignore_parser=None,
         parent=None,
+        use_gitignore=False,
+        git_repo=pygit2.Repository(test_path),
     )
     node.load_children()
 
