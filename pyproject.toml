@@ -13,7 +13,7 @@ dependencies = [
 ]
 
 [project.scripts]
-navl = "navl:main"
+navl = "navl.cli:run"
 
 [build-system]
 requires = ["hatchling"]
