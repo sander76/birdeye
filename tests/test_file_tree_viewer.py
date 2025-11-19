@@ -3,7 +3,8 @@ from pathlib import Path
 import pytest
 from gitignore_parser import parse_gitignore
 
-from navl.file_tree_viewer import FileTreeViewer, TreeNode
+from navl.cli import parse_args
+from navl.file_tree_viewer import FileTreeViewer, Settings, TreeNode
 
 
 @pytest.fixture
@@ -100,3 +101,28 @@ def test_gitignore_higher_level(test_path: Path):
         test_path / "src" / "docs",
         test_path / "src" / "my_lib",
     }
+
+
+def test_no_use_gitignore(test_path: Path):
+    git_ignore_file = test_path / "src" / ".gitignore"
+    git_ignore_file.write_text("**/main.py")
+
+    node = TreeNode(
+        test_path / "src",
+        gitignore_parser=None,
+        parent=None,
+    )
+    node.load_children()
+
+    assert set([child.path for child in node.children]) == {
+        test_path / "src" / ".gitignore",
+        test_path / "src" / "docs",
+        test_path / "src" / "my_lib",
+        test_path / "src" / "main.py",  # ignoring the gitignore
+    }
+
+
+def test_parse_args(tmp_path: Path):
+    settings = parse_args([str(tmp_path), "--no-gitignore"])
+
+    assert settings == Settings(root_folder=tmp_path, use_git_ignore=False)

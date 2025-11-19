@@ -1,9 +1,9 @@
-#!/usr/bin/env python3
 """
 A full screen file tree viewer using prompt_toolkit.
 Navigate with arrow keys, expand/collapse with Enter or Space.
 """
 
+from dataclasses import dataclass
 from pathlib import Path
 from typing import Callable, Generator, Iterable, List, Optional, Tuple
 
@@ -14,6 +14,12 @@ from prompt_toolkit.key_binding import KeyBindings
 from prompt_toolkit.layout.containers import Window
 from prompt_toolkit.layout.controls import FormattedTextControl
 from prompt_toolkit.styles import Style
+
+
+@dataclass
+class Settings:
+    root_folder: Path
+    use_git_ignore: bool = True
 
 
 class TreeNode:
@@ -67,10 +73,9 @@ class FileTreeViewer:
 
     visible_nodes: tuple[TreeNode, ...]
 
-    def __init__(self, root_path: Path = Path(".")):
-        self.root_path = Path(root_path).resolve()
-        self.root_node = self._init_root_node()
-
+    def __init__(self, settings: Settings):
+        self.root_path = settings.root_folder.resolve()
+        self._settings = settings
         self._selected_index = 0
 
         self.style = Style.from_dict(
@@ -82,13 +87,14 @@ class FileTreeViewer:
             }
         )
 
+        self.root_node = self._init_root_node()
         text_control = FormattedTextControl(
             text=self._update_display,
             focusable=True,
             key_bindings=self._setup_key_bindings(),
             get_cursor_position=self._get_cursor_position,
         )
-        parse_gitignore
+
         self._window = Window(content=text_control, wrap_lines=False)
 
     def _get_cursor_position(self) -> Point:
@@ -107,10 +113,13 @@ class FileTreeViewer:
         self._selected_index = idx
 
     def _init_root_node(self) -> TreeNode:
-        gitignore_file = self.root_path / ".gitignore"
-        gitignore_parser = (
-            parse_gitignore(gitignore_file) if gitignore_file.exists() else None
-        )
+        if self._settings.use_git_ignore:
+            gitignore_file = self.root_path / ".gitignore"
+            gitignore_parser = (
+                parse_gitignore(gitignore_file) if gitignore_file.exists() else None
+            )
+        else:
+            gitignore_parser = None
 
         root_node = TreeNode(
             self.root_path,

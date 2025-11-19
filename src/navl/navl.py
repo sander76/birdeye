@@ -1,4 +1,6 @@
+# import traceback
 import traceback
+from dataclasses import dataclass
 from pathlib import Path
 
 from prompt_toolkit import Application
@@ -7,17 +9,12 @@ from prompt_toolkit.layout.controls import FormattedTextControl
 from prompt_toolkit.layout.layout import Layout
 from prompt_toolkit.output.vt100 import Vt100_Output
 
-from navl.file_tree_viewer import FileTreeViewer
+from navl.file_tree_viewer import FileTreeViewer, Settings
 
 
-def main():
+def main(settings: Settings):
     """Main entry point."""
     import sys
-
-    root_path = Path(sys.argv[1] if len(sys.argv) > 1 else ".")
-    if not root_path.exists:
-        print(f"Error: Path {root_path!r} does not exist")
-        sys.exit(1)
 
     footer = (
         "Use ↑↓→← to navigate, Enter to select and exit, 'r' to refresh, 'q' to quit"
@@ -25,7 +22,10 @@ def main():
     try:
         layout = Layout(
             HSplit(
-                [FileTreeViewer(root_path), Window(FormattedTextControl(text=footer))]
+                [
+                    FileTreeViewer(settings),
+                    Window(FormattedTextControl(text=footer)),
+                ]
             )
         )
         app = Application[str](
@@ -42,7 +42,6 @@ def main():
     except KeyboardInterrupt:
         print("\nExiting...")
     except Exception as e:
-        print(f"Error: {str(e)}")
-        print("\nFull traceback:")
+        print(e)
         traceback.print_exc()
         sys.exit(1)
