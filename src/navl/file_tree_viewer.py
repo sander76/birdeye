@@ -3,6 +3,8 @@ A full screen file tree viewer using prompt_toolkit.
 Navigate with arrow keys, expand/collapse with Enter or Space.
 """
 
+from __future__ import annotations
+
 from dataclasses import dataclass
 from pathlib import Path
 from typing import Generator, Iterable, Optional, Tuple
@@ -36,56 +38,92 @@ def use_gitignore(
         yield child
 
 
+_INDENT = 4
+
+
+class Node:
+    _ICON = "📄"
+
+    def __init__(self, path: Path, *, parent: TreeNode) -> None:
+        self.path = path
+        self.name = path.name
+        self.parent = parent
+        self.selected = False
+
+    def select_next(self, current: Node | TreeNode) -> bool:
+        if self.parent.select_next(self):
+            self.selected = False
+        return True
+
+
 class TreeNode:
     """Represents a node in the file tree."""
+
+    _ICON = "📂"
+
+    def selected_next(self, current: None | TreeNode) -> bool:
+        # todo:need to do this better.
+        if current is self:
+            # this Tree node is currently selected one. So we now select the first child as selected.
+            self.children[0]
 
     def __init__(
         self,
         path: Path,
         *,
-        parent: Optional["TreeNode"],
+        level: int,
+        parent: TreeNode | None,
         expanded: bool = False,
-        use_gitignore: bool,
+        use_gitignore: bool = True,
         git_repo: pygit2.Repository | None,
     ):
+        self._level = level
         self.path = path
-        self.use_gitignore = use_gitignore
+        self.name = path.name
         self.parent = parent
-        self.children: tuple["TreeNode", ...] = ()
         self.expanded = expanded
-        self.is_directory = path.is_dir()
+        self.use_gitignore = use_gitignore
         self._git_repo = git_repo
 
-    def get_name(self) -> str:
-        """Get the display name for this node."""
-        return self.path.name if self.path.name else str(self.path)
+        self._children: tuple[TreeNode | Node, ...] | None = None
 
-    def load_children(self):
+        # todo: use this
+        self.active = False
+        # True when a child of this items is selected.
+
+        self.selected = False
+        # True when this item has focus / is selected.
+
+    @property
+    def children(self) -> tuple[TreeNode | Node, ...]:
         """Load child nodes if this is a directory."""
-        if not self.is_directory or self.children:
-            return
+        if self._children is None:
+            if self._git_repo and self.use_gitignore:
+                children = use_gitignore(self._git_repo, self.path)
+            else:
+                children = self.path.iterdir()
 
-        if self._git_repo and self.use_gitignore:
-            children = use_gitignore(self._git_repo, self.path)
-        else:
-            children = self.path.iterdir()
+            def get_children() -> Generator[TreeNode | Node, None, None]:
+                for child in children:
+                    if child.is_dir():
+                        yield TreeNode(
+                            child,
+                            parent=self,
+                            expanded=False,
+                            use_gitignore=self.use_gitignore,
+                            git_repo=self._git_repo,
+                        )
+                    else:
+                        yield Node(child.name)
 
-        self.children = tuple(
-            TreeNode(
-                child,
-                use_gitignore=self.use_gitignore,
-                parent=self,
-                git_repo=self._git_repo,
-            )
-            for child in sorted(children)
-        )
+            self._children = tuple(get_children())
+        return self._children
 
     def toggle_expanded(self):
         """Toggle the expanded state of this node."""
-        if self.is_directory:
-            if not self.expanded:
-                self.load_children()
-            self.expanded = not self.expanded
+        if not self.expanded:
+            self.load_children()
+        self.expanded = not self.expanded
 
 
 class FileTreeViewer:
@@ -178,6 +216,7 @@ class FileTreeViewer:
         def expand_node(event):
             if self.visible_nodes:
                 node = self.visible_nodes[self.selected_index]
+                # todo: this should not be here
                 if node.is_directory and not node.expanded:
                     node.toggle_expanded()
 
@@ -254,14 +293,6 @@ class FileTreeViewer:
         """Format a node for display, returning (text, style)."""
         depth = self._get_node_depth(node)
         indent = "  " * depth
-
-        if node.is_directory:
-            if node.expanded:
-                icon = "📂 "
-            else:
-                icon = "📁 "
-        else:
-            icon = "📄 "
 
         name = node.get_name()
         line = f"{indent}{icon}{name}"
