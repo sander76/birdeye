@@ -3,9 +3,11 @@ A full screen file tree viewer using prompt_toolkit.
 Navigate with arrow keys, expand/collapse with Enter or Space.
 """
 
+from __future__ import annotations
+
 from dataclasses import dataclass
 from pathlib import Path
-from typing import Generator, Iterable, Optional, Tuple
+from typing import Generator, Iterable, Literal, Optional, Tuple
 
 import pygit2
 from prompt_toolkit.data_structures import Point
@@ -37,7 +39,18 @@ def use_gitignore(
 
 
 class TreeNode:
+class Node(BaseNode):
+    _ICON = "📄"
+
+    def __init__(self, path: Path, *, parent: TreeNode) -> None:
+        self.path = path
+        self.name = path.name
+        self.parent = parent
+
+class TreeNode(BaseNode):
     """Represents a node in the file tree."""
+
+    _ICON = "📂"
 
     def __init__(
         self,
@@ -46,19 +59,22 @@ class TreeNode:
         parent: Optional["TreeNode"],
         expanded: bool = False,
         use_gitignore: bool,
+        use_gitignore: bool = True,
         git_repo: pygit2.Repository | None,
     ):
+        self._level = level
         self.path = path
-        self.use_gitignore = use_gitignore
+        self.name = path.name
         self.parent = parent
-        self.children: tuple["TreeNode", ...] = ()
         self.expanded = expanded
         self.is_directory = path.is_dir()
+        self.use_gitignore = use_gitignore
         self._git_repo = git_repo
 
     def get_name(self) -> str:
         """Get the display name for this node."""
         return self.path.name if self.path.name else str(self.path)
+        self._children: tuple[TreeNode | Node, ...] | None = None
 
     def load_children(self):
         """Load child nodes if this is a directory."""
@@ -79,6 +95,31 @@ class TreeNode:
             )
             for child in sorted(children)
         )
+    @property
+    def children(self) -> tuple[TreeNode | Node, ...]:
+        """Load child nodes if this is a directory."""
+        if self._children is None:
+            if self._git_repo and self.use_gitignore:
+                children = use_gitignore(self._git_repo, self.path)
+            else:
+                children = self.path.iterdir()
+
+            def get_children() -> Generator[TreeNode | Node, None, None]:
+                for child in children:
+                    if child.is_dir():
+                        yield TreeNode(
+                            child,
+                            parent=self,
+                            level=self._level + 1,
+                            expanded=False,
+                            use_gitignore=self.use_gitignore,
+                            git_repo=self._git_repo,
+                        )
+                    else:
+                        yield Node(self.path, parent=self)
+
+            self._children = tuple(get_children())
+        return self._children
 
     def toggle_expanded(self):
         """Toggle the expanded state of this node."""
@@ -96,7 +137,6 @@ class FileTreeViewer:
     def __init__(self, settings: Settings):
         self.root_path = settings.root_folder.resolve()
         self._settings = settings
-        self._selected_index = 0
 
         self.style = Style.from_dict(
             {
@@ -107,7 +147,7 @@ class FileTreeViewer:
             }
         )
 
-        self.root_node = self._init_root_node()
+        self.selected_node = self._init_root_node()
         text_control = FormattedTextControl(
             text=self._update_display,
             focusable=True,
@@ -124,13 +164,13 @@ class FileTreeViewer:
     def __pt_container__(self) -> Window:
         return self._window
 
-    @property
-    def selected_index(self) -> int:
-        return self._selected_index
+    # @property
+    # def selected_index(self) -> int:
+    #     return self._selected_index
 
-    @selected_index.setter
-    def selected_index(self, idx: int) -> None:
-        self._selected_index = idx
+    # @selected_index.setter
+    # def selected_index(self, idx: int) -> None:
+    #     self._selected_index = idx
 
     def _init_root_node(self) -> TreeNode:
         if (self.root_path / ".git").exists():
@@ -159,8 +199,7 @@ class FileTreeViewer:
 
         @kb.add("down")
         def move_down(event):
-            if self.selected_index < len(self.visible_nodes) - 1:
-                self.selected_index += 1
+            self.selected_node.select_next()
 
         @kb.add("enter")
         def select_and_exit(event):
