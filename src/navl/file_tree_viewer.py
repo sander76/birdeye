@@ -38,8 +38,7 @@ def use_gitignore(
         yield child
 
 
-class TreeNode:
-class Node(BaseNode):
+class Node:
     _ICON = "📄"
 
     def __init__(self, path: Path, *, parent: TreeNode) -> None:
@@ -47,7 +46,8 @@ class Node(BaseNode):
         self.name = path.name
         self.parent = parent
 
-class TreeNode(BaseNode):
+
+class TreeNode:
     """Represents a node in the file tree."""
 
     _ICON = "📂"
@@ -58,7 +58,6 @@ class TreeNode(BaseNode):
         *,
         parent: Optional["TreeNode"],
         expanded: bool = False,
-        use_gitignore: bool,
         use_gitignore: bool = True,
         git_repo: pygit2.Repository | None,
     ):
@@ -76,27 +75,7 @@ class TreeNode(BaseNode):
         return self.path.name if self.path.name else str(self.path)
         self._children: tuple[TreeNode | Node, ...] | None = None
 
-    def load_children(self):
-        """Load child nodes if this is a directory."""
-        if not self.is_directory or self.children:
-            return
-
-        if self._git_repo and self.use_gitignore:
-            children = use_gitignore(self._git_repo, self.path)
-        else:
-            children = self.path.iterdir()
-
-        self.children = tuple(
-            TreeNode(
-                child,
-                use_gitignore=self.use_gitignore,
-                parent=self,
-                git_repo=self._git_repo,
-            )
-            for child in sorted(children)
-        )
-    @property
-    def children(self) -> tuple[TreeNode | Node, ...]:
+    def load_children(self) -> tuple[TreeNode | Node, ...]:
         """Load child nodes if this is a directory."""
         if self._children is None:
             if self._git_repo and self.use_gitignore:
