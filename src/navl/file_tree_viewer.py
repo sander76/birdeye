@@ -7,7 +7,7 @@ from __future__ import annotations
 
 from dataclasses import dataclass
 from pathlib import Path
-from typing import Generator, Iterable, Literal, Optional, Tuple
+from typing import Generator, Iterable, Literal, Optional, Self, Tuple
 
 import pygit2
 from prompt_toolkit.data_structures import Point
@@ -41,23 +41,44 @@ def use_gitignore(
 class Node:
     _ICON = "📄"
 
-    def __init__(self, path: Path, *, parent: TreeNode) -> None:
+    def __init__(self, path: Path, *, parent: TreeNode, level: int) -> None:
         self.path = path
         self.name = path.name
         self.parent = parent
+        self.focussed: bool = False
+
+    def nodes(self) -> Generator[Node, None, None]:
+        yield self
+
+    def _get_style(self) -> str:
+        if self.focussed:
+            return "focussed"
+        return ""
+
+    def render(self) -> tuple[str, str]:
+        _logger.debug("Render a node.")
+        return self._get_style(), f"{self._ICON} {self.name}"
+
+    def toggle_expanded(self) -> None:
+        return
+
+    def focus(self, direction: Literal[-1, 1]) -> Node | TreeNode:
+        return self.parent.focus(direction=direction)
 
 
 class TreeNode:
     """Represents a node in the file tree."""
 
     _ICON = "📂"
+    _children: tuple[TreeNode | Node, ...] | None = None
 
     def __init__(
         self,
         path: Path,
         *,
-        parent: Optional["TreeNode"],
-        expanded: bool = False,
+        parent: TreeNode | None,
+        level: int,
+        # expanded: bool = False,
         use_gitignore: bool = True,
         git_repo: pygit2.Repository | None,
     ):
@@ -65,17 +86,88 @@ class TreeNode:
         self.path = path
         self.name = path.name
         self.parent = parent
-        self.expanded = expanded
-        self.is_directory = path.is_dir()
+        self.focussed: bool = False
+        self._focussed_idx: int = None
+
         self.use_gitignore = use_gitignore
+
+        self._expanded: bool = False
         self._git_repo = git_repo
 
-    def get_name(self) -> str:
-        """Get the display name for this node."""
-        return self.path.name if self.path.name else str(self.path)
-        self._children: tuple[TreeNode | Node, ...] | None = None
+    def _up(self) -> TreeNode | Node:
+        if self.focussed:
+            return self.parent.focus(-1)
+        new_idx = self._focussed_idx + 1
 
-    def load_children(self) -> tuple[TreeNode | Node, ...]:
+    def focus(self, direction: Literal[-1, 1]) -> TreeNode | Node:
+        """Focus this or child nodes."""
+
+        # state:
+        # focussed, 1,
+        if not self.focussed and self._focussed_idx is None:
+            # not focussed and no child is selected. We focus this node.
+            self.focussed = True
+            return self
+        if not self.focussed and self._focussed_idx is not None:
+            # A child of this treenode has focus
+            new_idx = self._focussed_idx + direction
+            if new_idx >= len(self.maybe_get_children()):
+                # index out of bounds.
+                if self.parent is None:
+                    # reached end of list. No new focus.
+                    return self.maybe_get_children()[self._focussed_idx]
+                return self.parent.focus(direction)
+            if new_idx < 0:
+                if self.parent is None:
+                    # reached top of list. No new focus.
+                    return self.maybe_get_children()[self._focussed_idx]
+
+                return self.parent.focus(direction)
+            self._focussed_idx = new_idx
+            return self.maybe_get_children()[new_idx]
+        if self.focussed:
+            if direction == -1:
+                if self.parent is None:
+                    # reached top of list. No new focus
+                    return self
+
+                return self.parent.focus(direction)
+            try:
+                focussed = self.maybe_get_children()[0]
+
+                self._focussed_idx = 0
+                return focussed
+            except IndexError:
+                if self.parent is None:
+                    return self
+                return self.parent.focus(direction)
+
+    @property
+    def expanded(self) -> bool:
+        return self._expanded
+
+    @expanded.setter
+    def expanded(self, value: bool) -> None:
+        if value is self._expanded:
+            return
+        self._expanded = value
+
+    def _get_style(self) -> str:
+        if self.focussed:
+            return "focussed"
+        return ""
+
+    def render(self) -> tuple[str, str]:
+        _logger.debug("Render a treenode")
+        return self._get_style(), f"{self._ICON} {self.name}"
+
+    def maybe_get_children(self) -> tuple[TreeNode | Node, ...]:
+        if self.expanded:
+            return self.children
+        return ()
+
+    @property
+    def children(self) -> tuple[TreeNode | Node, ...]:
         """Load child nodes if this is a directory."""
         if self._children is None:
             if self._git_repo and self.use_gitignore:
@@ -90,43 +182,48 @@ class TreeNode:
                             child,
                             parent=self,
                             level=self._level + 1,
-                            expanded=False,
                             use_gitignore=self.use_gitignore,
                             git_repo=self._git_repo,
                         )
                     else:
-                        yield Node(self.path, parent=self)
+                        yield Node(self.path, parent=self, level=self._level)
 
-            self._children = tuple(get_children())
+            self._children = tuple(sorted(get_children()))
         return self._children
+
+    def nodes(self) -> Generator[Node | TreeNode, None, None]:
+        yield self
+        for child in self.maybe_get_children():
+            yield from child.nodes()
 
     def toggle_expanded(self):
         """Toggle the expanded state of this node."""
-        if self.is_directory:
-            if not self.expanded:
-                self.load_children()
-            self.expanded = not self.expanded
+        self.expanded = not self.expanded
+        _logger.debug(f"Expanded state to {self.expanded}")
+
+
+import logging
+
+_logger = logging.getLogger(__name__)
 
 
 class FileTreeViewer:
     """Main application class for the file tree viewer."""
 
-    visible_nodes: tuple[TreeNode, ...]
-
     def __init__(self, settings: Settings):
         self.root_path = settings.root_folder.resolve()
         self._settings = settings
-
+        self.selected_index = 0
         self.style = Style.from_dict(
             {
-                "selected": "bg:#ffffff fg:#000000",  # White background, black text
+                "focussed": "bg:#ffffff fg:#000000",  # White background, black text
                 "header": "bold",
                 "separator": "fg:#888888",
                 "footer": "fg:#888888",
             }
         )
-
-        self.selected_node = self._init_root_node()
+        # self.visible_nodes = tuple(self._init_root_node())
+        self._root_node = self._init_root_node()
         text_control = FormattedTextControl(
             text=self._update_display,
             focusable=True,
@@ -152,6 +249,7 @@ class FileTreeViewer:
     #     self._selected_index = idx
 
     def _init_root_node(self) -> TreeNode:
+        _logger.debug("init root")
         if (self.root_path / ".git").exists():
             repository = pygit2.Repository(self.root_path)
         else:
@@ -160,11 +258,10 @@ class FileTreeViewer:
         root_node = TreeNode(
             self.root_path,
             parent=None,
-            expanded=True,
+            level=0,
             use_gitignore=self._settings.use_git_ignore,
             git_repo=repository,
         )
-        root_node.load_children()
         return root_node
 
     def _setup_key_bindings(self) -> KeyBindings:
@@ -174,142 +271,144 @@ class FileTreeViewer:
         @kb.add("up")
         def move_up(event):
             if self.selected_index > 0:
+                self.visible_nodes[self.selected_index].focussed = False
                 self.selected_index -= 1
+                self.visible_nodes[self.selected_index].focussed = True
 
         @kb.add("down")
         def move_down(event):
-            self.selected_node.select_next()
+            if self.selected_index < len(self.visible_nodes) - 1:
+                self.visible_nodes[self.selected_index].focussed = False
+                self.selected_index += 1
+                self.visible_nodes[self.selected_index].focussed = True
 
-        @kb.add("enter")
-        def select_and_exit(event):
-            if self.visible_nodes:
-                node = self.visible_nodes[self.selected_index]
-                event.app.exit(str(node.path))
+        # @kb.add("enter")
+        # def select_and_exit(event):
+        #     if self.visible_nodes:
+        #         node = self.visible_nodes[self.selected_index]
+        #         event.app.exit(str(node.path))
 
-        @kb.add("space")
-        def toggle_node(event):
-            if self.visible_nodes:
-                node = self.visible_nodes[self.selected_index]
-                node.toggle_expanded()
+        # @kb.add("space")
+        # def toggle_node(event):
+        #     if self.visible_nodes:
+        #         node = self.visible_nodes[self.selected_index]
+        #         node.toggle_expanded()
 
         @kb.add("right")
         def expand_node(event):
-            if self.visible_nodes:
-                node = self.visible_nodes[self.selected_index]
-                if node.is_directory and not node.expanded:
-                    node.toggle_expanded()
+            self.visible_nodes[self.selected_index].toggle_expanded()
 
-        @kb.add("left")
-        def collapse_node(event):
-            if self.selected_index < len(self.visible_nodes):
-                node = self.visible_nodes[self.selected_index]
-                if node.is_directory and node.expanded:
-                    node.toggle_expanded()
-                elif node.parent:
-                    # Move to parent
-                    parent_index = self.visible_nodes.index(node.parent)
-                    self.selected_index = parent_index
+        # @kb.add("left")
+        # def collapse_node(event):
+        #     if self.selected_index < len(self.visible_nodes):
+        #         node = self.visible_nodes[self.selected_index]
+        #         if node.is_directory and node.expanded:
+        #             node.toggle_expanded()
+        #         elif node.parent:
+        #             # Move to parent
+        #             parent_index = self.visible_nodes.index(node.parent)
+        #             self.selected_index = parent_index
 
         @kb.add("q")
         @kb.add("c-c")
         def quit_app(event):
             event.app.exit()
 
-        @kb.add("r")
-        def refresh(event):
-            self._refresh_tree()
+        # @kb.add("r")
+        # def refresh(event):
+        #     self._refresh_tree()
 
         return kb
 
-    def _refresh_tree(self):
-        """Refresh the entire tree."""
+    # def _refresh_tree(self):
+    #     """Refresh the entire tree."""
 
-        expanded_paths = set(FileTreeViewer._collect_expanded_paths(self.root_node))
+    #     expanded_paths = set(FileTreeViewer._collect_expanded_paths(self.root_node))
 
-        self.root_node = self._init_root_node()
+    #     self.root_node = self._init_root_node()
 
-        self._restore_expanded_state(self.root_node, expanded_paths)
+    #     self._restore_expanded_state(self.root_node, expanded_paths)
 
-        self.selected_index = 0
+    #     self.selected_index = 0
 
-    @staticmethod
-    def _collect_expanded_paths(node: TreeNode) -> Iterable[Path]:
-        """Collect all expanded paths for restoration after refresh."""
-        if node.expanded:
-            yield node.path
-        for child in node.children:
-            yield from FileTreeViewer._collect_expanded_paths(child)
+    # @staticmethod
+    # def _collect_expanded_paths(node: TreeNode) -> Iterable[Path]:
+    #     """Collect all expanded paths for restoration after refresh."""
+    #     if node.expanded:
+    #         yield node.path
+    #     for child in node.children:
+    #         yield from FileTreeViewer._collect_expanded_paths(child)
 
-    def _restore_expanded_state(self, node: TreeNode, expanded_paths: set[Path]):
-        """Restore expanded state after refresh."""
-        if node.path in expanded_paths:
-            node.expanded = True
-            node.load_children()
-            for child in node.children:
-                self._restore_expanded_state(child, expanded_paths)
+    # def _restore_expanded_state(self, node: TreeNode, expanded_paths: set[Path]):
+    #     """Restore expanded state after refresh."""
+    #     if node.path in expanded_paths:
+    #         node.expanded = True
+    #         node.load_children()
+    #         for child in node.children:
+    #             self._restore_expanded_state(child, expanded_paths)
 
-    def _collect_visible_nodes(
-        self, node: TreeNode, depth: int = 0
-    ) -> Generator[TreeNode, None, None]:
-        """Collect all visible nodes for display."""
+    # def _collect_visible_nodes(
+    #     self, node: TreeNode, depth: int = 0
+    # ) -> Generator[TreeNode, None, None]:
+    #     """Collect all visible nodes for display."""
 
-        yield node
+    #     yield node
 
-        if node.expanded:
-            for child in node.children:
-                yield from self._collect_visible_nodes(child, depth + 1)
+    #     if node.expanded:
+    #         for child in node.children:
+    #             yield from self._collect_visible_nodes(child, depth + 1)
 
-    def _get_node_depth(self, node: TreeNode) -> int:
-        """Get the depth of a node in the tree."""
-        depth = 0
-        current = node.parent
-        while current:
-            depth += 1
-            current = current.parent
-        return depth
+    # def _get_node_depth(self, node: TreeNode) -> int:
+    #     """Get the depth of a node in the tree."""
+    #     depth = 0
+    #     current = node.parent
+    #     while current:
+    #         depth += 1
+    #         current = current.parent
+    #     return depth
 
-    def _format_node(self, node: TreeNode, is_selected: bool) -> Tuple[str, str]:
-        """Format a node for display, returning (text, style)."""
-        depth = self._get_node_depth(node)
-        indent = "  " * depth
+    # def _format_node(self, node: TreeNode, is_selected: bool) -> Tuple[str, str]:
+    #     """Format a node for display, returning (text, style)."""
+    #     depth = self._get_node_depth(node)
+    #     indent = "  " * depth
 
-        if node.is_directory:
-            if node.expanded:
-                icon = "📂 "
-            else:
-                icon = "📁 "
-        else:
-            icon = "📄 "
+    #     if node.is_directory:
+    #         if node.expanded:
+    #             icon = "📂 "
+    #         else:
+    #             icon = "📁 "
+    #     else:
+    #         icon = "📄 "
 
-        name = node.get_name()
-        line = f"{indent}{icon}{name}"
+    #     name = node.get_name()
+    #     line = f"{indent}{icon}{name}"
 
-        if is_selected:
-            line = f"> {line}"
-            return (line, "selected")
-        else:
-            line = f"  {line}"
-            return (line, "")
+    #     if is_selected:
+    #         line = f"> {line}"
+    #         return (line, "selected")
+    #     else:
+    #         line = f"  {line}"
+    #         return (line, "")
 
     def _update_display(self) -> FormattedText:
         """Update the display buffer with current tree state."""
-        self.visible_nodes = tuple(self._collect_visible_nodes(self.root_node))
 
-        # Ensure selected index is valid
-        if self.selected_index >= len(self.visible_nodes):
-            self.selected_index = len(self.visible_nodes) - 1
-        if self.selected_index < 0:
-            self.selected_index = 0
+        nodes = (node.render() for node in self.visible_nodes)
+        # # Ensure selected index is valid
+        # if self.selected_index >= len(self.visible_nodes):
+        #     self.selected_index = len(self.visible_nodes) - 1
+        # if self.selected_index < 0:
+        #     self.selected_index = 0
 
-        formatted_content = []
+        # formatted_content = []
 
-        for i, node in enumerate(self.visible_nodes):
-            is_selected = i == self.selected_index
-            text, style_class = self._format_node(node, is_selected)
-            if style_class:
-                formatted_content.append((f"class:{style_class}", text))
-            else:
-                formatted_content.append(("", text))
-            formatted_content.append(("", "\n"))
+        # for i, node in enumerate(self.visible_nodes):
+        #     is_selected = i == self.selected_index
+        #     text, style_class = self._format_node(node, is_selected)
+        #     if style_class:
+        #         formatted_content.append((f"class:{style_class}", text))
+        #     else:
+        #         formatted_content.append(("", text))
+        #     formatted_content.append(("", "\n"))
 
-        return FormattedText(formatted_content)
+        return FormattedText(nodes)

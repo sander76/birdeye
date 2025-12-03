@@ -1,0 +1,8 @@
+2025-11-30 08:41:36,276 - navl.file_tree_viewer - DEBUG - init root
+2025-11-30 08:41:36,287 - asyncio - DEBUG - Using selector: EpollSelector
+2025-11-30 08:44:31,300 - navl.file_tree_viewer - DEBUG - init root
+2025-11-30 08:44:31,311 - asyncio - DEBUG - Using selector: EpollSelector
+2025-11-30 08:44:31,314 - navl.file_tree_viewer - DEBUG - Render a treenode
+2025-11-30 08:44:45,838 - navl.file_tree_viewer - DEBUG - Expanded state to True
+2025-11-30 08:44:45,839 - navl.file_tree_viewer - DEBUG - Render a treenode
+2025-11-30 09:45:44,891 - navl.file_tree_viewer - DEBUG - Render a treenode

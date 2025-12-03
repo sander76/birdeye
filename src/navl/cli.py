@@ -1,7 +1,19 @@
 import argparse
+import logging
 from pathlib import Path
 
 from navl.file_tree_viewer import Settings
+
+
+def setup_logging():
+    root = logging.getLogger()
+    handler = logging.FileHandler("navl.log")
+    formatter = logging.Formatter(
+        "%(asctime)s - %(name)s - %(levelname)s - %(message)s"
+    )
+    handler.setFormatter(formatter)
+    root.addHandler(handler)
+    root.setLevel(logging.DEBUG)
 
 
 def create_parser():
@@ -39,4 +51,5 @@ def run():
 
 
 if __name__ == "__main__":
+    setup_logging()
     run()
