@@ -32,36 +32,48 @@ def test_path(tmp_path: Path):
 
 
 @pytest.fixture
+def test_path_no_git(tmp_path: Path):
+    (tmp_path / "pyproject.toml").touch()
+    (tmp_path / "src").mkdir(exist_ok=True, parents=True)
+    (tmp_path / "src" / "main.py").touch()
+    (tmp_path / "src" / "my_lib").mkdir(exist_ok=True, parents=True)
+    return tmp_path
+
+
+@pytest.fixture
 def root_node(test_path) -> TreeNode:
     treenode = TreeNode(test_path, parent=None, level=0, git_repo=None)
     return treenode
 
 
-def test_down_no_focus_no_idx(root_node, test_path):
+def test_single_node_up_down(root_node, test_path):
     # our root node is not expanded so
-    # selecting next will always give this
+    # selecting next or previous will always give this
     # one node back.
     first = root_node.focus(direction=1)
     assert first.path == test_path
 
     second = first.focus(direction=1)
 
-    # assert first is root_node
-    # assert first.focussed is True
-
-    # second = first.focus(direction=1)
-
-    # only one node in the complete
-    # tree. Same node is returned again.
     assert second is first
     assert second.path == test_path
 
 
-def test_expand(root_node, test_path):
+def test_up_down(test_path_no_git):
+    root_node = TreeNode(test_path_no_git, parent=None, level=0, git_repo=None)
+
     first = root_node.focus(direction=1)
+    first.path == test_path_no_git
     first.toggle_expanded()
+
     second = first.focus(direction=1)
-    assert second.path == test_path / "src"
+    assert second.path == test_path_no_git / "pyproject.toml"
+
+    third = second.focus(direction=1)
+    assert third.path == test_path_no_git / "src"
+
+    up = third.focus(direction=-1)
+    assert up is second
 
 
 def test_down_on_expanded(root_node, test_path):

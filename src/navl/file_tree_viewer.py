@@ -38,22 +38,53 @@ def use_gitignore(
         yield child
 
 
-class Node:
-    _ICON = "📄"
+class BaseNode:
+    """Base class for all node types with common comparison functionality."""
 
-    def __init__(self, path: Path, *, parent: TreeNode, level: int) -> None:
+    def __init__(self, path: Path):
         self.path = path
         self.name = path.name
-        self.parent = parent
         self.focussed: bool = False
 
-    def nodes(self) -> Generator[Node, None, None]:
-        yield self
+    def __lt__(self, other) -> bool:
+        """Enable sorting by name property."""
+        return self.name < other.name
+
+    def __eq__(self, other) -> bool:
+        """Enable equality comparison by name property."""
+        return self.name == other.name
+
+    def __le__(self, other) -> bool:
+        """Enable less than or equal comparison."""
+        return self.name <= other.name
+
+    def __gt__(self, other) -> bool:
+        """Enable greater than comparison."""
+        return self.name > other.name
+
+    def __ge__(self, other) -> bool:
+        """Enable greater than or equal comparison."""
+        return self.name >= other.name
+
+    def __ne__(self, other) -> bool:
+        """Enable not equal comparison."""
+        return not self.name == other.name
 
     def _get_style(self) -> str:
         if self.focussed:
             return "focussed"
         return ""
+
+
+class Node(BaseNode):
+    _ICON = "📄"
+
+    def __init__(self, path: Path, *, parent: TreeNode, level: int) -> None:
+        super().__init__(path)
+        self.parent = parent
+
+    def nodes(self) -> Generator[Node, None, None]:
+        yield self
 
     def render(self) -> tuple[str, str]:
         _logger.debug("Render a node.")
@@ -63,10 +94,12 @@ class Node:
         return
 
     def focus(self, direction: Literal[-1, 1]) -> Node | TreeNode:
-        return self.parent.focus(direction=direction)
+        self.focussed = False
+        new_focussed = self.parent.focus(direction=direction)
+        return new_focussed
 
 
-class TreeNode:
+class TreeNode(BaseNode):
     """Represents a node in the file tree."""
 
     _ICON = "📂"
@@ -82,11 +115,11 @@ class TreeNode:
         use_gitignore: bool = True,
         git_repo: pygit2.Repository | None,
     ):
+        super().__init__(path)
         self._level = level
-        self.path = path
-        self.name = path.name
         self.parent = parent
-        self.focussed: bool = False
+
+        # index of collection of this node and its children.
         self._focussed_idx: int = None
 
         self.use_gitignore = use_gitignore
@@ -94,53 +127,66 @@ class TreeNode:
         self._expanded: bool = False
         self._git_repo = git_repo
 
-    def _up(self) -> TreeNode | Node:
-        if self.focussed:
-            return self.parent.focus(-1)
-        new_idx = self._focussed_idx + 1
-
     def focus(self, direction: Literal[-1, 1]) -> TreeNode | Node:
         """Focus this or child nodes."""
 
         # state:
         # focussed, 1,
-        if not self.focussed and self._focussed_idx is None:
-            # not focussed and no child is selected. We focus this node.
-            self.focussed = True
-            return self
-        if not self.focussed and self._focussed_idx is not None:
-            # A child of this treenode has focus
-            new_idx = self._focussed_idx + direction
-            if new_idx >= len(self.maybe_get_children()):
-                # index out of bounds.
-                if self.parent is None:
-                    # reached end of list. No new focus.
-                    return self.maybe_get_children()[self._focussed_idx]
-                return self.parent.focus(direction)
-            if new_idx < 0:
-                if self.parent is None:
-                    # reached top of list. No new focus.
-                    return self.maybe_get_children()[self._focussed_idx]
 
-                return self.parent.focus(direction)
-            self._focussed_idx = new_idx
-            return self.maybe_get_children()[new_idx]
+        _all = tuple(self.nodes())
         if self.focussed:
-            if direction == -1:
-                if self.parent is None:
-                    # reached top of list. No new focus
-                    return self
+            self._focussed_idx = 0
+        if self._focussed_idx is None:
+            # no focusssed idx. So this is called indirectly.
+            # root node is select node.
+            new_idx = 0
+        else:
+            new_idx = self._focussed_idx + direction
 
-                return self.parent.focus(direction)
-            try:
-                focussed = self.maybe_get_children()[0]
+        if 0 <= new_idx < len(_all):
+            self._focussed_idx = new_idx
+            new_focussed = _all[self._focussed_idx]
+        else:
+            new_focussed = self.parent.focus(direction)
 
-                self._focussed_idx = 0
-                return focussed
-            except IndexError:
-                if self.parent is None:
-                    return self
-                return self.parent.focus(direction)
+        self.focussed = False
+
+        new_focussed.focussed = True
+        return new_focussed
+
+        # if not self.focussed and self._focussed_idx is None:
+        #     # not focussed and no child is selected. We focus this node.
+        #     new_focussed = self
+        # if not self.focussed and self._focussed_idx is not None:
+        #     # A child of this treenode has focus
+        #     new_idx = self._focussed_idx + direction
+
+        #     if 0 <= new_idx < len(self.maybe_get_children()):
+        #         self._focussed_idx = new_idx
+        #         new_focussed = self.maybe_get_children()[self._focussed_idx]
+        #     else:
+        #         if self.parent is None:
+        #             # no parent. keeping current selection.
+        #             new_focussed = self.maybe_get_children()[self._focussed_idx]
+        #         else:
+        #             self._focussed_idx = None
+        #             new_focussed = self.parent.focus(direction)
+        # if self.focussed:
+        #     if direction == -1:
+        #         if self.parent is None:
+        #             # reached top of list. No new focus
+        #             new_focussed = self
+        #         else:
+        #             new_focussed = self.parent.focus(direction)
+        #     try:
+        #         focussed = self.maybe_get_children()[0]
+
+        #         self._focussed_idx = 0
+        #         return focussed
+        #     except IndexError:
+        #         if self.parent is None:
+        #             return self
+        #         return self.parent.focus(direction)
 
     @property
     def expanded(self) -> bool:
@@ -151,11 +197,6 @@ class TreeNode:
         if value is self._expanded:
             return
         self._expanded = value
-
-    def _get_style(self) -> str:
-        if self.focussed:
-            return "focussed"
-        return ""
 
     def render(self) -> tuple[str, str]:
         _logger.debug("Render a treenode")
@@ -186,7 +227,7 @@ class TreeNode:
                             git_repo=self._git_repo,
                         )
                     else:
-                        yield Node(self.path, parent=self, level=self._level)
+                        yield Node(child, parent=self, level=self._level + 1)
 
             self._children = tuple(sorted(get_children()))
         return self._children
