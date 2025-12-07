@@ -72,33 +72,33 @@ class BaseNode:
 
     def _get_style(self) -> str:
         if self.focussed:
-            return "focussed"
+            return "class:focussed"
         return ""
 
     def set_expanded(self, value: bool) -> None:
         raise NotImplementedError
+
+    def render(self) -> tuple[str, str]:
+        _logger.debug("Render a node.")
+        return self._get_style(), f"{' ' * self._level} {self._ICON} {self.name}\n"
 
 
 class Node(BaseNode):
     _ICON = "📄"
 
     def __init__(self, path: Path, *, parent: TreeNode, level: int) -> None:
-        super().__init__(path)
+        super().__init__(path, level=level)
         self.parent = parent
 
     def full_tree(self) -> Generator[Node, None, None]:
         yield self
-
-    def render(self) -> tuple[str, str]:
-        _logger.debug("Render a node.")
-        return self._get_style(), f"{self._ICON} {self.name}"
 
     def focus(self, direction: Literal[-1, 1]) -> Node | TreeNode:
         self.focussed = False
         new_focussed = self.parent.focus(direction=direction)
         return new_focussed
 
-    def __str__(self) -> str:
+    def __repr__(self) -> str:
         return f"{self.name=!r} {self.focussed=!r}"
 
     def set_expanded(self, value: bool):
@@ -121,7 +121,7 @@ class TreeNode(BaseNode):
         use_gitignore: bool = True,
         git_repo: pygit2.Repository | None,
     ):
-        super().__init__(path)
+        super().__init__(path, level=level)
         self._level = level
         self.parent = parent
 
@@ -140,12 +140,12 @@ class TreeNode(BaseNode):
     def set_expanded(self, value: bool):
         self._expanded = value
 
-    def focus(self, direction: Literal[-1, 1, "parent"]) -> TreeNode | Node:
+    def focus(self, direction: Literal[-1, 1] | Node):
         """Focus this or child nodes."""
 
         # state:
         # focussed, 1,
-
+        _logger.debug(f"setting new focus {direction=!r}")
         _all = self.nodes()
 
         if self.focussed:
@@ -179,6 +179,7 @@ class TreeNode(BaseNode):
         self._focussed_idx = new_idx
 
         new_focussed.focussed = True
+        _logger.debug(f"focussed name={new_focussed.name}")
         return new_focussed
 
     @property
@@ -191,9 +192,9 @@ class TreeNode(BaseNode):
             return
         self._expanded = value
 
-    def render(self) -> tuple[str, str]:
-        _logger.debug("Render a treenode")
-        return self._get_style(), f"{self._ICON} {self.name}"
+    # def render(self) -> tuple[str, str]:
+    #     _logger.debug("Render a treenode")
+    #     return self._get_style(), f"{self._ICON} {self.name}\n"
 
     @property
     def children(self) -> tuple[TreeNode | Node, ...]:
@@ -247,8 +248,8 @@ class FileTreeViewer:
                 "footer": "fg:#888888",
             }
         )
-        # self.visible_nodes = tuple(self._init_root_node())
-        self._root_node = self._init_root_node()
+        self._root_node = self._selected_node = self._init_root_node()
+
         text_control = FormattedTextControl(
             text=self._update_display,
             focusable=True,
@@ -295,17 +296,11 @@ class FileTreeViewer:
 
         @kb.add("up")
         def move_up(event):
-            if self.selected_index > 0:
-                self.visible_nodes[self.selected_index].focussed = False
-                self.selected_index -= 1
-                self.visible_nodes[self.selected_index].focussed = True
+            self._selected_node = self._selected_node.focus(-1)
 
         @kb.add("down")
         def move_down(event):
-            if self.selected_index < len(self.visible_nodes) - 1:
-                self.visible_nodes[self.selected_index].focussed = False
-                self.selected_index += 1
-                self.visible_nodes[self.selected_index].focussed = True
+            self._selected_node = self._selected_node.focus(1)
 
         # @kb.add("enter")
         # def select_and_exit(event):
@@ -321,7 +316,11 @@ class FileTreeViewer:
 
         @kb.add("right")
         def expand_node(event):
-            self.visible_nodes[self.selected_index].toggle_expanded()
+            self._selected_node.set_expanded(value=True)
+
+        @kb.add("left")
+        def collapse_node(event):
+            self._selected_node.set_expanded(value=False)
 
         # @kb.add("left")
         # def collapse_node(event):
@@ -418,7 +417,7 @@ class FileTreeViewer:
     def _update_display(self) -> FormattedText:
         """Update the display buffer with current tree state."""
 
-        nodes = (node.render() for node in self.visible_nodes)
+        nodes = (node.render() for node in self._root_node.full_tree())
         # # Ensure selected index is valid
         # if self.selected_index >= len(self.visible_nodes):
         #     self.selected_index = len(self.visible_nodes) - 1
