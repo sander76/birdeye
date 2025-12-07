@@ -33,57 +33,153 @@ def test_path(tmp_path: Path):
 
 @pytest.fixture
 def test_path_no_git(tmp_path: Path):
+    # ..root
+    # ├── pyproject.toml
+    # ├── src
+    # │   ├── main.py
+    # │   └── my_lib
+    # │       └── base.py
+    # └── tests
+    #     └── test_main.py
     (tmp_path / "pyproject.toml").touch()
     (tmp_path / "src").mkdir(exist_ok=True, parents=True)
     (tmp_path / "src" / "main.py").touch()
     (tmp_path / "src" / "my_lib").mkdir(exist_ok=True, parents=True)
+    (tmp_path / "src" / "my_lib" / "base.py").touch()
+    (tmp_path / "tests").mkdir(exist_ok=True, parents=True)
+    (tmp_path / "tests" / "test_main.py").touch()
     return tmp_path
 
 
 @pytest.fixture
-def root_node(test_path) -> TreeNode:
-    treenode = TreeNode(test_path, parent=None, level=0, git_repo=None)
+def root_node_no_git(test_path_no_git) -> TreeNode:
+    treenode = TreeNode(test_path_no_git, parent=None, level=0, git_repo=None)
     return treenode
 
 
-def test_single_node_up_down(root_node, test_path):
+def test_single_node_up_down(root_node_no_git: TreeNode):
     # our root node is not expanded so
     # selecting next or previous will always give this
     # one node back.
-    first = root_node.focus(direction=1)
-    assert first.path == test_path
+
+    # by default a root treenode is always expanded.
+    # so for this test we first un-expand it.
+    root_node_no_git.set_expanded(False)
+
+    first = root_node_no_git.focus(direction=1)
+    assert first.focussed is True
+
+    down_one = first.focus(direction=1)
+
+    assert down_one is first
+    assert down_one.focussed is True
+
+    up_one = down_one.focus(direction=-1)
+    assert up_one is first
+    assert up_one.focussed is True
+
+
+from dirty_equals import HasAttributes
+
+
+def test_expanded_up_down(root_node_no_git: TreeNode):
+    root_path = root_node_no_git.path
+
+    first = root_node_no_git
 
     second = first.focus(direction=1)
-
-    assert second is first
-    assert second.path == test_path
-
-
-def test_up_down(test_path_no_git):
-    root_node = TreeNode(test_path_no_git, parent=None, level=0, git_repo=None)
-
-    first = root_node.focus(direction=1)
-    first.path == test_path_no_git
-    first.toggle_expanded()
-
-    second = first.focus(direction=1)
-    assert second.path == test_path_no_git / "pyproject.toml"
+    assert second == HasAttributes(focussed=True, path=root_path / "pyproject.toml")
 
     third = second.focus(direction=1)
-    assert third.path == test_path_no_git / "src"
+    assert third == HasAttributes(focussed=True, path=root_path / "src")
+    assert second.focussed is False
 
     up = third.focus(direction=-1)
     assert up is second
+    assert up.focussed is True
+    assert third.focussed is False
 
 
-def test_down_on_expanded(root_node, test_path):
-    root_node.toggle_expanded()
+def test_down_beyond_list(root_node_no_git: TreeNode):
+    # ..root
+    # ├── pyproject.toml
+    # ├── src
+    # │   ├── main.py
+    # │   └── my_lib
+    # │       └── base.py
+    # └── tests
+    #     └── test_main.py
 
-    first = root_node.focus(direction=1)
-    assert first is root_node
-    second = first.focus(direction=1)
-    assert second.focussed is True
-    assert first.focussed is False
+    # goto src folder and expand.
+    # go down until my_lib.
+    # one more down must focus tests
+    src_node = root_node_no_git.focus(1).focus(1)
+    assert src_node.name == "src"
+
+    src_node.set_expanded(True)
+    my_lib_node = src_node.focus(1).focus(1)
+    assert my_lib_node.name == "my_lib"
+
+    tests_node = my_lib_node.focus(1)
+    assert tests_node.name == "tests"
+
+
+def test_expand_true_on_node(root_node_no_git: TreeNode):
+    # ..root
+    # ├── pyproject.toml
+    # ├── src
+    # │   ├── main.py
+    # │   └── my_lib
+    # │       └── base.py
+    # └── tests
+    #     └── test_main.py
+
+    # when we call expand=True on a node (so a single file) we do nothing.
+    pyproject_file_node = root_node_no_git.focus(direction=1)
+
+    assert pyproject_file_node.name == "pyproject.toml"
+
+    pyproject_file_node.set_expanded(True)
+    assert pyproject_file_node.focussed is True
+
+
+def test_expand_false_on_node(root_node_no_git: TreeNode):
+    # ..root
+    # ├── pyproject.toml
+    # ├── src
+    # │   ├── main.py
+    # │   └── my_lib
+    # │       └── base.py
+    # └── tests
+    #     └── test_main.py
+
+    # when we call expand=False on a node we do not collapse, but focus parent.
+    pyproject_file_node = root_node_no_git.focus(direction=1)
+
+    assert pyproject_file_node.name == "pyproject.toml"
+
+    pyproject_file_node.set_expanded(False)
+    assert pyproject_file_node.focussed is False
+    assert root_node_no_git.focussed is True
+
+
+def test_expand_false_on_tree_node(root_node_no_git: TreeNode):
+    # ..root
+    # ├── pyproject.toml
+    # ├── src
+    # │   ├── main.py
+    # │   └── my_lib
+    # │       └── base.py
+    # └── tests
+    #     └── test_main.py
+
+    # when we call expand=False on a node we do not collapse, but focus parent.
+    pyproject_file_node = root_node_no_git.focus(direction=1).focus(direction=1)
+
+    assert pyproject_file_node.name == "src"
+
+    pyproject_file_node.set_expanded(False)
+    assert pyproject_file_node.focussed is False
 
 
 # def test_collect_visibile_nodes_expanded(test_path: Path):

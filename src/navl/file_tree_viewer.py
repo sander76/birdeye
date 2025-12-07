@@ -5,6 +5,7 @@ Navigate with arrow keys, expand/collapse with Enter or Space.
 
 from __future__ import annotations
 
+import logging
 from dataclasses import dataclass
 from pathlib import Path
 from typing import Generator, Iterable, Literal, Optional, Self, Tuple
@@ -16,6 +17,8 @@ from prompt_toolkit.key_binding import KeyBindings
 from prompt_toolkit.layout.containers import Window
 from prompt_toolkit.layout.controls import FormattedTextControl
 from prompt_toolkit.styles import Style
+
+_logger = logging.getLogger(__name__)
 
 
 @dataclass
@@ -41,18 +44,15 @@ def use_gitignore(
 class BaseNode:
     """Base class for all node types with common comparison functionality."""
 
-    def __init__(self, path: Path):
+    def __init__(self, path: Path, level: int):
         self.path = path
         self.name = path.name
         self.focussed: bool = False
+        self._level = level
 
     def __lt__(self, other) -> bool:
         """Enable sorting by name property."""
         return self.name < other.name
-
-    def __eq__(self, other) -> bool:
-        """Enable equality comparison by name property."""
-        return self.name == other.name
 
     def __le__(self, other) -> bool:
         """Enable less than or equal comparison."""
@@ -75,6 +75,9 @@ class BaseNode:
             return "focussed"
         return ""
 
+    def set_expanded(self, value: bool) -> None:
+        raise NotImplementedError
+
 
 class Node(BaseNode):
     _ICON = "📄"
@@ -83,20 +86,23 @@ class Node(BaseNode):
         super().__init__(path)
         self.parent = parent
 
-    def nodes(self) -> Generator[Node, None, None]:
+    def full_tree(self) -> Generator[Node, None, None]:
         yield self
 
     def render(self) -> tuple[str, str]:
         _logger.debug("Render a node.")
         return self._get_style(), f"{self._ICON} {self.name}"
 
-    def toggle_expanded(self) -> None:
-        return
-
     def focus(self, direction: Literal[-1, 1]) -> Node | TreeNode:
         self.focussed = False
         new_focussed = self.parent.focus(direction=direction)
         return new_focussed
+
+    def __str__(self) -> str:
+        return f"{self.name=!r} {self.focussed=!r}"
+
+    def set_expanded(self, value: bool):
+        pass
 
 
 class TreeNode(BaseNode):
@@ -119,74 +125,61 @@ class TreeNode(BaseNode):
         self._level = level
         self.parent = parent
 
+        self._expanded: bool = True if parent is None else False
+
         # index of collection of this node and its children.
-        self._focussed_idx: int = None
+        self._focussed_idx: int | None = 0 if parent is None else None
 
         self.use_gitignore = use_gitignore
 
-        self._expanded: bool = False
         self._git_repo = git_repo
 
-    def focus(self, direction: Literal[-1, 1]) -> TreeNode | Node:
+    def __repr__(self) -> str:
+        return f"{self.name=!r} {self.parent=!r} {self._expanded=!r} {self._focussed_idx=!r}"
+
+    def set_expanded(self, value: bool):
+        self._expanded = value
+
+    def focus(self, direction: Literal[-1, 1, "parent"]) -> TreeNode | Node:
         """Focus this or child nodes."""
 
         # state:
         # focussed, 1,
 
-        _all = tuple(self.nodes())
+        _all = self.nodes()
+
         if self.focussed:
             self._focussed_idx = 0
-        if self._focussed_idx is None:
-            # no focusssed idx. So this is called indirectly.
-            # root node is select node.
-            new_idx = 0
-        else:
-            new_idx = self._focussed_idx + direction
 
-        if 0 <= new_idx < len(_all):
-            self._focussed_idx = new_idx
-            new_focussed = _all[self._focussed_idx]
-        else:
-            new_focussed = self.parent.focus(direction)
+        match direction, self.parent, self._focussed_idx:
+            case -1, None, 0:
+                new_idx = 0
+                new_focussed = self
+            case -1, TreeNode(), 0:
+                new_idx = None
+                new_focussed = self.parent.focus(-1)
+            case -1, _, idx if idx > 0:
+                new_idx = self._focussed_idx - 1
+                new_focussed = _all[new_idx]
+
+            case 1, None, idx if idx == len(_all) - 1:
+                # no parent. staying where we are.
+                new_idx = self._focussed_idx
+                new_focussed = _all[new_idx]
+            case 1, TreeNode(), idx if idx == len(_all) - 1:
+                new_idx = None
+                new_focussed = self.parent.focus(1)
+            case 1, _, _:
+                new_idx = self._focussed_idx + 1
+                new_focussed = _all[new_idx]
+            case _, _, _:
+                raise ValueError("fallhrough")
 
         self.focussed = False
+        self._focussed_idx = new_idx
 
         new_focussed.focussed = True
         return new_focussed
-
-        # if not self.focussed and self._focussed_idx is None:
-        #     # not focussed and no child is selected. We focus this node.
-        #     new_focussed = self
-        # if not self.focussed and self._focussed_idx is not None:
-        #     # A child of this treenode has focus
-        #     new_idx = self._focussed_idx + direction
-
-        #     if 0 <= new_idx < len(self.maybe_get_children()):
-        #         self._focussed_idx = new_idx
-        #         new_focussed = self.maybe_get_children()[self._focussed_idx]
-        #     else:
-        #         if self.parent is None:
-        #             # no parent. keeping current selection.
-        #             new_focussed = self.maybe_get_children()[self._focussed_idx]
-        #         else:
-        #             self._focussed_idx = None
-        #             new_focussed = self.parent.focus(direction)
-        # if self.focussed:
-        #     if direction == -1:
-        #         if self.parent is None:
-        #             # reached top of list. No new focus
-        #             new_focussed = self
-        #         else:
-        #             new_focussed = self.parent.focus(direction)
-        #     try:
-        #         focussed = self.maybe_get_children()[0]
-
-        #         self._focussed_idx = 0
-        #         return focussed
-        #     except IndexError:
-        #         if self.parent is None:
-        #             return self
-        #         return self.parent.focus(direction)
 
     @property
     def expanded(self) -> bool:
@@ -201,11 +194,6 @@ class TreeNode(BaseNode):
     def render(self) -> tuple[str, str]:
         _logger.debug("Render a treenode")
         return self._get_style(), f"{self._ICON} {self.name}"
-
-    def maybe_get_children(self) -> tuple[TreeNode | Node, ...]:
-        if self.expanded:
-            return self.children
-        return ()
 
     @property
     def children(self) -> tuple[TreeNode | Node, ...]:
@@ -232,20 +220,16 @@ class TreeNode(BaseNode):
             self._children = tuple(sorted(get_children()))
         return self._children
 
-    def nodes(self) -> Generator[Node | TreeNode, None, None]:
+    def nodes(self) -> tuple[Node | TreeNode, ...]:
+        if self.expanded:
+            return (self, *self.children)
+        return (self,)
+
+    def full_tree(self) -> Generator[Node | TreeNode, None, None]:
         yield self
-        for child in self.maybe_get_children():
-            yield from child.nodes()
-
-    def toggle_expanded(self):
-        """Toggle the expanded state of this node."""
-        self.expanded = not self.expanded
-        _logger.debug(f"Expanded state to {self.expanded}")
-
-
-import logging
-
-_logger = logging.getLogger(__name__)
+        if self.expanded:
+            for child in self.children:
+                yield from child.full_tree()
 
 
 class FileTreeViewer:
@@ -388,7 +372,7 @@ class FileTreeViewer:
     #         for child in node.children:
     #             self._restore_expanded_state(child, expanded_paths)
 
-    # def _collect_visible_nodes(
+    # def _collect_visible_full_tree(
     #     self, node: TreeNode, depth: int = 0
     # ) -> Generator[TreeNode, None, None]:
     #     """Collect all visible nodes for display."""
@@ -397,7 +381,7 @@ class FileTreeViewer:
 
     #     if node.expanded:
     #         for child in node.children:
-    #             yield from self._collect_visible_nodes(child, depth + 1)
+    #             yield from self._collect_visible_full_tree(child, depth + 1)
 
     # def _get_node_depth(self, node: TreeNode) -> int:
     #     """Get the depth of a node in the tree."""
