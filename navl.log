@@ -1108,3 +1108,751 @@
 2025-12-07 15:23:33,961 - navl.file_tree_viewer - DEBUG - Render a node.
 2025-12-07 15:23:33,961 - navl.file_tree_viewer - DEBUG - Render a node.
 2025-12-07 15:23:33,961 - navl.file_tree_viewer - DEBUG - Render a node.
+2025-12-07 15:26:07,296 - navl.file_tree_viewer - DEBUG - init root
+2025-12-07 15:26:07,302 - asyncio - DEBUG - Using selector: EpollSelector
+2025-12-07 15:26:07,305 - navl.file_tree_viewer - DEBUG - update display
+2025-12-07 15:26:07,305 - navl.file_tree_viewer - DEBUG - Render a node.
+2025-12-07 15:26:07,306 - navl.file_tree_viewer - DEBUG - Render a node.
+2025-12-07 15:26:07,306 - navl.file_tree_viewer - DEBUG - Render a node.
+2025-12-07 15:26:07,306 - navl.file_tree_viewer - DEBUG - Render a node.
+2025-12-07 15:26:07,306 - navl.file_tree_viewer - DEBUG - Render a node.
+2025-12-07 15:26:07,306 - navl.file_tree_viewer - DEBUG - Render a node.
+2025-12-07 15:26:07,306 - navl.file_tree_viewer - DEBUG - Render a node.
+2025-12-07 15:26:07,306 - navl.file_tree_viewer - DEBUG - Render a node.
+2025-12-07 15:26:07,306 - navl.file_tree_viewer - DEBUG - Render a node.
+2025-12-07 15:26:07,306 - navl.file_tree_viewer - DEBUG - Render a node.
+2025-12-07 15:26:07,306 - navl.file_tree_viewer - DEBUG - Render a node.
+2025-12-07 15:26:09,980 - navl.file_tree_viewer - DEBUG - setting new focus direction=1
+2025-12-07 15:26:09,980 - navl.file_tree_viewer - DEBUG - focussed name=.gitignore
+2025-12-07 15:26:09,980 - navl.file_tree_viewer - DEBUG - update display
+2025-12-07 15:26:09,980 - navl.file_tree_viewer - DEBUG - Render a node.
+2025-12-07 15:26:09,980 - navl.file_tree_viewer - DEBUG - Render a node.
+2025-12-07 15:26:09,980 - navl.file_tree_viewer - DEBUG - Render a node.
+2025-12-07 15:26:09,980 - navl.file_tree_viewer - DEBUG - Render a node.
+2025-12-07 15:26:09,980 - navl.file_tree_viewer - DEBUG - Render a node.
+2025-12-07 15:26:09,980 - navl.file_tree_viewer - DEBUG - Render a node.
+2025-12-07 15:26:09,980 - navl.file_tree_viewer - DEBUG - Render a node.
+2025-12-07 15:26:09,980 - navl.file_tree_viewer - DEBUG - Render a node.
+2025-12-07 15:26:09,980 - navl.file_tree_viewer - DEBUG - Render a node.
+2025-12-07 15:26:09,980 - navl.file_tree_viewer - DEBUG - Render a node.
+2025-12-07 15:26:09,980 - navl.file_tree_viewer - DEBUG - Render a node.
+2025-12-07 15:26:10,830 - navl.file_tree_viewer - DEBUG - setting new focus direction=1
+2025-12-07 15:26:10,830 - navl.file_tree_viewer - DEBUG - focussed name=.pre-commit-config.yaml
+2025-12-07 15:26:10,831 - navl.file_tree_viewer - DEBUG - update display
+2025-12-07 15:26:10,831 - navl.file_tree_viewer - DEBUG - Render a node.
+2025-12-07 15:26:10,831 - navl.file_tree_viewer - DEBUG - Render a node.
+2025-12-07 15:26:10,831 - navl.file_tree_viewer - DEBUG - Render a node.
+2025-12-07 15:26:10,831 - navl.file_tree_viewer - DEBUG - Render a node.
+2025-12-07 15:26:10,831 - navl.file_tree_viewer - DEBUG - Render a node.
+2025-12-07 15:26:10,831 - navl.file_tree_viewer - DEBUG - Render a node.
+2025-12-07 15:26:10,831 - navl.file_tree_viewer - DEBUG - Render a node.
+2025-12-07 15:26:10,831 - navl.file_tree_viewer - DEBUG - Render a node.
+2025-12-07 15:26:10,882 - navl.file_tree_viewer - DEBUG - Render a node.
+2025-12-07 15:26:10,882 - navl.file_tree_viewer - DEBUG - Render a node.
+2025-12-07 15:26:10,882 - navl.file_tree_viewer - DEBUG - Render a node.
+2025-12-07 15:26:11,391 - navl.file_tree_viewer - DEBUG - setting new focus direction=1
+2025-12-07 15:26:11,391 - navl.file_tree_viewer - DEBUG - focussed name=.pytest_cache
+2025-12-07 15:26:11,392 - navl.file_tree_viewer - DEBUG - update display
+2025-12-07 15:26:11,392 - navl.file_tree_viewer - DEBUG - Render a node.
+2025-12-07 15:26:11,392 - navl.file_tree_viewer - DEBUG - Render a node.
+2025-12-07 15:26:11,392 - navl.file_tree_viewer - DEBUG - Render a node.
+2025-12-07 15:26:11,392 - navl.file_tree_viewer - DEBUG - Render a node.
+2025-12-07 15:26:11,392 - navl.file_tree_viewer - DEBUG - Render a node.
+2025-12-07 15:26:11,392 - navl.file_tree_viewer - DEBUG - Render a node.
+2025-12-07 15:26:11,392 - navl.file_tree_viewer - DEBUG - Render a node.
+2025-12-07 15:26:11,392 - navl.file_tree_viewer - DEBUG - Render a node.
+2025-12-07 15:26:11,392 - navl.file_tree_viewer - DEBUG - Render a node.
+2025-12-07 15:26:11,392 - navl.file_tree_viewer - DEBUG - Render a node.
+2025-12-07 15:26:11,392 - navl.file_tree_viewer - DEBUG - Render a node.
+2025-12-07 15:26:45,954 - navl.file_tree_viewer - DEBUG - update display
+2025-12-07 15:26:45,955 - navl.file_tree_viewer - DEBUG - Render a node.
+2025-12-07 15:26:45,955 - navl.file_tree_viewer - DEBUG - Render a node.
+2025-12-07 15:26:45,955 - navl.file_tree_viewer - DEBUG - Render a node.
+2025-12-07 15:26:45,955 - navl.file_tree_viewer - DEBUG - Render a node.
+2025-12-07 15:26:45,955 - navl.file_tree_viewer - DEBUG - Render a node.
+2025-12-07 15:26:45,956 - navl.file_tree_viewer - DEBUG - Render a node.
+2025-12-07 15:26:45,956 - navl.file_tree_viewer - DEBUG - Render a node.
+2025-12-07 15:26:45,956 - navl.file_tree_viewer - DEBUG - Render a node.
+2025-12-07 15:26:45,956 - navl.file_tree_viewer - DEBUG - Render a node.
+2025-12-07 15:26:45,956 - navl.file_tree_viewer - DEBUG - Render a node.
+2025-12-07 15:26:45,956 - navl.file_tree_viewer - DEBUG - Render a node.
+2025-12-07 15:26:47,297 - navl.file_tree_viewer - DEBUG - init root
+2025-12-07 15:26:47,304 - asyncio - DEBUG - Using selector: EpollSelector
+2025-12-07 15:26:47,307 - navl.file_tree_viewer - DEBUG - update display
+2025-12-07 15:26:47,307 - navl.file_tree_viewer - DEBUG - Render a node.
+2025-12-07 15:26:47,308 - navl.file_tree_viewer - DEBUG - Render a node.
+2025-12-07 15:26:47,308 - navl.file_tree_viewer - DEBUG - Render a node.
+2025-12-07 15:26:47,308 - navl.file_tree_viewer - DEBUG - Render a node.
+2025-12-07 15:26:47,308 - navl.file_tree_viewer - DEBUG - Render a node.
+2025-12-07 15:26:47,308 - navl.file_tree_viewer - DEBUG - Render a node.
+2025-12-07 15:26:47,308 - navl.file_tree_viewer - DEBUG - Render a node.
+2025-12-07 15:26:47,308 - navl.file_tree_viewer - DEBUG - Render a node.
+2025-12-07 15:26:47,308 - navl.file_tree_viewer - DEBUG - Render a node.
+2025-12-07 15:26:47,308 - navl.file_tree_viewer - DEBUG - Render a node.
+2025-12-07 15:26:47,308 - navl.file_tree_viewer - DEBUG - Render a node.
+2025-12-07 15:26:48,565 - navl.file_tree_viewer - DEBUG - setting new focus direction=1
+2025-12-07 15:26:48,565 - navl.file_tree_viewer - DEBUG - focussed name=.gitignore
+2025-12-07 15:26:48,565 - navl.file_tree_viewer - DEBUG - update display
+2025-12-07 15:26:48,565 - navl.file_tree_viewer - DEBUG - Render a node.
+2025-12-07 15:26:48,566 - navl.file_tree_viewer - DEBUG - Render a node.
+2025-12-07 15:26:48,566 - navl.file_tree_viewer - DEBUG - Render a node.
+2025-12-07 15:26:48,566 - navl.file_tree_viewer - DEBUG - Render a node.
+2025-12-07 15:26:48,566 - navl.file_tree_viewer - DEBUG - Render a node.
+2025-12-07 15:26:48,566 - navl.file_tree_viewer - DEBUG - Render a node.
+2025-12-07 15:26:48,566 - navl.file_tree_viewer - DEBUG - Render a node.
+2025-12-07 15:26:48,566 - navl.file_tree_viewer - DEBUG - Render a node.
+2025-12-07 15:26:48,566 - navl.file_tree_viewer - DEBUG - Render a node.
+2025-12-07 15:26:48,566 - navl.file_tree_viewer - DEBUG - Render a node.
+2025-12-07 15:26:48,566 - navl.file_tree_viewer - DEBUG - Render a node.
+2025-12-07 15:26:48,961 - navl.file_tree_viewer - DEBUG - setting new focus direction=1
+2025-12-07 15:26:48,961 - navl.file_tree_viewer - DEBUG - focussed name=.pre-commit-config.yaml
+2025-12-07 15:26:48,963 - navl.file_tree_viewer - DEBUG - update display
+2025-12-07 15:26:48,963 - navl.file_tree_viewer - DEBUG - Render a node.
+2025-12-07 15:26:48,963 - navl.file_tree_viewer - DEBUG - Render a node.
+2025-12-07 15:26:48,964 - navl.file_tree_viewer - DEBUG - Render a node.
+2025-12-07 15:26:48,964 - navl.file_tree_viewer - DEBUG - Render a node.
+2025-12-07 15:26:48,964 - navl.file_tree_viewer - DEBUG - Render a node.
+2025-12-07 15:26:48,964 - navl.file_tree_viewer - DEBUG - Render a node.
+2025-12-07 15:26:48,964 - navl.file_tree_viewer - DEBUG - Render a node.
+2025-12-07 15:26:48,965 - navl.file_tree_viewer - DEBUG - Render a node.
+2025-12-07 15:26:48,965 - navl.file_tree_viewer - DEBUG - Render a node.
+2025-12-07 15:26:48,965 - navl.file_tree_viewer - DEBUG - Render a node.
+2025-12-07 15:26:48,965 - navl.file_tree_viewer - DEBUG - Render a node.
+2025-12-07 15:26:49,371 - navl.file_tree_viewer - DEBUG - setting new focus direction=1
+2025-12-07 15:26:49,371 - navl.file_tree_viewer - DEBUG - focussed name=.pytest_cache
+2025-12-07 15:26:49,373 - navl.file_tree_viewer - DEBUG - update display
+2025-12-07 15:26:49,373 - navl.file_tree_viewer - DEBUG - Render a node.
+2025-12-07 15:26:49,373 - navl.file_tree_viewer - DEBUG - Render a node.
+2025-12-07 15:26:49,373 - navl.file_tree_viewer - DEBUG - Render a node.
+2025-12-07 15:26:49,373 - navl.file_tree_viewer - DEBUG - Render a node.
+2025-12-07 15:26:49,373 - navl.file_tree_viewer - DEBUG - Render a node.
+2025-12-07 15:26:49,373 - navl.file_tree_viewer - DEBUG - Render a node.
+2025-12-07 15:26:49,373 - navl.file_tree_viewer - DEBUG - Render a node.
+2025-12-07 15:26:49,373 - navl.file_tree_viewer - DEBUG - Render a node.
+2025-12-07 15:26:49,373 - navl.file_tree_viewer - DEBUG - Render a node.
+2025-12-07 15:26:49,373 - navl.file_tree_viewer - DEBUG - Render a node.
+2025-12-07 15:26:49,373 - navl.file_tree_viewer - DEBUG - Render a node.
+2025-12-07 15:26:49,861 - navl.file_tree_viewer - DEBUG - setting new focus direction=1
+2025-12-07 15:26:49,861 - navl.file_tree_viewer - DEBUG - setting new focus direction=1
+2025-12-07 15:26:49,862 - navl.file_tree_viewer - DEBUG - focussed name=README.md
+2025-12-07 15:26:49,862 - navl.file_tree_viewer - DEBUG - focussed name=README.md
+2025-12-07 15:26:49,864 - navl.file_tree_viewer - DEBUG - update display
+2025-12-07 15:26:49,864 - navl.file_tree_viewer - DEBUG - Render a node.
+2025-12-07 15:26:49,864 - navl.file_tree_viewer - DEBUG - Render a node.
+2025-12-07 15:26:49,864 - navl.file_tree_viewer - DEBUG - Render a node.
+2025-12-07 15:26:49,865 - navl.file_tree_viewer - DEBUG - Render a node.
+2025-12-07 15:26:49,865 - navl.file_tree_viewer - DEBUG - Render a node.
+2025-12-07 15:26:49,865 - navl.file_tree_viewer - DEBUG - Render a node.
+2025-12-07 15:26:49,865 - navl.file_tree_viewer - DEBUG - Render a node.
+2025-12-07 15:26:49,865 - navl.file_tree_viewer - DEBUG - Render a node.
+2025-12-07 15:26:49,865 - navl.file_tree_viewer - DEBUG - Render a node.
+2025-12-07 15:26:49,865 - navl.file_tree_viewer - DEBUG - Render a node.
+2025-12-07 15:26:49,865 - navl.file_tree_viewer - DEBUG - Render a node.
+2025-12-07 15:26:50,300 - navl.file_tree_viewer - DEBUG - setting new focus direction=1
+2025-12-07 15:26:50,301 - navl.file_tree_viewer - DEBUG - focussed name=navl.log
+2025-12-07 15:26:50,303 - navl.file_tree_viewer - DEBUG - update display
+2025-12-07 15:26:50,303 - navl.file_tree_viewer - DEBUG - Render a node.
+2025-12-07 15:26:50,303 - navl.file_tree_viewer - DEBUG - Render a node.
+2025-12-07 15:26:50,304 - navl.file_tree_viewer - DEBUG - Render a node.
+2025-12-07 15:26:50,304 - navl.file_tree_viewer - DEBUG - Render a node.
+2025-12-07 15:26:50,304 - navl.file_tree_viewer - DEBUG - Render a node.
+2025-12-07 15:26:50,304 - navl.file_tree_viewer - DEBUG - Render a node.
+2025-12-07 15:26:50,305 - navl.file_tree_viewer - DEBUG - Render a node.
+2025-12-07 15:26:50,305 - navl.file_tree_viewer - DEBUG - Render a node.
+2025-12-07 15:26:50,305 - navl.file_tree_viewer - DEBUG - Render a node.
+2025-12-07 15:26:50,305 - navl.file_tree_viewer - DEBUG - Render a node.
+2025-12-07 15:26:50,305 - navl.file_tree_viewer - DEBUG - Render a node.
+2025-12-07 15:26:50,754 - navl.file_tree_viewer - DEBUG - setting new focus direction=1
+2025-12-07 15:26:50,754 - navl.file_tree_viewer - DEBUG - focussed name=noxfile.py
+2025-12-07 15:26:50,756 - navl.file_tree_viewer - DEBUG - update display
+2025-12-07 15:26:50,757 - navl.file_tree_viewer - DEBUG - Render a node.
+2025-12-07 15:26:50,757 - navl.file_tree_viewer - DEBUG - Render a node.
+2025-12-07 15:26:50,757 - navl.file_tree_viewer - DEBUG - Render a node.
+2025-12-07 15:26:50,757 - navl.file_tree_viewer - DEBUG - Render a node.
+2025-12-07 15:26:50,758 - navl.file_tree_viewer - DEBUG - Render a node.
+2025-12-07 15:26:50,758 - navl.file_tree_viewer - DEBUG - Render a node.
+2025-12-07 15:26:50,758 - navl.file_tree_viewer - DEBUG - Render a node.
+2025-12-07 15:26:50,758 - navl.file_tree_viewer - DEBUG - Render a node.
+2025-12-07 15:26:50,758 - navl.file_tree_viewer - DEBUG - Render a node.
+2025-12-07 15:26:50,758 - navl.file_tree_viewer - DEBUG - Render a node.
+2025-12-07 15:26:50,758 - navl.file_tree_viewer - DEBUG - Render a node.
+2025-12-07 15:26:51,212 - navl.file_tree_viewer - DEBUG - setting new focus direction=1
+2025-12-07 15:26:51,212 - navl.file_tree_viewer - DEBUG - focussed name=pyproject.toml
+2025-12-07 15:26:51,214 - navl.file_tree_viewer - DEBUG - update display
+2025-12-07 15:26:51,214 - navl.file_tree_viewer - DEBUG - Render a node.
+2025-12-07 15:26:51,215 - navl.file_tree_viewer - DEBUG - Render a node.
+2025-12-07 15:26:51,215 - navl.file_tree_viewer - DEBUG - Render a node.
+2025-12-07 15:26:51,215 - navl.file_tree_viewer - DEBUG - Render a node.
+2025-12-07 15:26:51,215 - navl.file_tree_viewer - DEBUG - Render a node.
+2025-12-07 15:26:51,216 - navl.file_tree_viewer - DEBUG - Render a node.
+2025-12-07 15:26:51,216 - navl.file_tree_viewer - DEBUG - Render a node.
+2025-12-07 15:26:51,216 - navl.file_tree_viewer - DEBUG - Render a node.
+2025-12-07 15:26:51,216 - navl.file_tree_viewer - DEBUG - Render a node.
+2025-12-07 15:26:51,216 - navl.file_tree_viewer - DEBUG - Render a node.
+2025-12-07 15:26:51,216 - navl.file_tree_viewer - DEBUG - Render a node.
+2025-12-07 15:26:51,691 - navl.file_tree_viewer - DEBUG - update display
+2025-12-07 15:26:51,691 - navl.file_tree_viewer - DEBUG - Render a node.
+2025-12-07 15:26:51,700 - navl.file_tree_viewer - DEBUG - Render a node.
+2025-12-07 15:26:51,701 - navl.file_tree_viewer - DEBUG - Render a node.
+2025-12-07 15:26:51,701 - navl.file_tree_viewer - DEBUG - Render a node.
+2025-12-07 15:26:51,701 - navl.file_tree_viewer - DEBUG - Render a node.
+2025-12-07 15:26:51,701 - navl.file_tree_viewer - DEBUG - Render a node.
+2025-12-07 15:26:51,701 - navl.file_tree_viewer - DEBUG - Render a node.
+2025-12-07 15:26:51,701 - navl.file_tree_viewer - DEBUG - Render a node.
+2025-12-07 15:26:51,702 - navl.file_tree_viewer - DEBUG - Render a node.
+2025-12-07 15:26:51,702 - navl.file_tree_viewer - DEBUG - Render a node.
+2025-12-07 15:26:51,702 - navl.file_tree_viewer - DEBUG - Render a node.
+2025-12-07 15:26:52,482 - navl.file_tree_viewer - DEBUG - setting new focus direction=1
+2025-12-07 15:26:52,483 - navl.file_tree_viewer - DEBUG - focussed name=src
+2025-12-07 15:26:52,484 - navl.file_tree_viewer - DEBUG - update display
+2025-12-07 15:26:52,485 - navl.file_tree_viewer - DEBUG - Render a node.
+2025-12-07 15:26:52,485 - navl.file_tree_viewer - DEBUG - Render a node.
+2025-12-07 15:26:52,485 - navl.file_tree_viewer - DEBUG - Render a node.
+2025-12-07 15:26:52,485 - navl.file_tree_viewer - DEBUG - Render a node.
+2025-12-07 15:26:52,486 - navl.file_tree_viewer - DEBUG - Render a node.
+2025-12-07 15:26:52,486 - navl.file_tree_viewer - DEBUG - Render a node.
+2025-12-07 15:26:52,486 - navl.file_tree_viewer - DEBUG - Render a node.
+2025-12-07 15:26:52,486 - navl.file_tree_viewer - DEBUG - Render a node.
+2025-12-07 15:26:52,486 - navl.file_tree_viewer - DEBUG - Render a node.
+2025-12-07 15:26:52,486 - navl.file_tree_viewer - DEBUG - Render a node.
+2025-12-07 15:26:52,486 - navl.file_tree_viewer - DEBUG - Render a node.
+2025-12-07 15:26:52,791 - navl.file_tree_viewer - DEBUG - update display
+2025-12-07 15:26:52,792 - navl.file_tree_viewer - DEBUG - Render a node.
+2025-12-07 15:26:52,792 - navl.file_tree_viewer - DEBUG - Render a node.
+2025-12-07 15:26:52,792 - navl.file_tree_viewer - DEBUG - Render a node.
+2025-12-07 15:26:52,792 - navl.file_tree_viewer - DEBUG - Render a node.
+2025-12-07 15:26:52,793 - navl.file_tree_viewer - DEBUG - Render a node.
+2025-12-07 15:26:52,793 - navl.file_tree_viewer - DEBUG - Render a node.
+2025-12-07 15:26:52,793 - navl.file_tree_viewer - DEBUG - Render a node.
+2025-12-07 15:26:52,793 - navl.file_tree_viewer - DEBUG - Render a node.
+2025-12-07 15:26:52,794 - navl.file_tree_viewer - DEBUG - Render a node.
+2025-12-07 15:26:52,794 - navl.file_tree_viewer - DEBUG - Render a node.
+2025-12-07 15:26:52,794 - navl.file_tree_viewer - DEBUG - Render a node.
+2025-12-07 15:26:52,795 - navl.file_tree_viewer - DEBUG - Render a node.
+2025-12-07 15:26:53,478 - navl.file_tree_viewer - DEBUG - setting new focus direction=1
+2025-12-07 15:26:53,478 - navl.file_tree_viewer - DEBUG - focussed name=navl
+2025-12-07 15:26:53,480 - navl.file_tree_viewer - DEBUG - update display
+2025-12-07 15:26:53,481 - navl.file_tree_viewer - DEBUG - Render a node.
+2025-12-07 15:26:53,481 - navl.file_tree_viewer - DEBUG - Render a node.
+2025-12-07 15:26:53,481 - navl.file_tree_viewer - DEBUG - Render a node.
+2025-12-07 15:26:53,481 - navl.file_tree_viewer - DEBUG - Render a node.
+2025-12-07 15:26:53,482 - navl.file_tree_viewer - DEBUG - Render a node.
+2025-12-07 15:26:53,482 - navl.file_tree_viewer - DEBUG - Render a node.
+2025-12-07 15:26:53,482 - navl.file_tree_viewer - DEBUG - Render a node.
+2025-12-07 15:26:53,482 - navl.file_tree_viewer - DEBUG - Render a node.
+2025-12-07 15:26:53,482 - navl.file_tree_viewer - DEBUG - Render a node.
+2025-12-07 15:26:53,482 - navl.file_tree_viewer - DEBUG - Render a node.
+2025-12-07 15:26:53,482 - navl.file_tree_viewer - DEBUG - Render a node.
+2025-12-07 15:26:53,482 - navl.file_tree_viewer - DEBUG - Render a node.
+2025-12-07 15:26:53,785 - navl.file_tree_viewer - DEBUG - update display
+2025-12-07 15:26:53,785 - navl.file_tree_viewer - DEBUG - Render a node.
+2025-12-07 15:26:53,785 - navl.file_tree_viewer - DEBUG - Render a node.
+2025-12-07 15:26:53,785 - navl.file_tree_viewer - DEBUG - Render a node.
+2025-12-07 15:26:53,785 - navl.file_tree_viewer - DEBUG - Render a node.
+2025-12-07 15:26:53,785 - navl.file_tree_viewer - DEBUG - Render a node.
+2025-12-07 15:26:53,785 - navl.file_tree_viewer - DEBUG - Render a node.
+2025-12-07 15:26:53,785 - navl.file_tree_viewer - DEBUG - Render a node.
+2025-12-07 15:26:53,785 - navl.file_tree_viewer - DEBUG - Render a node.
+2025-12-07 15:26:53,785 - navl.file_tree_viewer - DEBUG - Render a node.
+2025-12-07 15:26:53,785 - navl.file_tree_viewer - DEBUG - Render a node.
+2025-12-07 15:26:53,786 - navl.file_tree_viewer - DEBUG - Render a node.
+2025-12-07 15:26:53,786 - navl.file_tree_viewer - DEBUG - Render a node.
+2025-12-07 15:26:53,786 - navl.file_tree_viewer - DEBUG - Render a node.
+2025-12-07 15:26:53,786 - navl.file_tree_viewer - DEBUG - Render a node.
+2025-12-07 15:26:53,786 - navl.file_tree_viewer - DEBUG - Render a node.
+2025-12-07 15:26:53,786 - navl.file_tree_viewer - DEBUG - Render a node.
+2025-12-07 15:26:54,663 - navl.file_tree_viewer - DEBUG - update display
+2025-12-07 15:26:54,663 - navl.file_tree_viewer - DEBUG - Render a node.
+2025-12-07 15:26:54,663 - navl.file_tree_viewer - DEBUG - Render a node.
+2025-12-07 15:26:54,664 - navl.file_tree_viewer - DEBUG - Render a node.
+2025-12-07 15:26:54,664 - navl.file_tree_viewer - DEBUG - Render a node.
+2025-12-07 15:26:54,664 - navl.file_tree_viewer - DEBUG - Render a node.
+2025-12-07 15:26:54,664 - navl.file_tree_viewer - DEBUG - Render a node.
+2025-12-07 15:26:54,664 - navl.file_tree_viewer - DEBUG - Render a node.
+2025-12-07 15:26:54,664 - navl.file_tree_viewer - DEBUG - Render a node.
+2025-12-07 15:26:54,664 - navl.file_tree_viewer - DEBUG - Render a node.
+2025-12-07 15:26:54,664 - navl.file_tree_viewer - DEBUG - Render a node.
+2025-12-07 15:26:54,664 - navl.file_tree_viewer - DEBUG - Render a node.
+2025-12-07 15:26:54,664 - navl.file_tree_viewer - DEBUG - Render a node.
+2025-12-07 15:26:55,638 - navl.file_tree_viewer - DEBUG - update display
+2025-12-07 15:26:55,639 - navl.file_tree_viewer - DEBUG - Render a node.
+2025-12-07 15:26:55,639 - navl.file_tree_viewer - DEBUG - Render a node.
+2025-12-07 15:26:55,639 - navl.file_tree_viewer - DEBUG - Render a node.
+2025-12-07 15:26:55,640 - navl.file_tree_viewer - DEBUG - Render a node.
+2025-12-07 15:26:55,640 - navl.file_tree_viewer - DEBUG - Render a node.
+2025-12-07 15:26:55,640 - navl.file_tree_viewer - DEBUG - Render a node.
+2025-12-07 15:26:55,640 - navl.file_tree_viewer - DEBUG - Render a node.
+2025-12-07 15:26:55,641 - navl.file_tree_viewer - DEBUG - Render a node.
+2025-12-07 15:26:55,641 - navl.file_tree_viewer - DEBUG - Render a node.
+2025-12-07 15:26:55,641 - navl.file_tree_viewer - DEBUG - Render a node.
+2025-12-07 15:26:55,641 - navl.file_tree_viewer - DEBUG - Render a node.
+2025-12-07 15:26:55,641 - navl.file_tree_viewer - DEBUG - Render a node.
+2025-12-07 15:26:55,641 - navl.file_tree_viewer - DEBUG - Render a node.
+2025-12-07 15:26:55,641 - navl.file_tree_viewer - DEBUG - Render a node.
+2025-12-07 15:26:55,641 - navl.file_tree_viewer - DEBUG - Render a node.
+2025-12-07 15:26:55,641 - navl.file_tree_viewer - DEBUG - Render a node.
+2025-12-07 15:26:57,113 - navl.file_tree_viewer - DEBUG - update display
+2025-12-07 15:26:57,113 - navl.file_tree_viewer - DEBUG - Render a node.
+2025-12-07 15:26:57,113 - navl.file_tree_viewer - DEBUG - Render a node.
+2025-12-07 15:26:57,114 - navl.file_tree_viewer - DEBUG - Render a node.
+2025-12-07 15:26:57,114 - navl.file_tree_viewer - DEBUG - Render a node.
+2025-12-07 15:26:57,114 - navl.file_tree_viewer - DEBUG - Render a node.
+2025-12-07 15:26:57,114 - navl.file_tree_viewer - DEBUG - Render a node.
+2025-12-07 15:26:57,115 - navl.file_tree_viewer - DEBUG - Render a node.
+2025-12-07 15:26:57,115 - navl.file_tree_viewer - DEBUG - Render a node.
+2025-12-07 15:26:57,115 - navl.file_tree_viewer - DEBUG - Render a node.
+2025-12-07 15:26:57,115 - navl.file_tree_viewer - DEBUG - Render a node.
+2025-12-07 15:26:57,115 - navl.file_tree_viewer - DEBUG - Render a node.
+2025-12-07 15:26:57,116 - navl.file_tree_viewer - DEBUG - Render a node.
+2025-12-07 15:26:57,708 - navl.file_tree_viewer - DEBUG - setting new focus direction=1
+2025-12-07 15:26:57,709 - navl.file_tree_viewer - DEBUG - setting new focus direction=1
+2025-12-07 15:26:57,709 - navl.file_tree_viewer - DEBUG - setting new focus direction=1
+2025-12-07 15:26:57,709 - navl.file_tree_viewer - DEBUG - focussed name=tests
+2025-12-07 15:26:57,709 - navl.file_tree_viewer - DEBUG - focussed name=tests
+2025-12-07 15:26:57,710 - navl.file_tree_viewer - DEBUG - focussed name=tests
+2025-12-07 15:26:57,711 - navl.file_tree_viewer - DEBUG - update display
+2025-12-07 15:26:57,712 - navl.file_tree_viewer - DEBUG - Render a node.
+2025-12-07 15:26:57,712 - navl.file_tree_viewer - DEBUG - Render a node.
+2025-12-07 15:26:57,712 - navl.file_tree_viewer - DEBUG - Render a node.
+2025-12-07 15:26:57,712 - navl.file_tree_viewer - DEBUG - Render a node.
+2025-12-07 15:26:57,713 - navl.file_tree_viewer - DEBUG - Render a node.
+2025-12-07 15:26:57,713 - navl.file_tree_viewer - DEBUG - Render a node.
+2025-12-07 15:26:57,713 - navl.file_tree_viewer - DEBUG - Render a node.
+2025-12-07 15:26:57,713 - navl.file_tree_viewer - DEBUG - Render a node.
+2025-12-07 15:26:57,713 - navl.file_tree_viewer - DEBUG - Render a node.
+2025-12-07 15:26:57,713 - navl.file_tree_viewer - DEBUG - Render a node.
+2025-12-07 15:26:57,713 - navl.file_tree_viewer - DEBUG - Render a node.
+2025-12-07 15:26:57,713 - navl.file_tree_viewer - DEBUG - Render a node.
+2025-12-07 15:26:57,989 - navl.file_tree_viewer - DEBUG - update display
+2025-12-07 15:26:57,990 - navl.file_tree_viewer - DEBUG - Render a node.
+2025-12-07 15:26:57,990 - navl.file_tree_viewer - DEBUG - Render a node.
+2025-12-07 15:26:57,990 - navl.file_tree_viewer - DEBUG - Render a node.
+2025-12-07 15:26:57,991 - navl.file_tree_viewer - DEBUG - Render a node.
+2025-12-07 15:26:57,991 - navl.file_tree_viewer - DEBUG - Render a node.
+2025-12-07 15:26:57,991 - navl.file_tree_viewer - DEBUG - Render a node.
+2025-12-07 15:26:57,991 - navl.file_tree_viewer - DEBUG - Render a node.
+2025-12-07 15:26:57,992 - navl.file_tree_viewer - DEBUG - Render a node.
+2025-12-07 15:26:57,992 - navl.file_tree_viewer - DEBUG - Render a node.
+2025-12-07 15:26:57,992 - navl.file_tree_viewer - DEBUG - Render a node.
+2025-12-07 15:26:57,992 - navl.file_tree_viewer - DEBUG - Render a node.
+2025-12-07 15:26:57,993 - navl.file_tree_viewer - DEBUG - Render a node.
+2025-12-07 15:26:57,993 - navl.file_tree_viewer - DEBUG - Render a node.
+2025-12-07 15:26:58,829 - navl.file_tree_viewer - DEBUG - update display
+2025-12-07 15:26:58,830 - navl.file_tree_viewer - DEBUG - Render a node.
+2025-12-07 15:26:58,830 - navl.file_tree_viewer - DEBUG - Render a node.
+2025-12-07 15:26:58,882 - navl.file_tree_viewer - DEBUG - Render a node.
+2025-12-07 15:26:58,882 - navl.file_tree_viewer - DEBUG - Render a node.
+2025-12-07 15:26:58,883 - navl.file_tree_viewer - DEBUG - Render a node.
+2025-12-07 15:26:58,883 - navl.file_tree_viewer - DEBUG - Render a node.
+2025-12-07 15:26:58,883 - navl.file_tree_viewer - DEBUG - Render a node.
+2025-12-07 15:26:58,883 - navl.file_tree_viewer - DEBUG - Render a node.
+2025-12-07 15:26:58,883 - navl.file_tree_viewer - DEBUG - Render a node.
+2025-12-07 15:26:58,883 - navl.file_tree_viewer - DEBUG - Render a node.
+2025-12-07 15:26:58,884 - navl.file_tree_viewer - DEBUG - Render a node.
+2025-12-07 15:26:58,884 - navl.file_tree_viewer - DEBUG - Render a node.
+2025-12-07 15:26:59,304 - navl.file_tree_viewer - DEBUG - setting new focus direction=-1
+2025-12-07 15:26:59,305 - navl.file_tree_viewer - DEBUG - setting new focus direction=-1
+2025-12-07 15:26:59,305 - navl.file_tree_viewer - DEBUG - focussed name=src
+2025-12-07 15:26:59,305 - navl.file_tree_viewer - DEBUG - focussed name=src
+2025-12-07 15:26:59,306 - navl.file_tree_viewer - DEBUG - update display
+2025-12-07 15:26:59,306 - navl.file_tree_viewer - DEBUG - Render a node.
+2025-12-07 15:26:59,306 - navl.file_tree_viewer - DEBUG - Render a node.
+2025-12-07 15:26:59,307 - navl.file_tree_viewer - DEBUG - Render a node.
+2025-12-07 15:26:59,307 - navl.file_tree_viewer - DEBUG - Render a node.
+2025-12-07 15:26:59,307 - navl.file_tree_viewer - DEBUG - Render a node.
+2025-12-07 15:26:59,307 - navl.file_tree_viewer - DEBUG - Render a node.
+2025-12-07 15:26:59,307 - navl.file_tree_viewer - DEBUG - Render a node.
+2025-12-07 15:26:59,307 - navl.file_tree_viewer - DEBUG - Render a node.
+2025-12-07 15:26:59,307 - navl.file_tree_viewer - DEBUG - Render a node.
+2025-12-07 15:26:59,307 - navl.file_tree_viewer - DEBUG - Render a node.
+2025-12-07 15:26:59,307 - navl.file_tree_viewer - DEBUG - Render a node.
+2025-12-07 15:26:59,307 - navl.file_tree_viewer - DEBUG - Render a node.
+2025-12-07 15:26:59,675 - navl.file_tree_viewer - DEBUG - update display
+2025-12-07 15:26:59,676 - navl.file_tree_viewer - DEBUG - Render a node.
+2025-12-07 15:26:59,676 - navl.file_tree_viewer - DEBUG - Render a node.
+2025-12-07 15:26:59,676 - navl.file_tree_viewer - DEBUG - Render a node.
+2025-12-07 15:26:59,677 - navl.file_tree_viewer - DEBUG - Render a node.
+2025-12-07 15:26:59,677 - navl.file_tree_viewer - DEBUG - Render a node.
+2025-12-07 15:26:59,677 - navl.file_tree_viewer - DEBUG - Render a node.
+2025-12-07 15:26:59,677 - navl.file_tree_viewer - DEBUG - Render a node.
+2025-12-07 15:26:59,678 - navl.file_tree_viewer - DEBUG - Render a node.
+2025-12-07 15:26:59,678 - navl.file_tree_viewer - DEBUG - Render a node.
+2025-12-07 15:26:59,678 - navl.file_tree_viewer - DEBUG - Render a node.
+2025-12-07 15:26:59,678 - navl.file_tree_viewer - DEBUG - Render a node.
+2025-12-07 15:27:00,077 - navl.file_tree_viewer - DEBUG - setting new focus direction=-1
+2025-12-07 15:27:00,077 - navl.file_tree_viewer - DEBUG - setting new focus direction=-1
+2025-12-07 15:27:00,078 - navl.file_tree_viewer - DEBUG - focussed name=pyproject.toml
+2025-12-07 15:27:00,078 - navl.file_tree_viewer - DEBUG - focussed name=pyproject.toml
+2025-12-07 15:27:00,080 - navl.file_tree_viewer - DEBUG - update display
+2025-12-07 15:27:00,080 - navl.file_tree_viewer - DEBUG - Render a node.
+2025-12-07 15:27:00,080 - navl.file_tree_viewer - DEBUG - Render a node.
+2025-12-07 15:27:00,081 - navl.file_tree_viewer - DEBUG - Render a node.
+2025-12-07 15:27:00,081 - navl.file_tree_viewer - DEBUG - Render a node.
+2025-12-07 15:27:00,081 - navl.file_tree_viewer - DEBUG - Render a node.
+2025-12-07 15:27:00,081 - navl.file_tree_viewer - DEBUG - Render a node.
+2025-12-07 15:27:00,081 - navl.file_tree_viewer - DEBUG - Render a node.
+2025-12-07 15:27:00,081 - navl.file_tree_viewer - DEBUG - Render a node.
+2025-12-07 15:27:00,081 - navl.file_tree_viewer - DEBUG - Render a node.
+2025-12-07 15:27:00,081 - navl.file_tree_viewer - DEBUG - Render a node.
+2025-12-07 15:27:00,082 - navl.file_tree_viewer - DEBUG - Render a node.
+2025-12-07 15:27:00,386 - navl.file_tree_viewer - DEBUG - update display
+2025-12-07 15:27:00,387 - navl.file_tree_viewer - DEBUG - Render a node.
+2025-12-07 15:27:00,387 - navl.file_tree_viewer - DEBUG - Render a node.
+2025-12-07 15:27:00,387 - navl.file_tree_viewer - DEBUG - Render a node.
+2025-12-07 15:27:00,387 - navl.file_tree_viewer - DEBUG - Render a node.
+2025-12-07 15:27:00,387 - navl.file_tree_viewer - DEBUG - Render a node.
+2025-12-07 15:27:00,387 - navl.file_tree_viewer - DEBUG - Render a node.
+2025-12-07 15:27:00,387 - navl.file_tree_viewer - DEBUG - Render a node.
+2025-12-07 15:27:00,388 - navl.file_tree_viewer - DEBUG - Render a node.
+2025-12-07 15:27:00,388 - navl.file_tree_viewer - DEBUG - Render a node.
+2025-12-07 15:27:00,388 - navl.file_tree_viewer - DEBUG - Render a node.
+2025-12-07 15:27:00,388 - navl.file_tree_viewer - DEBUG - Render a node.
+2025-12-07 15:27:00,893 - navl.file_tree_viewer - DEBUG - update display
+2025-12-07 15:27:00,893 - navl.file_tree_viewer - DEBUG - Render a node.
+2025-12-07 15:27:00,894 - navl.file_tree_viewer - DEBUG - Render a node.
+2025-12-07 15:27:00,894 - navl.file_tree_viewer - DEBUG - Render a node.
+2025-12-07 15:27:00,894 - navl.file_tree_viewer - DEBUG - Render a node.
+2025-12-07 15:27:00,894 - navl.file_tree_viewer - DEBUG - Render a node.
+2025-12-07 15:27:00,894 - navl.file_tree_viewer - DEBUG - Render a node.
+2025-12-07 15:27:00,894 - navl.file_tree_viewer - DEBUG - Render a node.
+2025-12-07 15:27:00,894 - navl.file_tree_viewer - DEBUG - Render a node.
+2025-12-07 15:27:00,894 - navl.file_tree_viewer - DEBUG - Render a node.
+2025-12-07 15:27:00,894 - navl.file_tree_viewer - DEBUG - Render a node.
+2025-12-07 15:27:00,895 - navl.file_tree_viewer - DEBUG - Render a node.
+2025-12-07 15:27:01,439 - navl.file_tree_viewer - DEBUG - update display
+2025-12-07 15:27:01,440 - navl.file_tree_viewer - DEBUG - Render a node.
+2025-12-07 15:27:01,440 - navl.file_tree_viewer - DEBUG - Render a node.
+2025-12-07 15:27:01,440 - navl.file_tree_viewer - DEBUG - Render a node.
+2025-12-07 15:27:01,440 - navl.file_tree_viewer - DEBUG - Render a node.
+2025-12-07 15:27:01,440 - navl.file_tree_viewer - DEBUG - Render a node.
+2025-12-07 15:27:01,441 - navl.file_tree_viewer - DEBUG - Render a node.
+2025-12-07 15:27:01,441 - navl.file_tree_viewer - DEBUG - Render a node.
+2025-12-07 15:27:01,441 - navl.file_tree_viewer - DEBUG - Render a node.
+2025-12-07 15:27:01,441 - navl.file_tree_viewer - DEBUG - Render a node.
+2025-12-07 15:27:01,441 - navl.file_tree_viewer - DEBUG - Render a node.
+2025-12-07 15:27:01,441 - navl.file_tree_viewer - DEBUG - Render a node.
+2025-12-07 15:27:01,825 - navl.file_tree_viewer - DEBUG - setting new focus direction=1
+2025-12-07 15:27:01,826 - navl.file_tree_viewer - DEBUG - focussed name=src
+2025-12-07 15:27:01,827 - navl.file_tree_viewer - DEBUG - update display
+2025-12-07 15:27:01,827 - navl.file_tree_viewer - DEBUG - Render a node.
+2025-12-07 15:27:01,827 - navl.file_tree_viewer - DEBUG - Render a node.
+2025-12-07 15:27:01,828 - navl.file_tree_viewer - DEBUG - Render a node.
+2025-12-07 15:27:01,828 - navl.file_tree_viewer - DEBUG - Render a node.
+2025-12-07 15:27:01,828 - navl.file_tree_viewer - DEBUG - Render a node.
+2025-12-07 15:27:01,828 - navl.file_tree_viewer - DEBUG - Render a node.
+2025-12-07 15:27:01,828 - navl.file_tree_viewer - DEBUG - Render a node.
+2025-12-07 15:27:01,828 - navl.file_tree_viewer - DEBUG - Render a node.
+2025-12-07 15:27:01,828 - navl.file_tree_viewer - DEBUG - Render a node.
+2025-12-07 15:27:01,828 - navl.file_tree_viewer - DEBUG - Render a node.
+2025-12-07 15:27:01,829 - navl.file_tree_viewer - DEBUG - Render a node.
+2025-12-07 15:27:02,299 - navl.file_tree_viewer - DEBUG - update display
+2025-12-07 15:27:02,299 - navl.file_tree_viewer - DEBUG - Render a node.
+2025-12-07 15:27:02,299 - navl.file_tree_viewer - DEBUG - Render a node.
+2025-12-07 15:27:02,299 - navl.file_tree_viewer - DEBUG - Render a node.
+2025-12-07 15:27:02,299 - navl.file_tree_viewer - DEBUG - Render a node.
+2025-12-07 15:27:02,300 - navl.file_tree_viewer - DEBUG - Render a node.
+2025-12-07 15:27:02,300 - navl.file_tree_viewer - DEBUG - Render a node.
+2025-12-07 15:27:02,300 - navl.file_tree_viewer - DEBUG - Render a node.
+2025-12-07 15:27:02,300 - navl.file_tree_viewer - DEBUG - Render a node.
+2025-12-07 15:27:02,300 - navl.file_tree_viewer - DEBUG - Render a node.
+2025-12-07 15:27:02,300 - navl.file_tree_viewer - DEBUG - Render a node.
+2025-12-07 15:27:02,300 - navl.file_tree_viewer - DEBUG - Render a node.
+2025-12-07 15:27:02,300 - navl.file_tree_viewer - DEBUG - Render a node.
+2025-12-07 15:27:03,144 - navl.file_tree_viewer - DEBUG - setting new focus direction=1
+2025-12-07 15:27:03,144 - navl.file_tree_viewer - DEBUG - focussed name=navl
+2025-12-07 15:27:03,145 - navl.file_tree_viewer - DEBUG - update display
+2025-12-07 15:27:03,145 - navl.file_tree_viewer - DEBUG - Render a node.
+2025-12-07 15:27:03,146 - navl.file_tree_viewer - DEBUG - Render a node.
+2025-12-07 15:27:03,146 - navl.file_tree_viewer - DEBUG - Render a node.
+2025-12-07 15:27:03,146 - navl.file_tree_viewer - DEBUG - Render a node.
+2025-12-07 15:27:03,146 - navl.file_tree_viewer - DEBUG - Render a node.
+2025-12-07 15:27:03,146 - navl.file_tree_viewer - DEBUG - Render a node.
+2025-12-07 15:27:03,146 - navl.file_tree_viewer - DEBUG - Render a node.
+2025-12-07 15:27:03,146 - navl.file_tree_viewer - DEBUG - Render a node.
+2025-12-07 15:27:03,146 - navl.file_tree_viewer - DEBUG - Render a node.
+2025-12-07 15:27:03,147 - navl.file_tree_viewer - DEBUG - Render a node.
+2025-12-07 15:27:03,147 - navl.file_tree_viewer - DEBUG - Render a node.
+2025-12-07 15:27:03,147 - navl.file_tree_viewer - DEBUG - Render a node.
+2025-12-07 15:27:03,366 - navl.file_tree_viewer - DEBUG - update display
+2025-12-07 15:27:03,366 - navl.file_tree_viewer - DEBUG - Render a node.
+2025-12-07 15:27:03,367 - navl.file_tree_viewer - DEBUG - Render a node.
+2025-12-07 15:27:03,367 - navl.file_tree_viewer - DEBUG - Render a node.
+2025-12-07 15:27:03,367 - navl.file_tree_viewer - DEBUG - Render a node.
+2025-12-07 15:27:03,367 - navl.file_tree_viewer - DEBUG - Render a node.
+2025-12-07 15:27:03,367 - navl.file_tree_viewer - DEBUG - Render a node.
+2025-12-07 15:27:03,367 - navl.file_tree_viewer - DEBUG - Render a node.
+2025-12-07 15:27:03,367 - navl.file_tree_viewer - DEBUG - Render a node.
+2025-12-07 15:27:03,367 - navl.file_tree_viewer - DEBUG - Render a node.
+2025-12-07 15:27:03,368 - navl.file_tree_viewer - DEBUG - Render a node.
+2025-12-07 15:27:03,368 - navl.file_tree_viewer - DEBUG - Render a node.
+2025-12-07 15:27:03,368 - navl.file_tree_viewer - DEBUG - Render a node.
+2025-12-07 15:27:03,368 - navl.file_tree_viewer - DEBUG - Render a node.
+2025-12-07 15:27:03,368 - navl.file_tree_viewer - DEBUG - Render a node.
+2025-12-07 15:27:03,368 - navl.file_tree_viewer - DEBUG - Render a node.
+2025-12-07 15:27:03,368 - navl.file_tree_viewer - DEBUG - Render a node.
+2025-12-07 15:27:07,637 - navl.file_tree_viewer - DEBUG - setting new focus direction=1
+2025-12-07 15:27:07,637 - navl.file_tree_viewer - DEBUG - focussed name=__init__.py
+2025-12-07 15:27:07,638 - navl.file_tree_viewer - DEBUG - update display
+2025-12-07 15:27:07,639 - navl.file_tree_viewer - DEBUG - Render a node.
+2025-12-07 15:27:07,639 - navl.file_tree_viewer - DEBUG - Render a node.
+2025-12-07 15:27:07,639 - navl.file_tree_viewer - DEBUG - Render a node.
+2025-12-07 15:27:07,639 - navl.file_tree_viewer - DEBUG - Render a node.
+2025-12-07 15:27:07,639 - navl.file_tree_viewer - DEBUG - Render a node.
+2025-12-07 15:27:07,639 - navl.file_tree_viewer - DEBUG - Render a node.
+2025-12-07 15:27:07,640 - navl.file_tree_viewer - DEBUG - Render a node.
+2025-12-07 15:27:07,640 - navl.file_tree_viewer - DEBUG - Render a node.
+2025-12-07 15:27:07,640 - navl.file_tree_viewer - DEBUG - Render a node.
+2025-12-07 15:27:07,640 - navl.file_tree_viewer - DEBUG - Render a node.
+2025-12-07 15:27:07,640 - navl.file_tree_viewer - DEBUG - Render a node.
+2025-12-07 15:27:07,640 - navl.file_tree_viewer - DEBUG - Render a node.
+2025-12-07 15:27:07,640 - navl.file_tree_viewer - DEBUG - Render a node.
+2025-12-07 15:27:07,640 - navl.file_tree_viewer - DEBUG - Render a node.
+2025-12-07 15:27:07,640 - navl.file_tree_viewer - DEBUG - Render a node.
+2025-12-07 15:27:07,641 - navl.file_tree_viewer - DEBUG - Render a node.
+2025-12-07 15:27:07,782 - navl.file_tree_viewer - DEBUG - setting new focus direction=1
+2025-12-07 15:27:07,783 - navl.file_tree_viewer - DEBUG - focussed name=cli.py
+2025-12-07 15:27:07,784 - navl.file_tree_viewer - DEBUG - update display
+2025-12-07 15:27:07,784 - navl.file_tree_viewer - DEBUG - Render a node.
+2025-12-07 15:27:07,784 - navl.file_tree_viewer - DEBUG - Render a node.
+2025-12-07 15:27:07,784 - navl.file_tree_viewer - DEBUG - Render a node.
+2025-12-07 15:27:07,785 - navl.file_tree_viewer - DEBUG - Render a node.
+2025-12-07 15:27:07,785 - navl.file_tree_viewer - DEBUG - Render a node.
+2025-12-07 15:27:07,785 - navl.file_tree_viewer - DEBUG - Render a node.
+2025-12-07 15:27:07,785 - navl.file_tree_viewer - DEBUG - Render a node.
+2025-12-07 15:27:07,785 - navl.file_tree_viewer - DEBUG - Render a node.
+2025-12-07 15:27:07,785 - navl.file_tree_viewer - DEBUG - Render a node.
+2025-12-07 15:27:07,785 - navl.file_tree_viewer - DEBUG - Render a node.
+2025-12-07 15:27:07,785 - navl.file_tree_viewer - DEBUG - Render a node.
+2025-12-07 15:27:07,786 - navl.file_tree_viewer - DEBUG - Render a node.
+2025-12-07 15:27:07,786 - navl.file_tree_viewer - DEBUG - Render a node.
+2025-12-07 15:27:07,786 - navl.file_tree_viewer - DEBUG - Render a node.
+2025-12-07 15:27:07,786 - navl.file_tree_viewer - DEBUG - Render a node.
+2025-12-07 15:27:07,786 - navl.file_tree_viewer - DEBUG - Render a node.
+2025-12-07 15:28:19,228 - navl.file_tree_viewer - DEBUG - update display
+2025-12-07 15:28:19,228 - navl.file_tree_viewer - DEBUG - Render a node.
+2025-12-07 15:28:19,228 - navl.file_tree_viewer - DEBUG - Render a node.
+2025-12-07 15:28:19,228 - navl.file_tree_viewer - DEBUG - Render a node.
+2025-12-07 15:28:19,229 - navl.file_tree_viewer - DEBUG - Render a node.
+2025-12-07 15:28:19,229 - navl.file_tree_viewer - DEBUG - Render a node.
+2025-12-07 15:28:19,229 - navl.file_tree_viewer - DEBUG - Render a node.
+2025-12-07 15:28:19,229 - navl.file_tree_viewer - DEBUG - Render a node.
+2025-12-07 15:28:19,229 - navl.file_tree_viewer - DEBUG - Render a node.
+2025-12-07 15:28:19,229 - navl.file_tree_viewer - DEBUG - Render a node.
+2025-12-07 15:28:19,229 - navl.file_tree_viewer - DEBUG - Render a node.
+2025-12-07 15:28:19,229 - navl.file_tree_viewer - DEBUG - Render a node.
+2025-12-07 15:28:19,229 - navl.file_tree_viewer - DEBUG - Render a node.
+2025-12-07 15:28:19,229 - navl.file_tree_viewer - DEBUG - Render a node.
+2025-12-07 15:28:19,229 - navl.file_tree_viewer - DEBUG - Render a node.
+2025-12-07 15:28:19,229 - navl.file_tree_viewer - DEBUG - Render a node.
+2025-12-07 15:28:19,229 - navl.file_tree_viewer - DEBUG - Render a node.
+2025-12-07 15:28:22,494 - navl.file_tree_viewer - DEBUG - init root
+2025-12-07 15:28:22,501 - asyncio - DEBUG - Using selector: EpollSelector
+2025-12-07 15:28:22,503 - navl.file_tree_viewer - DEBUG - update display
+2025-12-07 15:28:22,503 - navl.file_tree_viewer - DEBUG - Render a node: ('', ' 📂 navl\n')
+2025-12-07 15:28:22,504 - navl.file_tree_viewer - DEBUG - Render a node: ('', '  📄 .gitignore\n')
+2025-12-07 15:28:22,504 - navl.file_tree_viewer - DEBUG - Render a node: ('', '  📄 .pre-commit-config.yaml\n')
+2025-12-07 15:28:22,504 - navl.file_tree_viewer - DEBUG - Render a node: ('', '  📂 .pytest_cache\n')
+2025-12-07 15:28:22,504 - navl.file_tree_viewer - DEBUG - Render a node: ('', '  📄 README.md\n')
+2025-12-07 15:28:22,504 - navl.file_tree_viewer - DEBUG - Render a node: ('', '  📄 navl.log\n')
+2025-12-07 15:28:22,505 - navl.file_tree_viewer - DEBUG - Render a node: ('', '  📄 noxfile.py\n')
+2025-12-07 15:28:22,505 - navl.file_tree_viewer - DEBUG - Render a node: ('', '  📄 pyproject.toml\n')
+2025-12-07 15:28:22,505 - navl.file_tree_viewer - DEBUG - Render a node: ('', '  📂 src\n')
+2025-12-07 15:28:22,505 - navl.file_tree_viewer - DEBUG - Render a node: ('', '  📂 tests\n')
+2025-12-07 15:28:22,505 - navl.file_tree_viewer - DEBUG - Render a node: ('', '  📄 uv.lock\n')
+2025-12-07 15:28:24,143 - navl.file_tree_viewer - DEBUG - setting new focus direction=1
+2025-12-07 15:28:24,143 - navl.file_tree_viewer - DEBUG - focussed name=.gitignore
+2025-12-07 15:28:24,143 - navl.file_tree_viewer - DEBUG - update display
+2025-12-07 15:28:24,144 - navl.file_tree_viewer - DEBUG - Render a node: ('', ' 📂 navl\n')
+2025-12-07 15:28:24,144 - navl.file_tree_viewer - DEBUG - Render a node: ('class:focussed', '  📄 .gitignore\n')
+2025-12-07 15:28:24,144 - navl.file_tree_viewer - DEBUG - Render a node: ('', '  📄 .pre-commit-config.yaml\n')
+2025-12-07 15:28:24,144 - navl.file_tree_viewer - DEBUG - Render a node: ('', '  📂 .pytest_cache\n')
+2025-12-07 15:28:24,144 - navl.file_tree_viewer - DEBUG - Render a node: ('', '  📄 README.md\n')
+2025-12-07 15:28:24,144 - navl.file_tree_viewer - DEBUG - Render a node: ('', '  📄 navl.log\n')
+2025-12-07 15:28:24,144 - navl.file_tree_viewer - DEBUG - Render a node: ('', '  📄 noxfile.py\n')
+2025-12-07 15:28:24,144 - navl.file_tree_viewer - DEBUG - Render a node: ('', '  📄 pyproject.toml\n')
+2025-12-07 15:28:24,144 - navl.file_tree_viewer - DEBUG - Render a node: ('', '  📂 src\n')
+2025-12-07 15:28:24,144 - navl.file_tree_viewer - DEBUG - Render a node: ('', '  📂 tests\n')
+2025-12-07 15:28:24,144 - navl.file_tree_viewer - DEBUG - Render a node: ('', '  📄 uv.lock\n')
+2025-12-07 15:28:24,592 - navl.file_tree_viewer - DEBUG - setting new focus direction=1
+2025-12-07 15:28:24,592 - navl.file_tree_viewer - DEBUG - focussed name=.pre-commit-config.yaml
+2025-12-07 15:28:24,594 - navl.file_tree_viewer - DEBUG - update display
+2025-12-07 15:28:24,594 - navl.file_tree_viewer - DEBUG - Render a node: ('', ' 📂 navl\n')
+2025-12-07 15:28:24,594 - navl.file_tree_viewer - DEBUG - Render a node: ('', '  📄 .gitignore\n')
+2025-12-07 15:28:24,595 - navl.file_tree_viewer - DEBUG - Render a node: ('class:focussed', '  📄 .pre-commit-config.yaml\n')
+2025-12-07 15:28:24,595 - navl.file_tree_viewer - DEBUG - Render a node: ('', '  📂 .pytest_cache\n')
+2025-12-07 15:28:24,595 - navl.file_tree_viewer - DEBUG - Render a node: ('', '  📄 README.md\n')
+2025-12-07 15:28:24,595 - navl.file_tree_viewer - DEBUG - Render a node: ('', '  📄 navl.log\n')
+2025-12-07 15:28:24,595 - navl.file_tree_viewer - DEBUG - Render a node: ('', '  📄 noxfile.py\n')
+2025-12-07 15:28:24,596 - navl.file_tree_viewer - DEBUG - Render a node: ('', '  📄 pyproject.toml\n')
+2025-12-07 15:28:24,596 - navl.file_tree_viewer - DEBUG - Render a node: ('', '  📂 src\n')
+2025-12-07 15:28:24,596 - navl.file_tree_viewer - DEBUG - Render a node: ('', '  📂 tests\n')
+2025-12-07 15:28:24,596 - navl.file_tree_viewer - DEBUG - Render a node: ('', '  📄 uv.lock\n')
+2025-12-07 15:28:54,456 - navl.file_tree_viewer - DEBUG - setting new focus direction=1
+2025-12-07 15:28:54,457 - navl.file_tree_viewer - DEBUG - focussed name=.pytest_cache
+2025-12-07 15:28:54,458 - navl.file_tree_viewer - DEBUG - update display
+2025-12-07 15:28:54,458 - navl.file_tree_viewer - DEBUG - Render a node: ('', ' 📂 navl\n')
+2025-12-07 15:28:54,459 - navl.file_tree_viewer - DEBUG - Render a node: ('', '  📄 .gitignore\n')
+2025-12-07 15:28:54,459 - navl.file_tree_viewer - DEBUG - Render a node: ('', '  📄 .pre-commit-config.yaml\n')
+2025-12-07 15:28:54,459 - navl.file_tree_viewer - DEBUG - Render a node: ('class:focussed', '  📂 .pytest_cache\n')
+2025-12-07 15:28:54,459 - navl.file_tree_viewer - DEBUG - Render a node: ('', '  📄 README.md\n')
+2025-12-07 15:28:54,459 - navl.file_tree_viewer - DEBUG - Render a node: ('', '  📄 navl.log\n')
+2025-12-07 15:28:54,460 - navl.file_tree_viewer - DEBUG - Render a node: ('', '  📄 noxfile.py\n')
+2025-12-07 15:28:54,460 - navl.file_tree_viewer - DEBUG - Render a node: ('', '  📄 pyproject.toml\n')
+2025-12-07 15:28:54,460 - navl.file_tree_viewer - DEBUG - Render a node: ('', '  📂 src\n')
+2025-12-07 15:28:54,460 - navl.file_tree_viewer - DEBUG - Render a node: ('', '  📂 tests\n')
+2025-12-07 15:28:54,460 - navl.file_tree_viewer - DEBUG - Render a node: ('', '  📄 uv.lock\n')
+2025-12-07 15:29:53,775 - navl.file_tree_viewer - DEBUG - update display
+2025-12-07 15:29:53,775 - navl.file_tree_viewer - DEBUG - Render a node: ('', ' 📂 navl\n')
+2025-12-07 15:29:53,775 - navl.file_tree_viewer - DEBUG - Render a node: ('', '  📄 .gitignore\n')
+2025-12-07 15:29:53,776 - navl.file_tree_viewer - DEBUG - Render a node: ('', '  📄 .pre-commit-config.yaml\n')
+2025-12-07 15:29:53,776 - navl.file_tree_viewer - DEBUG - Render a node: ('class:focussed', '  📂 .pytest_cache\n')
+2025-12-07 15:29:53,776 - navl.file_tree_viewer - DEBUG - Render a node: ('', '  📄 README.md\n')
+2025-12-07 15:29:53,776 - navl.file_tree_viewer - DEBUG - Render a node: ('', '  📄 navl.log\n')
+2025-12-07 15:29:53,776 - navl.file_tree_viewer - DEBUG - Render a node: ('', '  📄 noxfile.py\n')
+2025-12-07 15:29:53,776 - navl.file_tree_viewer - DEBUG - Render a node: ('', '  📄 pyproject.toml\n')
+2025-12-07 15:29:53,777 - navl.file_tree_viewer - DEBUG - Render a node: ('', '  📂 src\n')
+2025-12-07 15:29:53,777 - navl.file_tree_viewer - DEBUG - Render a node: ('', '  📂 tests\n')
+2025-12-07 15:29:53,777 - navl.file_tree_viewer - DEBUG - Render a node: ('', '  📄 uv.lock\n')
+2025-12-07 15:29:55,118 - navl.file_tree_viewer - DEBUG - init root
+2025-12-07 15:29:55,125 - asyncio - DEBUG - Using selector: EpollSelector
+2025-12-07 15:29:55,128 - navl.file_tree_viewer - DEBUG - update display
+2025-12-07 15:29:55,128 - navl.file_tree_viewer - DEBUG - Render a node: ('', ' 📂 navl\n')
+2025-12-07 15:29:55,129 - navl.file_tree_viewer - DEBUG - Render a node: ('', '  📄 .gitignore\n')
+2025-12-07 15:29:55,129 - navl.file_tree_viewer - DEBUG - Render a node: ('', '  📄 .pre-commit-config.yaml\n')
+2025-12-07 15:29:55,129 - navl.file_tree_viewer - DEBUG - Render a node: ('', '  📂 .pytest_cache\n')
+2025-12-07 15:29:55,129 - navl.file_tree_viewer - DEBUG - Render a node: ('', '  📄 README.md\n')
+2025-12-07 15:29:55,129 - navl.file_tree_viewer - DEBUG - Render a node: ('', '  📄 navl.log\n')
+2025-12-07 15:29:55,129 - navl.file_tree_viewer - DEBUG - Render a node: ('', '  📄 noxfile.py\n')
+2025-12-07 15:29:55,129 - navl.file_tree_viewer - DEBUG - Render a node: ('', '  📄 pyproject.toml\n')
+2025-12-07 15:29:55,129 - navl.file_tree_viewer - DEBUG - Render a node: ('', '  📂 src\n')
+2025-12-07 15:29:55,129 - navl.file_tree_viewer - DEBUG - Render a node: ('', '  📂 tests\n')
+2025-12-07 15:29:55,129 - navl.file_tree_viewer - DEBUG - Render a node: ('', '  📄 uv.lock\n')
+2025-12-07 15:29:55,924 - navl.file_tree_viewer - DEBUG - setting new focus direction=1
+2025-12-07 15:29:55,924 - navl.file_tree_viewer - DEBUG - focussed name=.gitignore
+2025-12-07 15:29:55,925 - navl.file_tree_viewer - DEBUG - update display
+2025-12-07 15:29:55,925 - navl.file_tree_viewer - DEBUG - Render a node: ('', ' 📂 navl\n')
+2025-12-07 15:29:55,925 - navl.file_tree_viewer - DEBUG - Render a node: ('class:focussed', '  📄 .gitignore\n')
+2025-12-07 15:29:55,925 - navl.file_tree_viewer - DEBUG - Render a node: ('', '  📄 .pre-commit-config.yaml\n')
+2025-12-07 15:29:55,925 - navl.file_tree_viewer - DEBUG - Render a node: ('', '  📂 .pytest_cache\n')
+2025-12-07 15:29:55,925 - navl.file_tree_viewer - DEBUG - Render a node: ('', '  📄 README.md\n')
+2025-12-07 15:29:55,925 - navl.file_tree_viewer - DEBUG - Render a node: ('', '  📄 navl.log\n')
+2025-12-07 15:29:55,925 - navl.file_tree_viewer - DEBUG - Render a node: ('', '  📄 noxfile.py\n')
+2025-12-07 15:29:55,925 - navl.file_tree_viewer - DEBUG - Render a node: ('', '  📄 pyproject.toml\n')
+2025-12-07 15:29:55,925 - navl.file_tree_viewer - DEBUG - Render a node: ('', '  📂 src\n')
+2025-12-07 15:29:55,925 - navl.file_tree_viewer - DEBUG - Render a node: ('', '  📂 tests\n')
+2025-12-07 15:29:55,926 - navl.file_tree_viewer - DEBUG - Render a node: ('', '  📄 uv.lock\n')
+2025-12-07 15:29:56,441 - navl.file_tree_viewer - DEBUG - setting new focus direction=1
+2025-12-07 15:29:56,442 - navl.file_tree_viewer - DEBUG - focussed name=.pre-commit-config.yaml
+2025-12-07 15:29:56,494 - navl.file_tree_viewer - DEBUG - update display
+2025-12-07 15:29:56,495 - navl.file_tree_viewer - DEBUG - Render a node: ('', ' 📂 navl\n')
+2025-12-07 15:29:56,495 - navl.file_tree_viewer - DEBUG - Render a node: ('', '  📄 .gitignore\n')
+2025-12-07 15:29:56,495 - navl.file_tree_viewer - DEBUG - Render a node: ('class:focussed', '  📄 .pre-commit-config.yaml\n')
+2025-12-07 15:29:56,495 - navl.file_tree_viewer - DEBUG - Render a node: ('', '  📂 .pytest_cache\n')
+2025-12-07 15:29:56,496 - navl.file_tree_viewer - DEBUG - Render a node: ('', '  📄 README.md\n')
+2025-12-07 15:29:56,496 - navl.file_tree_viewer - DEBUG - Render a node: ('', '  📄 navl.log\n')
+2025-12-07 15:29:56,496 - navl.file_tree_viewer - DEBUG - Render a node: ('', '  📄 noxfile.py\n')
+2025-12-07 15:29:56,496 - navl.file_tree_viewer - DEBUG - Render a node: ('', '  📄 pyproject.toml\n')
+2025-12-07 15:29:56,496 - navl.file_tree_viewer - DEBUG - Render a node: ('', '  📂 src\n')
+2025-12-07 15:29:56,497 - navl.file_tree_viewer - DEBUG - Render a node: ('', '  📂 tests\n')
+2025-12-07 15:29:56,497 - navl.file_tree_viewer - DEBUG - Render a node: ('', '  📄 uv.lock\n')
+2025-12-07 15:29:56,659 - navl.file_tree_viewer - DEBUG - setting new focus direction=1
+2025-12-07 15:29:56,659 - navl.file_tree_viewer - DEBUG - focussed name=.pytest_cache
+2025-12-07 15:29:56,661 - navl.file_tree_viewer - DEBUG - update display
+2025-12-07 15:29:56,662 - navl.file_tree_viewer - DEBUG - Render a node: ('', ' 📂 navl\n')
+2025-12-07 15:29:56,662 - navl.file_tree_viewer - DEBUG - Render a node: ('', '  📄 .gitignore\n')
+2025-12-07 15:29:56,662 - navl.file_tree_viewer - DEBUG - Render a node: ('', '  📄 .pre-commit-config.yaml\n')
+2025-12-07 15:29:56,663 - navl.file_tree_viewer - DEBUG - Render a node: ('class:focussed', '  📂 .pytest_cache\n')
+2025-12-07 15:29:56,663 - navl.file_tree_viewer - DEBUG - Render a node: ('', '  📄 README.md\n')
+2025-12-07 15:29:56,663 - navl.file_tree_viewer - DEBUG - Render a node: ('', '  📄 navl.log\n')
+2025-12-07 15:29:56,663 - navl.file_tree_viewer - DEBUG - Render a node: ('', '  📄 noxfile.py\n')
+2025-12-07 15:29:56,663 - navl.file_tree_viewer - DEBUG - Render a node: ('', '  📄 pyproject.toml\n')
+2025-12-07 15:29:56,664 - navl.file_tree_viewer - DEBUG - Render a node: ('', '  📂 src\n')
+2025-12-07 15:29:56,664 - navl.file_tree_viewer - DEBUG - Render a node: ('', '  📂 tests\n')
+2025-12-07 15:29:56,664 - navl.file_tree_viewer - DEBUG - Render a node: ('', '  📄 uv.lock\n')
+2025-12-07 15:29:56,833 - navl.file_tree_viewer - DEBUG - setting new focus direction=1
+2025-12-07 15:29:56,833 - navl.file_tree_viewer - DEBUG - setting new focus direction=1
+2025-12-07 15:29:56,833 - navl.file_tree_viewer - DEBUG - focussed name=README.md
+2025-12-07 15:29:56,834 - navl.file_tree_viewer - DEBUG - focussed name=README.md
+2025-12-07 15:29:56,835 - navl.file_tree_viewer - DEBUG - update display
+2025-12-07 15:29:56,836 - navl.file_tree_viewer - DEBUG - Render a node: ('', ' 📂 navl\n')
+2025-12-07 15:29:56,836 - navl.file_tree_viewer - DEBUG - Render a node: ('', '  📄 .gitignore\n')
+2025-12-07 15:29:56,836 - navl.file_tree_viewer - DEBUG - Render a node: ('', '  📄 .pre-commit-config.yaml\n')
+2025-12-07 15:29:56,837 - navl.file_tree_viewer - DEBUG - Render a node: ('', '  📂 .pytest_cache\n')
+2025-12-07 15:29:56,837 - navl.file_tree_viewer - DEBUG - Render a node: ('class:focussed', '  📄 README.md\n')
+2025-12-07 15:29:56,837 - navl.file_tree_viewer - DEBUG - Render a node: ('', '  📄 navl.log\n')
+2025-12-07 15:29:56,837 - navl.file_tree_viewer - DEBUG - Render a node: ('', '  📄 noxfile.py\n')
+2025-12-07 15:29:56,838 - navl.file_tree_viewer - DEBUG - Render a node: ('', '  📄 pyproject.toml\n')
+2025-12-07 15:29:56,838 - navl.file_tree_viewer - DEBUG - Render a node: ('', '  📂 src\n')
+2025-12-07 15:29:56,838 - navl.file_tree_viewer - DEBUG - Render a node: ('', '  📂 tests\n')
+2025-12-07 15:29:56,838 - navl.file_tree_viewer - DEBUG - Render a node: ('', '  📄 uv.lock\n')
+2025-12-07 15:31:55,380 - navl.file_tree_viewer - DEBUG - update display
+2025-12-07 15:31:55,381 - navl.file_tree_viewer - DEBUG - Render a node: ('', ' 📂 navl\n')
+2025-12-07 15:31:55,381 - navl.file_tree_viewer - DEBUG - Render a node: ('', '  📄 .gitignore\n')
+2025-12-07 15:31:55,381 - navl.file_tree_viewer - DEBUG - Render a node: ('', '  📄 .pre-commit-config.yaml\n')
+2025-12-07 15:31:55,381 - navl.file_tree_viewer - DEBUG - Render a node: ('', '  📂 .pytest_cache\n')
+2025-12-07 15:31:55,381 - navl.file_tree_viewer - DEBUG - Render a node: ('class:focussed', '  📄 README.md\n')
+2025-12-07 15:31:55,381 - navl.file_tree_viewer - DEBUG - Render a node: ('', '  📄 navl.log\n')
+2025-12-07 15:31:55,381 - navl.file_tree_viewer - DEBUG - Render a node: ('', '  📄 noxfile.py\n')
+2025-12-07 15:31:55,381 - navl.file_tree_viewer - DEBUG - Render a node: ('', '  📄 pyproject.toml\n')
+2025-12-07 15:31:55,381 - navl.file_tree_viewer - DEBUG - Render a node: ('', '  📂 src\n')
+2025-12-07 15:31:55,382 - navl.file_tree_viewer - DEBUG - Render a node: ('', '  📂 tests\n')
+2025-12-07 15:31:55,382 - navl.file_tree_viewer - DEBUG - Render a node: ('', '  📄 uv.lock\n')
+2025-12-07 15:31:57,174 - navl.file_tree_viewer - DEBUG - init root
+2025-12-07 15:31:57,181 - asyncio - DEBUG - Using selector: EpollSelector
+2025-12-07 15:31:57,184 - navl.file_tree_viewer - DEBUG - Render a node: ('', ' 📂 navl\n')
+2025-12-07 15:31:57,185 - navl.file_tree_viewer - DEBUG - Render a node: ('', '  📄 .gitignore\n')
+2025-12-07 15:31:57,185 - navl.file_tree_viewer - DEBUG - Render a node: ('', '  📄 .pre-commit-config.yaml\n')
+2025-12-07 15:31:57,185 - navl.file_tree_viewer - DEBUG - Render a node: ('', '  📂 .pytest_cache\n')
+2025-12-07 15:31:57,185 - navl.file_tree_viewer - DEBUG - Render a node: ('', '  📄 README.md\n')
+2025-12-07 15:31:57,185 - navl.file_tree_viewer - DEBUG - Render a node: ('', '  📄 navl.log\n')
+2025-12-07 15:31:57,185 - navl.file_tree_viewer - DEBUG - Render a node: ('', '  📄 noxfile.py\n')
+2025-12-07 15:31:57,185 - navl.file_tree_viewer - DEBUG - Render a node: ('', '  📄 pyproject.toml\n')
+2025-12-07 15:31:57,185 - navl.file_tree_viewer - DEBUG - Render a node: ('', '  📂 src\n')
+2025-12-07 15:31:57,185 - navl.file_tree_viewer - DEBUG - Render a node: ('', '  📂 tests\n')
+2025-12-07 15:31:57,185 - navl.file_tree_viewer - DEBUG - Render a node: ('', '  📄 uv.lock\n')
+2025-12-07 15:31:57,185 - navl.file_tree_viewer - DEBUG - (('', ' 📂 navl\n'), ('', '  📄 .gitignore\n'), ('', '  📄 .pre-commit-config.yaml\n'), ('', '  📂 .pytest_cache\n'), ('', '  📄 README.md\n'), ('', '  📄 navl.log\n'), ('', '  📄 noxfile.py\n'), ('', '  📄 pyproject.toml\n'), ('', '  📂 src\n'), ('', '  📂 tests\n'), ('', '  📄 uv.lock\n'))
+2025-12-07 15:31:58,376 - navl.file_tree_viewer - DEBUG - setting new focus direction=1
+2025-12-07 15:31:58,376 - navl.file_tree_viewer - DEBUG - focussed name=.gitignore
+2025-12-07 15:31:58,430 - navl.file_tree_viewer - DEBUG - Render a node: ('', ' 📂 navl\n')
+2025-12-07 15:31:58,430 - navl.file_tree_viewer - DEBUG - Render a node: ('class:focussed', '  📄 .gitignore\n')
+2025-12-07 15:31:58,430 - navl.file_tree_viewer - DEBUG - Render a node: ('', '  📄 .pre-commit-config.yaml\n')
+2025-12-07 15:31:58,430 - navl.file_tree_viewer - DEBUG - Render a node: ('', '  📂 .pytest_cache\n')
+2025-12-07 15:31:58,431 - navl.file_tree_viewer - DEBUG - Render a node: ('', '  📄 README.md\n')
+2025-12-07 15:31:58,431 - navl.file_tree_viewer - DEBUG - Render a node: ('', '  📄 navl.log\n')
+2025-12-07 15:31:58,431 - navl.file_tree_viewer - DEBUG - Render a node: ('', '  📄 noxfile.py\n')
+2025-12-07 15:31:58,431 - navl.file_tree_viewer - DEBUG - Render a node: ('', '  📄 pyproject.toml\n')
+2025-12-07 15:31:58,431 - navl.file_tree_viewer - DEBUG - Render a node: ('', '  📂 src\n')
+2025-12-07 15:31:58,431 - navl.file_tree_viewer - DEBUG - Render a node: ('', '  📂 tests\n')
+2025-12-07 15:31:58,432 - navl.file_tree_viewer - DEBUG - Render a node: ('', '  📄 uv.lock\n')
+2025-12-07 15:31:58,432 - navl.file_tree_viewer - DEBUG - (('', ' 📂 navl\n'), ('class:focussed', '  📄 .gitignore\n'), ('', '  📄 .pre-commit-config.yaml\n'), ('', '  📂 .pytest_cache\n'), ('', '  📄 README.md\n'), ('', '  📄 navl.log\n'), ('', '  📄 noxfile.py\n'), ('', '  📄 pyproject.toml\n'), ('', '  📂 src\n'), ('', '  📂 tests\n'), ('', '  📄 uv.lock\n'))
+2025-12-07 15:32:52,246 - navl.file_tree_viewer - DEBUG - Render a node: ('', ' 📂 navl\n')
+2025-12-07 15:32:52,246 - navl.file_tree_viewer - DEBUG - Render a node: ('class:focussed', '  📄 .gitignore\n')
+2025-12-07 15:32:52,247 - navl.file_tree_viewer - DEBUG - Render a node: ('', '  📄 .pre-commit-config.yaml\n')
+2025-12-07 15:32:52,247 - navl.file_tree_viewer - DEBUG - Render a node: ('', '  📂 .pytest_cache\n')
+2025-12-07 15:32:52,247 - navl.file_tree_viewer - DEBUG - Render a node: ('', '  📄 README.md\n')
+2025-12-07 15:32:52,247 - navl.file_tree_viewer - DEBUG - Render a node: ('', '  📄 navl.log\n')
+2025-12-07 15:32:52,248 - navl.file_tree_viewer - DEBUG - Render a node: ('', '  📄 noxfile.py\n')
+2025-12-07 15:32:52,248 - navl.file_tree_viewer - DEBUG - Render a node: ('', '  📄 pyproject.toml\n')
+2025-12-07 15:32:52,248 - navl.file_tree_viewer - DEBUG - Render a node: ('', '  📂 src\n')
+2025-12-07 15:32:52,248 - navl.file_tree_viewer - DEBUG - Render a node: ('', '  📂 tests\n')
+2025-12-07 15:32:52,248 - navl.file_tree_viewer - DEBUG - Render a node: ('', '  📄 uv.lock\n')
+2025-12-07 15:32:52,249 - navl.file_tree_viewer - DEBUG - (('', ' 📂 navl\n'), ('class:focussed', '  📄 .gitignore\n'), ('', '  📄 .pre-commit-config.yaml\n'), ('', '  📂 .pytest_cache\n'), ('', '  📄 README.md\n'), ('', '  📄 navl.log\n'), ('', '  📄 noxfile.py\n'), ('', '  📄 pyproject.toml\n'), ('', '  📂 src\n'), ('', '  📂 tests\n'), ('', '  📄 uv.lock\n'))
+2025-12-07 15:32:53,780 - navl.file_tree_viewer - DEBUG - init root
+2025-12-07 15:32:53,787 - asyncio - DEBUG - Using selector: EpollSelector
+2025-12-07 15:32:53,790 - navl.file_tree_viewer - DEBUG - (('', ' 📂 navl\n'), ('', '  📄 .gitignore\n'), ('', '  📄 .pre-commit-config.yaml\n'), ('', '  📂 .pytest_cache\n'), ('', '  📄 README.md\n'), ('', '  📄 navl.log\n'), ('', '  📄 noxfile.py\n'), ('', '  📄 pyproject.toml\n'), ('', '  📂 src\n'), ('', '  📂 tests\n'), ('', '  📄 uv.lock\n'))
+2025-12-07 15:32:54,614 - navl.file_tree_viewer - DEBUG - setting new focus direction=1
+2025-12-07 15:32:54,615 - navl.file_tree_viewer - DEBUG - focussed name=.gitignore
+2025-12-07 15:32:54,615 - navl.file_tree_viewer - DEBUG - (('', ' 📂 navl\n'), ('class:focussed', '  📄 .gitignore\n'), ('', '  📄 .pre-commit-config.yaml\n'), ('', '  📂 .pytest_cache\n'), ('', '  📄 README.md\n'), ('', '  📄 navl.log\n'), ('', '  📄 noxfile.py\n'), ('', '  📄 pyproject.toml\n'), ('', '  📂 src\n'), ('', '  📂 tests\n'), ('', '  📄 uv.lock\n'))
+2025-12-07 15:34:26,641 - navl.file_tree_viewer - DEBUG - (('', ' 📂 navl\n'), ('class:focussed', '  📄 .gitignore\n'), ('', '  📄 .pre-commit-config.yaml\n'), ('', '  📂 .pytest_cache\n'), ('', '  📄 README.md\n'), ('', '  📄 navl.log\n'), ('', '  📄 noxfile.py\n'), ('', '  📄 pyproject.toml\n'), ('', '  📂 src\n'), ('', '  📂 tests\n'), ('', '  📄 uv.lock\n'))
+2025-12-07 15:34:27,992 - navl.file_tree_viewer - DEBUG - init root
+2025-12-07 15:34:27,999 - asyncio - DEBUG - Using selector: EpollSelector
+2025-12-07 15:34:28,002 - navl.file_tree_viewer - DEBUG - [('', ' 📂 navl\n'), ('', '  📄 .gitignore\n'), ('', '  📄 .pre-commit-config.yaml\n'), ('', '  📂 .pytest_cache\n'), ('', '  📄 README.md\n'), ('', '  📄 navl.log\n'), ('', '  📄 noxfile.py\n'), ('', '  📄 pyproject.toml\n'), ('', '  📂 src\n'), ('', '  📂 tests\n'), ('', '  📄 uv.lock\n')]
+2025-12-07 15:34:28,634 - navl.file_tree_viewer - DEBUG - setting new focus direction=1
+2025-12-07 15:34:28,634 - navl.file_tree_viewer - DEBUG - focussed name=.gitignore
+2025-12-07 15:34:28,635 - navl.file_tree_viewer - DEBUG - [('', ' 📂 navl\n'), ('class:focussed', '  📄 .gitignore\n'), ('', '  📄 .pre-commit-config.yaml\n'), ('', '  📂 .pytest_cache\n'), ('', '  📄 README.md\n'), ('', '  📄 navl.log\n'), ('', '  📄 noxfile.py\n'), ('', '  📄 pyproject.toml\n'), ('', '  📂 src\n'), ('', '  📂 tests\n'), ('', '  📄 uv.lock\n')]
+2025-12-07 15:34:28,991 - navl.file_tree_viewer - DEBUG - setting new focus direction=1
+2025-12-07 15:34:28,991 - navl.file_tree_viewer - DEBUG - focussed name=.pre-commit-config.yaml
+2025-12-07 15:34:28,992 - navl.file_tree_viewer - DEBUG - [('', ' 📂 navl\n'), ('', '  📄 .gitignore\n'), ('class:focussed', '  📄 .pre-commit-config.yaml\n'), ('', '  📂 .pytest_cache\n'), ('', '  📄 README.md\n'), ('', '  📄 navl.log\n'), ('', '  📄 noxfile.py\n'), ('', '  📄 pyproject.toml\n'), ('', '  📂 src\n'), ('', '  📂 tests\n'), ('', '  📄 uv.lock\n')]
+2025-12-07 15:34:29,174 - navl.file_tree_viewer - DEBUG - setting new focus direction=1
+2025-12-07 15:34:29,175 - navl.file_tree_viewer - DEBUG - focussed name=.pytest_cache
+2025-12-07 15:34:29,176 - navl.file_tree_viewer - DEBUG - [('', ' 📂 navl\n'), ('', '  📄 .gitignore\n'), ('', '  📄 .pre-commit-config.yaml\n'), ('class:focussed', '  📂 .pytest_cache\n'), ('', '  📄 README.md\n'), ('', '  📄 navl.log\n'), ('', '  📄 noxfile.py\n'), ('', '  📄 pyproject.toml\n'), ('', '  📂 src\n'), ('', '  📂 tests\n'), ('', '  📄 uv.lock\n')]

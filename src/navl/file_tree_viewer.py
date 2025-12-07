@@ -79,8 +79,10 @@ class BaseNode:
         raise NotImplementedError
 
     def render(self) -> tuple[str, str]:
-        _logger.debug("Render a node.")
-        return self._get_style(), f"{' ' * self._level} {self._ICON} {self.name}\n"
+        res = self._get_style(), f"{' ' * self._level} {self._ICON} {self.name}\n"
+        # _logger.debug(f"Render a node: {res}")
+
+        return res
 
 
 class Node(BaseNode):
@@ -416,8 +418,10 @@ class FileTreeViewer:
 
     def _update_display(self) -> FormattedText:
         """Update the display buffer with current tree state."""
-        _logger.debug("update display")
-        nodes = [node.render() for node in self._root_node.full_tree()]
+
+        nodes = list((node.render() for node in self._root_node.full_tree()))
+
+        _logger.debug(nodes)
         # # Ensure selected index is valid
         # if self.selected_index >= len(self.visible_nodes):
         #     self.selected_index = len(self.visible_nodes) - 1
