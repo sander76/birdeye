@@ -72,7 +72,7 @@ class BaseNode:
 
     def _get_style(self) -> str:
         if self.focussed:
-            return "class:focussed"
+            return "bg:#ffffff fg:#000000"
         return ""
 
     def set_expanded(self, value: bool) -> None:
@@ -241,29 +241,15 @@ class FileTreeViewer:
     def __init__(self, settings: Settings):
         self.root_path = settings.root_folder.resolve()
         self._settings = settings
-        self.selected_index = 0
-        self.style = Style.from_dict(
-            {
-                "focussed": "bg:#ffffff fg:#000000",  # White background, black text
-                "header": "bold",
-                "separator": "fg:#888888",
-                "footer": "fg:#888888",
-            }
-        )
         self._root_node = self._selected_node = self._init_root_node()
 
         text_control = FormattedTextControl(
             text=self._update_display,
             focusable=True,
             key_bindings=self._setup_key_bindings(),
-            get_cursor_position=self._get_cursor_position,
         )
 
         self._window = Window(content=text_control, wrap_lines=False)
-
-    def _get_cursor_position(self) -> Point:
-        pt = Point(0, self.selected_index)
-        return pt
 
     def __pt_container__(self) -> Window:
         return self._window
