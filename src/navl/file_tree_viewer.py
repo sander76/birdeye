@@ -416,8 +416,8 @@ class FileTreeViewer:
 
     def _update_display(self) -> FormattedText:
         """Update the display buffer with current tree state."""
-
-        nodes = (node.render() for node in self._root_node.full_tree())
+        _logger.debug("update display")
+        nodes = [node.render() for node in self._root_node.full_tree()]
         # # Ensure selected index is valid
         # if self.selected_index >= len(self.visible_nodes):
         #     self.selected_index = len(self.visible_nodes) - 1
