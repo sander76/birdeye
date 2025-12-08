@@ -124,6 +124,34 @@ def test_down_beyond_list(root_node_no_git: TreeNode):
     assert tests_node.name == "tests"
 
 
+def test_up_into_list(root_node_no_git: TreeNode):
+    # ..root
+    # ├── pyproject.toml
+    # ├── src
+    # │   ├── main.py
+    # │   └── my_lib
+    # │       └── base.py
+    # └── tests
+    #     └── test_main.py
+
+    # goto src folder, expand
+    # scroll down till test is reached
+
+    # scroll up and expect to highlight my_lib.
+    src_node = root_node_no_git.focus(1).focus(1)
+    assert src_node.name == "src"
+
+    src_node.set_expanded(True)
+    my_lib_node = src_node.focus(1).focus(1)
+    assert my_lib_node.name == "my_lib"
+
+    tests_node = my_lib_node.focus(1)
+    assert tests_node.name == "tests"
+
+    my_lib = tests_node.focus(-1)
+    assert my_lib.name == "my_lib"
+
+
 def test_expand_true_on_node(root_node_no_git: TreeNode):
     # ..root
     # ├── pyproject.toml

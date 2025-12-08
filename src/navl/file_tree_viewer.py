@@ -256,14 +256,6 @@ class FileTreeViewer:
     def __pt_container__(self) -> Window:
         return self._window
 
-    # @property
-    # def selected_index(self) -> int:
-    #     return self._selected_index
-
-    # @selected_index.setter
-    # def selected_index(self, idx: int) -> None:
-    #     self._selected_index = idx
-
     def _init_root_node(self) -> TreeNode:
         _logger.debug("init root")
         if (self.root_path / ".git").exists():
@@ -292,18 +284,6 @@ class FileTreeViewer:
         def move_down(event):
             self._selected_node = self._selected_node.focus(1)
 
-        # @kb.add("enter")
-        # def select_and_exit(event):
-        #     if self.visible_nodes:
-        #         node = self.visible_nodes[self.selected_index]
-        #         event.app.exit(str(node.path))
-
-        # @kb.add("space")
-        # def toggle_node(event):
-        #     if self.visible_nodes:
-        #         node = self.visible_nodes[self.selected_index]
-        #         node.toggle_expanded()
-
         @kb.add("right")
         def expand_node(event):
             self._selected_node.set_expanded(value=True)
@@ -311,17 +291,6 @@ class FileTreeViewer:
         @kb.add("left")
         def collapse_node(event):
             self._selected_node.set_expanded(value=False)
-
-        # @kb.add("left")
-        # def collapse_node(event):
-        #     if self.selected_index < len(self.visible_nodes):
-        #         node = self.visible_nodes[self.selected_index]
-        #         if node.is_directory and node.expanded:
-        #             node.toggle_expanded()
-        #         elif node.parent:
-        #             # Move to parent
-        #             parent_index = self.visible_nodes.index(node.parent)
-        #             self.selected_index = parent_index
 
         @kb.add("q")
         @kb.add("c-c")
@@ -333,76 +302,6 @@ class FileTreeViewer:
         #     self._refresh_tree()
 
         return kb
-
-    # def _refresh_tree(self):
-    #     """Refresh the entire tree."""
-
-    #     expanded_paths = set(FileTreeViewer._collect_expanded_paths(self.root_node))
-
-    #     self.root_node = self._init_root_node()
-
-    #     self._restore_expanded_state(self.root_node, expanded_paths)
-
-    #     self.selected_index = 0
-
-    # @staticmethod
-    # def _collect_expanded_paths(node: TreeNode) -> Iterable[Path]:
-    #     """Collect all expanded paths for restoration after refresh."""
-    #     if node.expanded:
-    #         yield node.path
-    #     for child in node.children:
-    #         yield from FileTreeViewer._collect_expanded_paths(child)
-
-    # def _restore_expanded_state(self, node: TreeNode, expanded_paths: set[Path]):
-    #     """Restore expanded state after refresh."""
-    #     if node.path in expanded_paths:
-    #         node.expanded = True
-    #         node.load_children()
-    #         for child in node.children:
-    #             self._restore_expanded_state(child, expanded_paths)
-
-    # def _collect_visible_full_tree(
-    #     self, node: TreeNode, depth: int = 0
-    # ) -> Generator[TreeNode, None, None]:
-    #     """Collect all visible nodes for display."""
-
-    #     yield node
-
-    #     if node.expanded:
-    #         for child in node.children:
-    #             yield from self._collect_visible_full_tree(child, depth + 1)
-
-    # def _get_node_depth(self, node: TreeNode) -> int:
-    #     """Get the depth of a node in the tree."""
-    #     depth = 0
-    #     current = node.parent
-    #     while current:
-    #         depth += 1
-    #         current = current.parent
-    #     return depth
-
-    # def _format_node(self, node: TreeNode, is_selected: bool) -> Tuple[str, str]:
-    #     """Format a node for display, returning (text, style)."""
-    #     depth = self._get_node_depth(node)
-    #     indent = "  " * depth
-
-    #     if node.is_directory:
-    #         if node.expanded:
-    #             icon = "📂 "
-    #         else:
-    #             icon = "📁 "
-    #     else:
-    #         icon = "📄 "
-
-    #     name = node.get_name()
-    #     line = f"{indent}{icon}{name}"
-
-    #     if is_selected:
-    #         line = f"> {line}"
-    #         return (line, "selected")
-    #     else:
-    #         line = f"  {line}"
-    #         return (line, "")
 
     def _update_display(self) -> FormattedText:
         """Update the display buffer with current tree state."""
@@ -418,21 +317,5 @@ class FileTreeViewer:
         nodes = (node for node in render())
 
         _logger.debug(nodes)
-        # # Ensure selected index is valid
-        # if self.selected_index >= len(self.visible_nodes):
-        #     self.selected_index = len(self.visible_nodes) - 1
-        # if self.selected_index < 0:
-        #     self.selected_index = 0
-
-        # formatted_content = []
-
-        # for i, node in enumerate(self.visible_nodes):
-        #     is_selected = i == self.selected_index
-        #     text, style_class = self._format_node(node, is_selected)
-        #     if style_class:
-        #         formatted_content.append((f"class:{style_class}", text))
-        #     else:
-        #         formatted_content.append(("", text))
-        #     formatted_content.append(("", "\n"))
 
         return FormattedText(nodes)
