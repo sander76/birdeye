@@ -31,7 +31,7 @@ def main(settings: Settings):
         app = Application[str](
             layout=layout,
             full_screen=True,
-            mouse_support=True,
+            # mouse_support=True,
             output=Vt100_Output.from_pty(sys.stderr),
         )
 

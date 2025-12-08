@@ -16,6 +16,7 @@ from prompt_toolkit.formatted_text import FormattedText
 from prompt_toolkit.key_binding import KeyBindings
 from prompt_toolkit.layout.containers import Window
 from prompt_toolkit.layout.controls import FormattedTextControl
+from prompt_toolkit.layout.scrollable_pane import ScrollablePane
 from prompt_toolkit.styles import Style
 
 _logger = logging.getLogger(__name__)
@@ -249,7 +250,8 @@ class FileTreeViewer:
             key_bindings=self._setup_key_bindings(),
         )
 
-        self._window = Window(content=text_control, wrap_lines=False)
+        # self._window = Window(content=text_control, wrap_lines=False)
+        self._window = ScrollablePane(Window(content=text_control, wrap_lines=True))
 
     def __pt_container__(self) -> Window:
         return self._window
@@ -405,7 +407,15 @@ class FileTreeViewer:
     def _update_display(self) -> FormattedText:
         """Update the display buffer with current tree state."""
 
-        nodes = list((node.render() for node in self._root_node.full_tree()))
+        # nodes = list((node.render() for node in self._root_node.full_tree()))
+
+        def render() -> Generator[tuple[str, str], None, None]:
+            for node in self._root_node.full_tree():
+                if node.focussed:
+                    yield ("[SetCursorPosition]", "")
+                yield node.render()
+
+        nodes = (node for node in render())
 
         _logger.debug(nodes)
         # # Ensure selected index is valid
