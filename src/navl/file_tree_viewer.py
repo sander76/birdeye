@@ -8,16 +8,14 @@ from __future__ import annotations
 import logging
 from dataclasses import dataclass
 from pathlib import Path
-from typing import Generator, Iterable, Literal, Optional, Self, Tuple
+from typing import Generator, Literal
 
 import pygit2
-from prompt_toolkit.data_structures import Point
 from prompt_toolkit.formatted_text import FormattedText
 from prompt_toolkit.key_binding import KeyBindings
 from prompt_toolkit.layout.containers import Window
 from prompt_toolkit.layout.controls import FormattedTextControl
 from prompt_toolkit.layout.scrollable_pane import ScrollablePane
-from prompt_toolkit.styles import Style
 
 _logger = logging.getLogger(__name__)
 
@@ -45,6 +43,10 @@ def use_gitignore(
 class BaseNode:
     """Base class for all node types with common comparison functionality."""
 
+    _same_level_down: TreeNode | Node | None = None
+    _same_level_up: TreeNode | Node | None = None
+    _child_down: TreeNode | Node | None = None
+
     def __init__(
         self,
         path: Path,
@@ -54,8 +56,6 @@ class BaseNode:
         self.name = path.name
         self.focussed: bool = False
         self._level = level
-        self.up: BaseNode | None = None
-        self.down: BaseNode | None = None
 
     def __lt__(self, other) -> bool:
         """Enable sorting by name property."""
@@ -91,6 +91,13 @@ class BaseNode:
 
         return res
 
+    def focus(self, direction: Literal[-1, 1]) -> Node | TreeNode:
+        self.focussed = False
+
+        new_focussed = self.up if direction == -1 else self.down
+        new_focussed.focussed = True
+        return new_focussed
+
 
 class Node(BaseNode):
     _ICON = "📄"
@@ -105,17 +112,20 @@ class Node(BaseNode):
         super().__init__(path, level=level)
         self.parent = parent
 
+    @property
+    def down(self) -> Node | TreeNode:
+        # self.focussed = False
+        new_focussed = self._same_level_down
+        return new_focussed or self
+
+    @property
+    def up(self) -> Node | TreeNode:
+        # self.focussed = False
+        new_focussed = self._same_level_up
+        return new_focussed or self
+
     def full_tree(self) -> Generator[Node, None, None]:
         yield self
-
-    def focus(self, direction: Literal[-1, 1], org: bool) -> Node | TreeNode:
-        self.focussed = False
-
-        new_focussed = self.up if direction == -1 else self.down
-        return new_focussed
-
-    def __repr__(self) -> str:
-        return f"{self.name=!r} {self.focussed=!r}"
 
     def set_expanded(self, value: bool):
         pass
@@ -126,6 +136,7 @@ class TreeNode(BaseNode):
 
     _ICON = "📂"
     _children: tuple[TreeNode | Node, ...] | None = None
+    last_child: TreeNode | Node | None = None
 
     def __init__(
         self,
@@ -140,35 +151,45 @@ class TreeNode(BaseNode):
         super().__init__(path, level=level)
         self._level = level
         self.parent = parent
-
-        self._expanded: bool = True if parent is None else False
+        if parent is None:
+            self._same_level_down = None
 
         self.use_gitignore = use_gitignore
 
         self._git_repo = git_repo
-
-    def __repr__(self) -> str:
-        return f"{self.name=!r} {self.parent=!r} {self._expanded=!r}"
+        self.set_expanded(True if parent is None else False)
 
     def set_expanded(self, value: bool):
+        if value:
+            self.load_children()
+            if self._same_level_down:
+                self._same_level_down._same_level_up = self.last_child
+        else:
+            if self._same_level_down:
+                self._same_level_down._same_level_up = self
+
         self._expanded = value
 
     @property
-    def expanded(self) -> bool:
-        return self._expanded
+    def down(self) -> Node | TreeNode:
+        if self._expanded:
+            new_focussed = self._child_down
+        else:
+            new_focussed = self._same_level_down
 
-    @expanded.setter
-    def expanded(self, value: bool) -> None:
-        if value is self._expanded:
-            return
-        self._expanded = value
+        return new_focussed or self
+
+    @property
+    def up(self) -> Node | TreeNode:
+        new_focussed = self._same_level_up
+
+        return new_focussed or self
 
     # def render(self) -> tuple[str, str]:
     #     _logger.debug("Render a treenode")
     #     return self._get_style(), f"{self._ICON} {self.name}\n"
 
-    @property
-    def children(self) -> tuple[TreeNode | Node, ...]:
+    def load_children(self) -> None:
         """Load child nodes if this is a directory."""
         if self._children is None:
             if self._git_repo and self.use_gitignore:
@@ -191,22 +212,23 @@ class TreeNode(BaseNode):
                         yield Node(child, parent=self, level=self._level + 1)
 
             up = self
-            for child in sorted(get_children()):
-                up.down = child
-                child.up = up
+            for idx, child in enumerate(sorted(get_children())):
+                if idx == 0:
+                    up._child_down = child
+                else:
+                    up._same_level_down = child
+                child._same_level_up = up
                 up = child
+            child._same_level_down = self._same_level_down
+            self.last_child = child
             self._children = True
 
-    def nodes(self) -> tuple[Node | TreeNode, ...]:
-        if self.expanded:
-            return (self, *self.children)
-        return (self,)
-
     def full_tree(self) -> Generator[Node | TreeNode, None, None]:
-        yield self
-        if self.expanded:
-            for child in self.children:
-                yield from child.full_tree()
+        new = self
+        yield new
+
+        while new := new.down:
+            yield new
 
 
 class FileTreeViewer:

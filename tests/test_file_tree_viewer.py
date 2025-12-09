@@ -3,8 +3,7 @@ from pathlib import Path
 import pygit2
 import pytest
 
-from navl.cli import parse_args
-from navl.file_tree_viewer import FileTreeViewer, Settings, TreeNode
+from navl.file_tree_viewer import TreeNode
 
 
 @pytest.fixture
@@ -83,6 +82,14 @@ from dirty_equals import HasAttributes
 
 
 def test_expanded_up_down(root_node_no_git: TreeNode):
+    # ..root
+    # ├── pyproject.toml
+    # ├── src
+    # │   ├── main.py
+    # │   └── my_lib
+    # │       └── base.py
+    # └── tests
+    #     └── test_main.py
     root_path = root_node_no_git.path
 
     first = root_node_no_git
@@ -138,6 +145,7 @@ def test_up_into_list(root_node_no_git: TreeNode):
     # scroll down till test is reached
 
     # scroll up and expect to highlight my_lib.
+
     src_node = root_node_no_git.focus(1).focus(1)
     assert src_node.name == "src"
 
@@ -167,7 +175,7 @@ def test_expand_true_on_node(root_node_no_git: TreeNode):
 
     assert pyproject_file_node.name == "pyproject.toml"
 
-    pyproject_file_node.set_expanded(True)
+    pyproject_file_node.expanded = True
     assert pyproject_file_node.focussed is True
 
 
