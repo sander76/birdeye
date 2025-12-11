@@ -92,11 +92,14 @@ class BaseNode:
         return res
 
     def focus(self, direction: Literal[-1, 1]) -> Node | TreeNode:
-        self.focussed = False
-
         new_focussed = self.up if direction == -1 else self.down
-        new_focussed.focussed = True
-        return new_focussed
+
+        if new_focussed is None:
+            return self
+        else:
+            self.focussed = False
+            new_focussed.focussed = True
+            return new_focussed
 
 
 class Node(BaseNode):
@@ -113,16 +116,16 @@ class Node(BaseNode):
         self.parent = parent
 
     @property
-    def down(self) -> Node | TreeNode:
+    def down(self) -> Node | TreeNode | None:
         # self.focussed = False
         new_focussed = self._same_level_down
-        return new_focussed or self
+        return new_focussed
 
     @property
-    def up(self) -> Node | TreeNode:
+    def up(self) -> Node | TreeNode | None:
         # self.focussed = False
         new_focussed = self._same_level_up
-        return new_focussed or self
+        return new_focussed
 
     def full_tree(self) -> Generator[Node, None, None]:
         yield self
@@ -171,21 +174,21 @@ class TreeNode(BaseNode):
         self._expanded = value
 
     @property
-    def down(self) -> Node | TreeNode:
+    def down(self) -> Node | TreeNode | None:
         """The Node or TreeNode below this node."""
         if self._expanded:
             new_focussed = self._child_down
         else:
             new_focussed = self._same_level_down
 
-        return new_focussed or self
+        return new_focussed
 
     @property
-    def up(self) -> Node | TreeNode:
+    def up(self) -> Node | TreeNode | None:
         """The Node or TreeNode above this node."""
         new_focussed = self._same_level_up
 
-        return new_focussed or self
+        return new_focussed
 
     # def render(self) -> tuple[str, str]:
     #     _logger.debug("Render a treenode")
