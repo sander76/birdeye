@@ -172,6 +172,7 @@ class TreeNode(BaseNode):
 
     @property
     def down(self) -> Node | TreeNode:
+        """The Node or TreeNode below this node."""
         if self._expanded:
             new_focussed = self._child_down
         else:
@@ -181,6 +182,7 @@ class TreeNode(BaseNode):
 
     @property
     def up(self) -> Node | TreeNode:
+        """The Node or TreeNode above this node."""
         new_focussed = self._same_level_up
 
         return new_focussed or self
@@ -224,6 +226,7 @@ class TreeNode(BaseNode):
             self._children = True
 
     def full_tree(self) -> Generator[Node | TreeNode, None, None]:
+        """All visible nodes/treenodes."""
         new = self
         yield new
 
@@ -233,6 +236,9 @@ class TreeNode(BaseNode):
 
 class FileTreeViewer:
     """Main application class for the file tree viewer."""
+
+    _root_node: TreeNode
+    _selected_node: TreeNode | Node
 
     def __init__(self, settings: Settings):
         self.root_path = settings.root_folder.resolve()

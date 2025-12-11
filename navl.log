@@ -5504,3 +5504,12 @@
 2025-12-08 19:35:50,354 - navl.file_tree_viewer - DEBUG - focussed name=dist
 2025-12-08 19:35:50,355 - navl.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x7f7dab9e5780>
 2025-12-08 19:36:09,333 - navl.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x7f7dab9e5780>
+2025-12-11 16:58:25,729 - navl.file_tree_viewer - DEBUG - init root
+2025-12-11 16:58:25,739 - asyncio - DEBUG - Using selector: EpollSelector
+2025-12-11 16:58:25,744 - navl.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x7b70bf2b93c0>
+2025-12-11 16:59:49,043 - navl.file_tree_viewer - DEBUG - init root
+2025-12-11 16:59:49,057 - asyncio - DEBUG - Using selector: EpollSelector
+2025-12-11 16:59:49,062 - navl.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x7b64b64ad3c0>
+2025-12-11 17:01:59,082 - navl.file_tree_viewer - DEBUG - init root
+2025-12-11 17:01:59,113 - asyncio - DEBUG - Using selector: EpollSelector
+2025-12-11 17:01:59,122 - navl.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x7a598f1bc700>
