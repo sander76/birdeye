@@ -9,7 +9,7 @@ from prompt_toolkit.layout.controls import FormattedTextControl
 from prompt_toolkit.layout.layout import Layout
 from prompt_toolkit.output.vt100 import Vt100_Output
 
-from navl.file_tree_viewer import FileTreeViewer, Settings
+from birdeye.file_tree_viewer import FileTreeViewer, Settings
 
 
 def main(settings: Settings):

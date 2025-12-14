@@ -1,5 +1,5 @@
 [project]
-name = "navl"
+name = "birdeye"
 version = "0.1.0"
 description = "Add your description here"
 readme = "README.md"
@@ -13,7 +13,7 @@ dependencies = [
 ]
 
 [project.scripts]
-navl = "navl.cli:run"
+birdeye = "birdeye.cli:run"
 
 [build-system]
 requires = ["hatchling"]

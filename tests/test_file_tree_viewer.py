@@ -3,7 +3,7 @@ from pathlib import Path
 import pygit2
 import pytest
 
-from navl.file_tree_viewer import TreeNode
+from birdeye.file_tree_viewer import TreeNode
 
 
 @pytest.fixture

@@ -2,12 +2,12 @@ import argparse
 import logging
 from pathlib import Path
 
-from navl.file_tree_viewer import Settings
+from birdeye.file_tree_viewer import Settings
 
 
 def setup_logging():
     root = logging.getLogger()
-    handler = logging.FileHandler("navl.log")
+    handler = logging.FileHandler("birdeye.log")
     formatter = logging.Formatter(
         "%(asctime)s - %(name)s - %(levelname)s - %(message)s"
     )
@@ -45,7 +45,7 @@ def parse_args(args=None) -> Settings:
 def run():
     settings = parse_args()
 
-    from navl.navl import main
+    from birdeye.birdeye import main
 
     main(settings)
 

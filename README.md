@@ -1,10 +1,10 @@
-# navl
+# birdeye
 
 A terminal-based file tree navigator.
 
 ## Overview
 
-navl is an interactive file tree viewer that allows you to navigate directory structures directly from your terminal.
+birdeye is an interactive file tree viewer that allows you to navigate directory structures directly from your terminal.
 
 ## Features
 
@@ -14,19 +14,19 @@ navl is an interactive file tree viewer that allows you to navigate directory st
 
 ## Installation
 
-`pip install navl`
+`pip install birdeye`
 
-or better use `pipx` or `uv tool` and you'll have a navl command available in your prompt.
+or better use `pipx` or `uv tool` and you'll have a birdeye command available in your prompt.
 
 ## terminal usage
 
-cd into a folder using navl. Put this bash function inside your `.bashrc` or `.zshrc` file.
+cd into a folder using birdeye. Put this bash function inside your `.bashrc` or `.zshrc` file.
 
 ```bash
-# A function to visually change directories with navl
+# A function to visually change directories with birdeye
 lcd() {
     local selected_dir
-    selected_dir=$(navl)
+    selected_dir=$(birdeye)
     
     # If the user selected a path (and didn't just quit), `cd` into it.
     # Check if the selection is a directory.
