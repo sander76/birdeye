@@ -2,12 +2,13 @@ from pathlib import Path
 
 import pygit2
 import pytest
+from dirty_equals import HasAttributes
 
-from birdeye.file_tree_viewer import TreeNode
+from birdeye.file_tree_viewer import FileTreeViewer, Settings, TreeNode
 
 
 @pytest.fixture
-def test_path(tmp_path: Path):
+def test_path_with_git(tmp_path: Path):
     (tmp_path / "src" / "docs").mkdir(exist_ok=True, parents=True)
     (tmp_path / "src" / "main.py").touch()
     (tmp_path / "src" / "my_lib").mkdir(exist_ok=True, parents=True)
@@ -56,29 +57,34 @@ def root_node_no_git(test_path_no_git) -> TreeNode:
     return treenode
 
 
-def test_single_node_up_down(root_node_no_git: TreeNode):
+@pytest.fixture
+def settings_no_git(test_path_no_git) -> Settings:
+    settings = Settings(root_folder=test_path_no_git, use_git_ignore=False)
+    return settings
+
+
+def test_single_node_up_down(settings_no_git: Settings):
     # our root node is not expanded so
     # selecting next or previous will always give this
     # one node back.
 
     # by default a root treenode is always expanded.
     # so for this test we first un-expand it.
-    root_node_no_git.set_expanded(False)
+    tree_viewer = FileTreeViewer(settings_no_git)
 
-    first = root_node_no_git.focus(direction=1)
-    assert first.focussed is True
+    root_node = tree_viewer._selected_node
+    root_node.path == settings_no_git.root_folder
 
-    down_one = first.focus(direction=1)
+    tree_viewer._selected_node.set_expanded(False)
+    # root_node_no_git.set_expanded(False)
 
-    assert down_one is first
-    assert down_one.focussed is True
+    tree_viewer._selected_node.focus(direction=1)
+    assert tree_viewer._selected_node == root_node
+    assert root_node.focussed is True
 
-    up_one = down_one.focus(direction=-1)
-    assert up_one is first
-    assert up_one.focussed is True
-
-
-from dirty_equals import HasAttributes
+    tree_viewer._selected_node.focus(direction=-1)
+    assert tree_viewer._selected_node == root_node
+    assert tree_viewer._selected_node.focussed is True
 
 
 def test_expanded_up_down(root_node_no_git: TreeNode):
@@ -250,110 +256,63 @@ def test_expand_false_on_tree_node(root_node_no_git: TreeNode):
     assert pyproject_file_node.focussed is False
 
 
-# def test_collect_visibile_nodes_expanded(test_path: Path):
-#     viewer = FileTreeViewer(Settings(root_folder=test_path, use_git_ignore=False))
+def test_gitignore_root_level(test_path_with_git: Path):
+    # file to ignore is on the same level as the gitignore file.
 
-#     viewer._update_display()
+    node = TreeNode(
+        test_path_with_git,
+        parent=None,
+        level=0,
+        use_gitignore=True,
+        git_repo=pygit2.Repository(test_path_with_git),
+    )
+    _all = tuple(node.full_tree())
 
-#     viewer.visible_nodes[1].toggle_expanded()  # expanding the src folder
-#     viewer._update_display()
-
-#     assert [node.path for node in viewer.visible_nodes] == [
-#         test_path,
-#         test_path / "src",
-#         test_path / "src" / "docs",
-#         test_path / "src" / "main.py",
-#         test_path / "src" / "my_lib",
-#     ]
-
-
-# def test_collect_expanded_paths(test_path: Path):
-#     """Test the _collect_expanded_paths method."""
-#     root_node = TreeNode(test_path / "src", gitignore_parser=None, parent=None)
-#     root_node.load_children()
-#     root_node.children[0].expanded = True  # expanding one path here.
-
-#     expanded = tuple(FileTreeViewer._collect_expanded_paths(root_node))
-
-#     assert expanded == (test_path / "src" / "docs",)
+    assert set([node.path for node in _all]) == {
+        test_path_with_git,
+        test_path_with_git / ".gitignore",
+        test_path_with_git / "src",
+    }
 
 
-# def test_collect_expanded_paths_no_expanded_nodes(test_path: Path):
-#     """Test _collect_expanded_paths when no nodes are expanded."""
-#     root_node = TreeNode(test_path / "src", gitignore_parser=None, parent=None)
-#     root_node.load_children()
+def test_gitignore_higher_level(test_path_with_git: Path):
+    # file to ignore is on a level lower than the gitignore file.
 
-#     expanded = tuple(FileTreeViewer._collect_expanded_paths(root_node))
+    node = TreeNode(
+        test_path_with_git / "src",
+        parent=None,
+        level=1,
+        use_gitignore=True,
+        git_repo=pygit2.Repository(test_path_with_git),
+    )
+    _all = tuple(node.full_tree())
 
-#     assert len(expanded) == 0
-
-
-# def test_collect_visible_nodes(test_path: Path):
-#     """Test the _collect_visible_nodes method."""
-#     viewer = FileTreeViewer(test_path)
-#     viewer._update_display()
-
-#     assert [node.path for node in viewer.visible_nodes] == [
-#         test_path,
-#         test_path / "src",
-#     ]
+    assert set([node.path for node in _all]) == {
+        test_path_with_git / "src",
+        test_path_with_git / "src" / "docs",
+        test_path_with_git / "src" / "my_lib",
+    }
 
 
-# def test_gitignore_root_level(test_path: Path):
-#     # file to ignore is on the same level as the gitignore file.
+def test_no_use_gitignore(test_path_with_git: Path):
+    git_ignore_file = test_path_with_git / "src" / ".gitignore"
+    git_ignore_file.write_text("**/main.py")
 
-#     node = TreeNode(
-#         test_path,
-#         parent=None,
-#         use_gitignore=True,
-#         git_repo=pygit2.Repository(test_path),
-#     )
-#     node.load_children()
+    node = TreeNode(
+        test_path_with_git / "src",
+        parent=None,
+        level=0,
+        use_gitignore=False,
+        git_repo=pygit2.Repository(test_path_with_git),
+    )
+    node.load_children()
 
-#     assert set([child.path for child in node.children]) == {
-#         test_path / ".gitignore",
-#         test_path / "src",
-#     }
+    _all = tuple(node.full_tree())
 
-
-# def test_gitignore_higher_level(test_path: Path):
-#     # file to ignore is on a level lower than the gitignore file.
-
-#     node = TreeNode(
-#         test_path / "src",
-#         parent=None,
-#         use_gitignore=True,
-#         git_repo=pygit2.Repository(test_path),
-#     )
-#     node.load_children()
-
-#     assert set([child.path for child in node.children]) == {
-#         test_path / "src" / "docs",
-#         test_path / "src" / "my_lib",
-#     }
-
-
-# def test_no_use_gitignore(test_path: Path):
-#     git_ignore_file = test_path / "src" / ".gitignore"
-#     git_ignore_file.write_text("**/main.py")
-
-#     node = TreeNode(
-#         test_path / "src",
-#         parent=None,
-#         use_gitignore=False,
-#         git_repo=pygit2.Repository(test_path),
-#     )
-#     node.load_children()
-
-#     assert set([child.path for child in node.children]) == {
-#         test_path / "src" / ".gitignore",
-#         test_path / "src" / "docs",
-#         test_path / "src" / "my_lib",
-#         test_path / "src" / "main.py",  # ignoring the gitignore
-#     }
-
-
-# def test_parse_args(tmp_path: Path):
-#     settings = parse_args([str(tmp_path), "--no-gitignore"])
-
-#     assert settings == Settings(root_folder=tmp_path, use_git_ignore=False)
+    assert set([node.path for node in _all]) == {
+        test_path_with_git / "src",
+        test_path_with_git / "src" / ".gitignore",
+        test_path_with_git / "src" / "docs",
+        test_path_with_git / "src" / "my_lib",
+        test_path_with_git / "src" / "main.py",  # ignoring the gitignore
+    }

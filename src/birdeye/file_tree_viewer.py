@@ -91,15 +91,15 @@ class BaseNode:
 
         return res
 
-    def focus(self, direction: Literal[-1, 1]) -> Node | TreeNode:
-        new_focussed = self.up if direction == -1 else self.down
+    # def focus(self, direction: Literal[-1, 1]) -> Node | TreeNode:
+    #     new_focussed = self.up if direction == -1 else self.down
 
-        if new_focussed is None:
-            return self
-        else:
-            self.focussed = False
-            new_focussed.focussed = True
-            return new_focussed
+    #     if new_focussed is None:
+    #         return self
+    #     else:
+    #         self.focussed = False
+    #         new_focussed.focussed = True
+    #         return new_focussed
 
 
 class Node(BaseNode):
@@ -130,8 +130,14 @@ class Node(BaseNode):
     def full_tree(self) -> Generator[Node, None, None]:
         yield self
 
-    def set_expanded(self, value: bool):
-        pass
+    def set_expanded(self, value: bool) -> None:
+        if value is True:
+            return
+
+    def focus(self, direction: Literal[-1, 1]) -> None:
+        new_focussed = self.up if direction == -1 else self.down
+
+        self.parent.bubble(event="on_focus_changed", event_data=new_focussed)
 
 
 class TreeNode(BaseNode):
@@ -140,12 +146,13 @@ class TreeNode(BaseNode):
     _ICON = "📂"
     _children: tuple[TreeNode | Node, ...] | None = None
     last_child: TreeNode | Node | None = None
+    _expanded = False
 
     def __init__(
         self,
         path: Path,
         *,
-        parent: TreeNode | None,
+        parent: TreeNode | FileTreeViewer,
         level: int,
         # expanded: bool = False,
         use_gitignore: bool = True,
@@ -154,13 +161,23 @@ class TreeNode(BaseNode):
         super().__init__(path, level=level)
         self._level = level
         self.parent = parent
-        if parent is None:
-            self._same_level_down = None
 
         self.use_gitignore = use_gitignore
 
         self._git_repo = git_repo
-        self.set_expanded(True if parent is None else False)
+        if isinstance(parent, FileTreeViewer):
+            # dealing with the root node here.
+            self._same_level_down = None
+            self.focussed = True
+            self.set_expanded(True)
+
+    def bubble(self, event: str, event_data: object) -> None:
+        self.parent.bubble(event, event_data)
+
+    def focus(self, direction: Literal[-1, 1]) -> None:
+        new_focussed = self.up if direction == -1 else self.down
+
+        self.parent.bubble(event="on_focus_changed", event_data=new_focussed)
 
     def set_expanded(self, value: bool):
         if value:
@@ -269,7 +286,7 @@ class FileTreeViewer:
 
         root_node = TreeNode(
             self.root_path,
-            parent=None,
+            parent=self,
             level=0,
             use_gitignore=self._settings.use_git_ignore,
             git_repo=repository,
@@ -282,11 +299,11 @@ class FileTreeViewer:
 
         @kb.add("up")
         def move_up(event):
-            self._selected_node = self._selected_node.focus(-1)
+            self._selected_node.focus(-1)
 
         @kb.add("down")
         def move_down(event):
-            self._selected_node = self._selected_node.focus(1)
+            self._selected_node.focus(1)
 
         @kb.add("right")
         def expand_node(event):
@@ -306,6 +323,10 @@ class FileTreeViewer:
         #     self._refresh_tree()
 
         return kb
+
+    def bubble(self, event: str, event_data: object) -> None:
+        if event == "focus_changed":
+            self._selected_node = event_data
 
     def _update_display(self) -> FormattedText:
         """Update the display buffer with current tree state."""
