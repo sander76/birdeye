@@ -44,6 +44,15 @@ class BaseNode:
     """Base class for all node types with common comparison functionality."""
 
     _same_level_down: TreeNode | Node | None = None
+    """Next node on the same level as this node.
+    
+    .
+    ├── this-node
+    │   ├── child_node
+    │   └── other_child_node
+    └── other_node    <------------same_level_down of "this-node"
+    """
+
     _same_level_up: TreeNode | Node | None = None
     _child_down: TreeNode | Node | None = None
 
@@ -82,7 +91,10 @@ class BaseNode:
             return "bg:#ffffff fg:#000000"
         return ""
 
-    def set_expanded(self, value: bool) -> None:
+    def enter(self) -> None:
+        raise NotImplementedError
+
+    def exit(self) -> None:
         raise NotImplementedError
 
     def render(self) -> tuple[str, str]:
@@ -91,15 +103,15 @@ class BaseNode:
 
         return res
 
-    def focus(self, direction: Literal[-1, 1]) -> Node | TreeNode:
-        new_focussed = self.up if direction == -1 else self.down
+    # def focus(self, direction: Literal[-1, 1]) -> Node | TreeNode:
+    #     new_focussed = self.up if direction == -1 else self.down
 
-        if new_focussed is None:
-            return self
-        else:
-            self.focussed = False
-            new_focussed.focussed = True
-            return new_focussed
+    #     if new_focussed is None:
+    #         return self
+    #     else:
+    #         self.focussed = False
+    #         new_focussed.focussed = True
+    #         return new_focussed
 
 
 class Node(BaseNode):
@@ -130,8 +142,16 @@ class Node(BaseNode):
     def full_tree(self) -> Generator[Node, None, None]:
         yield self
 
-    def set_expanded(self, value: bool):
-        pass
+    def enter(self) -> None:
+        return
+
+    def exit(self) -> None:
+        self.parent.bubble(event="focus_changed", event_data=self.parent)
+
+    def focus(self, direction: Literal[-1, 1]) -> None:
+        new_focussed = self.up if direction == -1 else self.down
+
+        self.parent.bubble(event="focus_changed", event_data=new_focussed)
 
 
 class TreeNode(BaseNode):
@@ -140,12 +160,13 @@ class TreeNode(BaseNode):
     _ICON = "📂"
     _children: tuple[TreeNode | Node, ...] | None = None
     last_child: TreeNode | Node | None = None
+    _expanded = False
 
     def __init__(
         self,
         path: Path,
         *,
-        parent: TreeNode | None,
+        parent: TreeNode | FileTreeViewer,
         level: int,
         # expanded: bool = False,
         use_gitignore: bool = True,
@@ -154,24 +175,42 @@ class TreeNode(BaseNode):
         super().__init__(path, level=level)
         self._level = level
         self.parent = parent
-        if parent is None:
-            self._same_level_down = None
 
         self.use_gitignore = use_gitignore
 
         self._git_repo = git_repo
-        self.set_expanded(True if parent is None else False)
+        if isinstance(parent, FileTreeViewer):
+            # dealing with the root node here.
+            self._same_level_down = None
+            self.focussed = True
+            self.enter()
 
-    def set_expanded(self, value: bool):
-        if value:
-            self.load_children()
-            if self._same_level_down:
-                self._same_level_down._same_level_up = self.last_child
-        else:
+    def bubble(self, event: str, event_data: object) -> None:
+        self.parent.bubble(event, event_data)
+
+    def focus(self, direction: Literal[-1, 1]) -> None:
+        new_focussed = self.up if direction == -1 else self.down
+
+        self.parent.bubble(event="focus_changed", event_data=new_focussed)
+
+    def enter(self) -> None:
+        self.load_children()
+        if self._same_level_down:
+            self._same_level_down._same_level_up = self.last_child
+        self._expanded = True
+
+    def exit(self):
+        # exiting a treenode can mean two things.
+        # 1. this node is expanded, so we collapse it.
+        # 2. this node is not expanded, so we'll treat it as
+        #    a plain node (no folder) and we'll jump to the parent
+
+        if self._expanded:
             if self._same_level_down:
                 self._same_level_down._same_level_up = self
-
-        self._expanded = value
+            self._expanded = False
+        else:
+            self.bubble("focus_changed", self.parent)
 
     @property
     def down(self) -> Node | TreeNode | None:
@@ -241,12 +280,12 @@ class FileTreeViewer:
     """Main application class for the file tree viewer."""
 
     _root_node: TreeNode
-    _selected_node: TreeNode | Node
+    _focussed_node: TreeNode | Node
 
     def __init__(self, settings: Settings):
         self.root_path = settings.root_folder.resolve()
         self._settings = settings
-        self._root_node = self._selected_node = self._init_root_node()
+        self._root_node = self._focussed_node = self._init_root_node()
 
         text_control = FormattedTextControl(
             text=self._update_display,
@@ -269,7 +308,7 @@ class FileTreeViewer:
 
         root_node = TreeNode(
             self.root_path,
-            parent=None,
+            parent=self,
             level=0,
             use_gitignore=self._settings.use_git_ignore,
             git_repo=repository,
@@ -282,19 +321,19 @@ class FileTreeViewer:
 
         @kb.add("up")
         def move_up(event):
-            self._selected_node = self._selected_node.focus(-1)
+            self._focussed_node.focus(-1)
 
         @kb.add("down")
         def move_down(event):
-            self._selected_node = self._selected_node.focus(1)
+            self._focussed_node.focus(1)
 
         @kb.add("right")
         def expand_node(event):
-            self._selected_node.set_expanded(value=True)
+            self._focussed_node.enter()
 
         @kb.add("left")
         def collapse_node(event):
-            self._selected_node.set_expanded(value=False)
+            self._focussed_node.exit()
 
         @kb.add("q")
         @kb.add("c-c")
@@ -306,6 +345,14 @@ class FileTreeViewer:
         #     self._refresh_tree()
 
         return kb
+
+    def bubble(self, event: str, event_data: object) -> None:
+        if event == "focus_changed":
+            if event_data is None:
+                return
+            self._focussed_node.focussed = False
+            self._focussed_node = event_data
+            self._focussed_node.focussed = True
 
     def _update_display(self) -> FormattedText:
         """Update the display buffer with current tree state."""
