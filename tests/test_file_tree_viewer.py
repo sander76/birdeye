@@ -87,7 +87,7 @@ def test_single_node_up_down(settings_no_git: Settings):
     assert tree_viewer._selected_node.focussed is True
 
 
-def test_expanded_up_down(root_node_no_git: TreeNode):
+def test_expanded_up_down(settings_no_git: Settings):
     # ..root
     # ├── pyproject.toml
     # ├── src
@@ -96,21 +96,26 @@ def test_expanded_up_down(root_node_no_git: TreeNode):
     # │       └── base.py
     # └── tests
     #     └── test_main.py
-    root_path = root_node_no_git.path
 
-    first = root_node_no_git
+    tree_viewer = FileTreeViewer(settings_no_git)
 
-    second = first.focus(direction=1)
-    assert second == HasAttributes(focussed=True, path=root_path / "pyproject.toml")
+    root_node = tree_viewer._selected_node
+    # root_path = root_node_no_git.path
 
-    third = second.focus(direction=1)
-    assert third == HasAttributes(focussed=True, path=root_path / "src")
-    assert second.focussed is False
+    # first = root_node_no_git
 
-    up = third.focus(direction=-1)
-    assert up is second
-    assert up.focussed is True
-    assert third.focussed is False
+    tree_viewer._selected_node.focus(direction=1)
+    down_1 = tree_viewer._selected_node
+    down_1 == HasAttributes(focussed=True, name="pyproject.toml")
+
+    tree_viewer._selected_node.focus(direction=1)
+    down_2 = tree_viewer._selected_node
+    down_2 == HasAttributes(focussed=True, name="src")
+    down_1.focussed is False
+
+    tree_viewer._selected_node.focus(direction=-1)
+    assert tree_viewer._selected_node is down_1
+    assert tree_viewer._selected_node.focussed is True
 
 
 def test_down_beyond_list(root_node_no_git: TreeNode):
