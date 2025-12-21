@@ -65,8 +65,8 @@ def settings_no_git(test_path_no_git) -> Settings:
 
 def test_single_node_up_down(settings_no_git: Settings):
     # our root node is not expanded so
-    # selecting next or previous will always give this
-    # one node back.
+    # selecting next or previous will always give the
+    # same node back.
 
     # by default a root treenode is always expanded.
     # so for this test we first un-expand it.
@@ -106,11 +106,13 @@ def test_expanded_up_down(settings_no_git: Settings):
 
     tree_viewer._selected_node.focus(direction=1)
     down_1 = tree_viewer._selected_node
-    down_1 == HasAttributes(focussed=True, name="pyproject.toml")
+    down_1.name == "pyproject.toml"
+    down_1.focussed is True
 
     tree_viewer._selected_node.focus(direction=1)
     down_2 = tree_viewer._selected_node
-    down_2 == HasAttributes(focussed=True, name="src")
+    down_2.focussed is True
+    down_2.name == "src"
     down_1.focussed is False
 
     tree_viewer._selected_node.focus(direction=-1)
@@ -118,7 +120,7 @@ def test_expanded_up_down(settings_no_git: Settings):
     assert tree_viewer._selected_node.focussed is True
 
 
-def test_down_beyond_list(root_node_no_git: TreeNode):
+def test_down_beyond_list(settings_no_git: Settings):
     # ..root
     # ├── pyproject.toml
     # ├── src
@@ -131,14 +133,23 @@ def test_down_beyond_list(root_node_no_git: TreeNode):
     # goto src folder and expand.
     # go down until my_lib.
     # one more down must focus tests
-    src_node = root_node_no_git.focus(1).focus(1)
+    tree_viewer = FileTreeViewer(settings_no_git)
+
+    tree_viewer._selected_node.focus(1)
+    tree_viewer._selected_node.focus(1)
+
+    src_node = tree_viewer._selected_node
     assert src_node.name == "src"
 
     src_node.set_expanded(True)
-    my_lib_node = src_node.focus(1).focus(1)
+
+    tree_viewer._selected_node.focus(1)
+    tree_viewer._selected_node.focus(1)
+    my_lib_node = tree_viewer._selected_node
     assert my_lib_node.name == "my_lib"
 
-    tests_node = my_lib_node.focus(1)
+    tree_viewer._selected_node.focus(1)
+    tests_node = tree_viewer._selected_node
     assert tests_node.name == "tests"
 
 

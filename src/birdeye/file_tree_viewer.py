@@ -137,7 +137,7 @@ class Node(BaseNode):
     def focus(self, direction: Literal[-1, 1]) -> None:
         new_focussed = self.up if direction == -1 else self.down
 
-        self.parent.bubble(event="on_focus_changed", event_data=new_focussed)
+        self.parent.bubble(event="focus_changed", event_data=new_focussed)
 
 
 class TreeNode(BaseNode):
@@ -177,7 +177,7 @@ class TreeNode(BaseNode):
     def focus(self, direction: Literal[-1, 1]) -> None:
         new_focussed = self.up if direction == -1 else self.down
 
-        self.parent.bubble(event="on_focus_changed", event_data=new_focussed)
+        self.parent.bubble(event="focus_changed", event_data=new_focussed)
 
     def set_expanded(self, value: bool):
         if value:
@@ -258,12 +258,12 @@ class FileTreeViewer:
     """Main application class for the file tree viewer."""
 
     _root_node: TreeNode
-    _selected_node: TreeNode | Node
+    _focussed_node: TreeNode | Node
 
     def __init__(self, settings: Settings):
         self.root_path = settings.root_folder.resolve()
         self._settings = settings
-        self._root_node = self._selected_node = self._init_root_node()
+        self._root_node = self._focussed_node = self._init_root_node()
 
         text_control = FormattedTextControl(
             text=self._update_display,
@@ -299,19 +299,19 @@ class FileTreeViewer:
 
         @kb.add("up")
         def move_up(event):
-            self._selected_node.focus(-1)
+            self._focussed_node.focus(-1)
 
         @kb.add("down")
         def move_down(event):
-            self._selected_node.focus(1)
+            self._focussed_node.focus(1)
 
         @kb.add("right")
         def expand_node(event):
-            self._selected_node.set_expanded(value=True)
+            self._focussed_node.set_expanded(value=True)
 
         @kb.add("left")
         def collapse_node(event):
-            self._selected_node.set_expanded(value=False)
+            self._focussed_node.set_expanded(value=False)
 
         @kb.add("q")
         @kb.add("c-c")
@@ -326,7 +326,9 @@ class FileTreeViewer:
 
     def bubble(self, event: str, event_data: object) -> None:
         if event == "focus_changed":
-            self._selected_node = event_data
+            self._focussed_node.focussed = False
+            self._focussed_node = event_data
+            self._focussed_node.focussed = True
 
     def _update_display(self) -> FormattedText:
         """Update the display buffer with current tree state."""
