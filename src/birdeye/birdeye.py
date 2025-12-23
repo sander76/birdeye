@@ -12,6 +12,28 @@ from prompt_toolkit.output.vt100 import Vt100_Output
 
 from birdeye.file_tree_viewer import FileTreeViewer, Settings
 
+# import asyncio
+# from prompt_toolkit.application import get_app
+
+# class FileTreeViewer:
+#     async def search_files_async(self, search_term):
+#         """Run file search in background thread."""
+#         result = await asyncio.to_thread(self._blocking_search, search_term)
+#         # Update UI with results
+#         self._update_search_results(result)
+
+#     def _blocking_search(self, search_term):
+#         """Blocking file search operation."""
+#         import time
+#         time.sleep(1)  # Simulate slow file system operation
+#         # Your actual search logic here
+#         return [f"result_{i}" for i in range(10)]
+
+#     def start_search(self):
+#         search_text = self.buffer.text
+#         # Schedule the async search
+#         asyncio.create_task(self.search_files_async(search_text))
+
 
 def main(settings: Settings):
     """Main entry point."""
