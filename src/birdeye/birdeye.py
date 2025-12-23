@@ -35,6 +35,10 @@ def main(settings: Settings):
             output=Vt100_Output.from_pty(sys.stderr),
         )
 
+        # https://github.com/prompt-toolkit/python-prompt-toolkit/issues/1901#issuecomment-2259116988
+        app.timeoutlen = 0
+        app.ttimeoutlen = 0
+
         res = app.run()
         if res:
             print(res)

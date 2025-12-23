@@ -3,7 +3,7 @@ from __future__ import annotations
 import logging
 from dataclasses import dataclass
 from pathlib import Path
-from typing import Generator, Literal
+from typing import TYPE_CHECKING, Generator, Literal
 
 import pygit2
 from prompt_toolkit.formatted_text import FormattedText
@@ -12,7 +12,23 @@ from prompt_toolkit.layout.containers import HSplit, Window
 from prompt_toolkit.layout.controls import FormattedTextControl
 from prompt_toolkit.layout.scrollable_pane import ScrollablePane
 
+if TYPE_CHECKING:
+    from birdeye.file_tree_viewer import FileTreeViewer
 _logger = logging.getLogger(__name__)
+
+
+def use_gitignore(
+    repo: pygit2.Repository, root_folder: Path
+) -> Generator[Path, None, None]:
+    """check whether any child inside the root_folder is being git-ignored."""
+
+    as_path = Path(repo.workdir)
+
+    for child in root_folder.iterdir():
+        rel_path = str(child.relative_to(as_path))
+        if repo.path_is_ignored(rel_path):
+            continue
+        yield child
 
 
 class BaseNode:
@@ -154,7 +170,7 @@ class TreeNode(BaseNode):
         self.use_gitignore = use_gitignore
 
         self._git_repo = git_repo
-        if isinstance(parent, FileTreeViewer):
+        if level == 0:
             # dealing with the root node here.
             self._same_level_down = None
             self.focussed = True

@@ -62,3 +62,946 @@
 2025-12-22 17:18:21,553 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x777f24edd240>
 2025-12-22 17:18:22,555 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x777f24edd240>
 2025-12-22 17:22:28,211 - birdeye.file_tree_viewer - DEBUG - init root
+2025-12-23 09:11:39,929 - birdeye.file_tree_viewer - DEBUG - init root
+2025-12-23 09:14:04,464 - birdeye.file_tree_viewer - DEBUG - init root
+2025-12-23 09:15:05,993 - birdeye.file_tree_viewer - DEBUG - init root
+2025-12-23 09:22:23,553 - birdeye.file_tree_viewer - DEBUG - init root
+2025-12-23 09:22:23,572 - asyncio - DEBUG - Using selector: EpollSelector
+2025-12-23 09:22:23,576 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x7ba06971d840>
+2025-12-23 09:22:28,443 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x7ba06971d600>
+2025-12-23 09:22:29,896 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x7ba06971d6c0>
+2025-12-23 09:22:30,124 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x7ba06971df00>
+2025-12-23 09:22:30,304 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x7ba06971d6c0>
+2025-12-23 09:22:30,350 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x7ba06971df00>
+2025-12-23 09:22:30,636 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x7ba06971de40>
+2025-12-23 09:22:30,833 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x7ba06971df00>
+2025-12-23 09:22:31,076 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x7ba06971e080>
+2025-12-23 09:22:33,665 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x7ba06971d840>
+2025-12-23 09:22:33,727 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x7ba06971df00>
+2025-12-23 09:22:33,883 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x7ba06971df00>
+2025-12-23 09:22:34,177 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x7ba06971df00>
+2025-12-23 09:22:34,314 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x7ba06971df00>
+2025-12-23 09:22:35,000 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x7ba06971d600>
+2025-12-23 09:22:35,028 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x7ba06971d840>
+2025-12-23 09:22:35,061 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x7ba06971e080>
+2025-12-23 09:22:35,763 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x7ba06971d840>
+2025-12-23 09:22:36,069 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x7ba06971d600>
+2025-12-23 09:22:36,074 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x7ba06971e080>
+2025-12-23 09:22:36,153 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x7ba06971d840>
+2025-12-23 09:22:36,161 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x7ba06971e080>
+2025-12-23 09:22:36,165 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x7ba06971d840>
+2025-12-23 09:22:36,173 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x7ba06971e080>
+2025-12-23 09:22:36,188 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x7ba06971d600>
+2025-12-23 09:22:36,253 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x7ba06971dfc0>
+2025-12-23 09:22:36,259 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x7ba06971dfc0>
+2025-12-23 09:22:36,337 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x7ba06971d600>
+2025-12-23 09:22:36,342 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x7ba06971dfc0>
+2025-12-23 09:22:36,553 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x7ba06971d600>
+2025-12-23 09:22:36,764 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x7ba06971dfc0>
+2025-12-23 09:22:36,796 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x7ba06971d600>
+2025-12-23 09:22:36,874 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x7ba06971dfc0>
+2025-12-23 09:22:37,067 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x7ba06971e080>
+2025-12-23 09:22:37,082 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x7ba06971dfc0>
+2025-12-23 09:22:37,096 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x7ba06971e080>
+2025-12-23 09:22:37,287 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x7ba06971dfc0>
+2025-12-23 09:22:37,293 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x7ba06971dd80>
+2025-12-23 09:22:37,297 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x7ba06971dfc0>
+2025-12-23 09:22:37,303 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x7ba06971dd80>
+2025-12-23 09:22:37,393 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x7ba06971dfc0>
+2025-12-23 09:22:37,486 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x7ba06971dd80>
+2025-12-23 09:22:50,494 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x7ba06971dd80>
+2025-12-23 09:22:55,080 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x7ba06971dfc0>
+2025-12-23 09:22:55,517 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x7ba06971d600>
+2025-12-23 09:22:55,883 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x7ba06971d600>
+2025-12-23 09:22:55,963 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x7ba06971d600>
+2025-12-23 09:22:56,023 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x7ba06971d600>
+2025-12-23 09:22:56,075 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x7ba06971d600>
+2025-12-23 09:22:56,183 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x7ba06971d600>
+2025-12-23 09:22:56,226 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x7ba06971d600>
+2025-12-23 09:22:56,292 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x7ba06971d600>
+2025-12-23 09:22:56,350 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x7ba06971d600>
+2025-12-23 09:22:56,470 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x7ba06971d600>
+2025-12-23 09:22:56,593 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x7ba06971dd80>
+2025-12-23 09:22:56,598 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x7ba06971dd80>
+2025-12-23 09:22:56,764 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x7ba06971d600>
+2025-12-23 09:22:56,811 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x7ba06971d600>
+2025-12-23 09:22:56,899 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x7ba06971d600>
+2025-12-23 09:22:57,050 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x7ba06971d600>
+2025-12-23 09:22:57,190 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x7ba06971d600>
+2025-12-23 09:22:57,337 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x7ba06971d600>
+2025-12-23 09:22:57,514 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x7ba06971d600>
+2025-12-23 09:22:57,584 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x7ba06971d600>
+2025-12-23 09:22:57,685 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x7ba06971d600>
+2025-12-23 09:22:57,831 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x7ba06971d600>
+2025-12-23 09:22:57,971 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x7ba06971d600>
+2025-12-23 09:22:58,112 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x7ba06971d600>
+2025-12-23 09:22:58,251 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x7ba06971d600>
+2025-12-23 09:24:30,683 - birdeye.file_tree_viewer - DEBUG - init root
+2025-12-23 09:27:32,319 - birdeye.file_tree_viewer - DEBUG - init root
+2025-12-23 09:27:32,336 - asyncio - DEBUG - Using selector: EpollSelector
+2025-12-23 09:27:32,340 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x79758c021840>
+2025-12-23 09:27:35,114 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x79758c021600>
+2025-12-23 09:27:35,607 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x79758c021840>
+2025-12-23 09:27:35,698 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x79758c021f00>
+2025-12-23 09:27:35,703 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x79758c021840>
+2025-12-23 09:27:35,894 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x79758c021f00>
+2025-12-23 09:27:35,987 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x79758c021600>
+2025-12-23 09:27:35,993 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x79758c021f00>
+2025-12-23 09:27:36,012 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x79758c0216c0>
+2025-12-23 09:27:36,094 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x79758c022080>
+2025-12-23 09:27:36,231 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x79758c0216c0>
+2025-12-23 09:27:36,238 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x79758c0216c0>
+2025-12-23 09:27:36,246 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x79758c022080>
+2025-12-23 09:27:36,273 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x79758c0216c0>
+2025-12-23 09:27:38,233 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x79758c021d80>
+2025-12-23 09:27:38,389 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x79758c022080>
+2025-12-23 09:27:38,557 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x79758c021d80>
+2025-12-23 09:27:38,711 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x79758c022080>
+2025-12-23 09:27:38,715 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x79758c021d80>
+2025-12-23 09:27:38,818 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x79758c022080>
+2025-12-23 09:27:38,909 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x79758c022080>
+2025-12-23 09:27:39,012 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x79758c022080>
+2025-12-23 09:27:39,376 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x79758c022080>
+2025-12-23 09:27:39,529 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x79758c022080>
+2025-12-23 09:27:39,688 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x79758c022080>
+2025-12-23 09:27:39,843 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x79758c022080>
+2025-12-23 09:27:40,492 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x79758c022080>
+2025-12-23 09:27:40,605 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x79758c022080>
+2025-12-23 09:27:40,701 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x79758c022080>
+2025-12-23 09:27:40,986 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x79758c022080>
+2025-12-23 09:27:41,122 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x79758c022080>
+2025-12-23 09:27:41,216 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x79758c022080>
+2025-12-23 09:27:41,266 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x79758c022080>
+2025-12-23 09:27:41,333 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x79758c022080>
+2025-12-23 09:27:41,418 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x79758c022080>
+2025-12-23 09:27:41,522 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x79758c022080>
+2025-12-23 09:27:41,547 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x79758c022080>
+2025-12-23 09:27:41,683 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x79758c022080>
+2025-12-23 09:27:42,216 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x79758c022080>
+2025-12-23 09:27:42,718 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x79758c0216c0>
+2025-12-23 09:27:43,719 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x79758c0216c0>
+2025-12-23 09:27:48,703 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x79758c021e40>
+2025-12-23 09:27:49,267 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x79758c021e40>
+2025-12-23 09:27:49,393 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x79758c021e40>
+2025-12-23 09:27:49,894 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x79758c021600>
+2025-12-23 09:27:50,436 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x79758c021d80>
+2025-12-23 09:27:50,937 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x79758c021600>
+2025-12-23 09:27:51,582 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x79758c021600>
+2025-12-23 09:27:51,927 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x79758c021f00>
+2025-12-23 09:27:52,058 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x79758c021840>
+2025-12-23 09:27:52,183 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x79758c021f00>
+2025-12-23 09:27:52,311 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x79758c021600>
+2025-12-23 09:32:46,154 - birdeye.file_tree_viewer - DEBUG - init root
+2025-12-23 09:33:07,032 - birdeye.file_tree_viewer - DEBUG - init root
+2025-12-23 09:33:07,048 - asyncio - DEBUG - Using selector: EpollSelector
+2025-12-23 09:33:07,052 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x7336d4b2d6c0>
+2025-12-23 09:33:12,976 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x7336d4b2d480>
+2025-12-23 09:33:14,893 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x7336d4b2dcc0>
+2025-12-23 09:33:14,899 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x7336d4b2dcc0>
+2025-12-23 09:33:14,904 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x7336d4b2d540>
+2025-12-23 09:33:14,912 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x7336d4b2dcc0>
+2025-12-23 09:33:14,919 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x7336d4b2dc00>
+2025-12-23 09:33:15,361 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x7336d4b2dcc0>
+2025-12-23 09:33:15,523 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x7336d4b2d540>
+2025-12-23 09:33:20,859 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x7336d4b2e380>
+2025-12-23 09:33:21,361 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x7336d4b2df00>
+2025-12-23 09:33:22,999 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x7336d4b2df00>
+2025-12-23 09:33:23,151 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x7336d4b2d540>
+2025-12-23 09:33:23,297 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x7336d4b2d6c0>
+2025-12-23 09:33:23,444 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x7336d4b2d540>
+2025-12-23 09:33:24,202 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x7336d4b2e500>
+2025-12-23 09:33:24,946 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x7336d4b2dd80>
+2025-12-23 09:33:24,965 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x7336d4b2e500>
+2025-12-23 09:33:25,224 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x7336d4b2dc00>
+2025-12-23 09:33:25,233 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x7336d4b2dd80>
+2025-12-23 09:33:25,240 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x7336d4b2e500>
+2025-12-23 09:33:25,267 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x7336d4b2dd80>
+2025-12-23 09:33:26,419 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x7336d4b2e500>
+2025-12-23 09:33:26,441 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x7336d4b2d6c0>
+2025-12-23 09:33:26,461 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x7336d4b2dd80>
+2025-12-23 09:33:26,511 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x7336d4b2e500>
+2025-12-23 09:33:26,617 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x7336d4b2d6c0>
+2025-12-23 09:33:26,623 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x7336d4b2e500>
+2025-12-23 09:33:26,696 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x7336d4b2d6c0>
+2025-12-23 09:33:26,786 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x7336d4b2dcc0>
+2025-12-23 09:33:26,792 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x7336d4b2d480>
+2025-12-23 09:33:26,801 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x7336d4b2dc00>
+2025-12-23 09:33:26,897 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x7336d4b2d480>
+2025-12-23 09:33:26,996 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x7336d4b2dd80>
+2025-12-23 09:33:27,001 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x7336d4b2d480>
+2025-12-23 09:33:27,112 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x7336d4b2dc00>
+2025-12-23 09:33:27,237 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x7336d4b2d480>
+2025-12-23 09:33:27,242 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x7336d4b2e500>
+2025-12-23 09:33:27,359 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x7336d4b2d480>
+2025-12-23 09:33:27,462 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x7336d4b2dd80>
+2025-12-23 09:33:27,494 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x7336d4b2d480>
+2025-12-23 09:33:27,603 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x7336d4b2dd80>
+2025-12-23 09:33:27,703 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x7336d4b2d480>
+2025-12-23 09:33:27,727 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x7336d4b2d480>
+2025-12-23 09:33:27,763 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x7336d4b2dc00>
+2025-12-23 09:33:28,216 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x7336d4b2d480>
+2025-12-23 09:33:28,337 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x7336d4b2d480>
+2025-12-23 09:33:29,431 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x7336d4b2d480>
+2025-12-23 09:33:29,933 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x7336d4b2e500>
+2025-12-23 09:33:30,806 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x7336d4b2dd80>
+2025-12-23 09:33:30,830 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x7336d4b2d540>
+2025-12-23 09:33:30,983 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x7336d4b2d540>
+2025-12-23 09:33:31,138 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x7336d4b2d540>
+2025-12-23 09:33:31,296 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x7336d4b2d540>
+2025-12-23 09:33:31,491 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x7336d4b2dd80>
+2025-12-23 09:33:31,909 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x7336d4b2dd80>
+2025-12-23 09:33:32,055 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x7336d4b2dd80>
+2025-12-23 09:33:32,643 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x7336d4b2e500>
+2025-12-23 09:33:32,791 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x7336d4b2d480>
+2025-12-23 09:33:32,940 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x7336d4b2e680>
+2025-12-23 09:33:33,086 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x7336d4b2e8c0>
+2025-12-23 09:33:33,364 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x7336d4b2d6c0>
+2025-12-23 09:33:33,762 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x7336d4b2ef80>
+2025-12-23 09:33:34,201 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x7336d4b2ed40>
+2025-12-23 09:33:34,485 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x7336d4b2ed40>
+2025-12-23 09:33:35,079 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x7336d4b2df00>
+2025-12-23 09:33:35,224 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x7336d4b2eec0>
+2025-12-23 09:33:35,375 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x7336d4b2eec0>
+2025-12-23 09:33:35,534 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x7336d4b2eec0>
+2025-12-23 09:33:35,683 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x7336d4b2eec0>
+2025-12-23 09:33:37,614 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x7336d4b2f1c0>
+2025-12-23 09:33:38,580 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x7336d4b2f700>
+2025-12-23 09:33:38,743 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x7336d4b2f700>
+2025-12-23 09:33:38,905 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x7336d4b2f700>
+2025-12-23 09:33:39,052 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x7336d4b2f700>
+2025-12-23 09:33:39,199 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x7336d4b2f700>
+2025-12-23 09:33:39,477 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x7336d4b2f700>
+2025-12-23 09:33:40,027 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x7336d4b2f1c0>
+2025-12-23 09:33:40,176 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x7336d4b2f280>
+2025-12-23 09:33:40,549 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x7336d4b2f280>
+2025-12-23 09:33:40,687 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x7336d4b2f280>
+2025-12-23 09:33:40,945 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x7336d4b2f7c0>
+2025-12-23 09:33:41,301 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x7336d4b2f880>
+2025-12-23 09:33:41,477 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x7336d4b2f880>
+2025-12-23 09:33:43,186 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x7336d4b2f1c0>
+2025-12-23 10:23:30,878 - birdeye.file_tree_viewer - DEBUG - init root
+2025-12-23 10:23:30,895 - asyncio - DEBUG - Using selector: EpollSelector
+2025-12-23 10:23:30,899 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x7560a1029780>
+2025-12-23 10:23:33,760 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x7560a1029e40>
+2025-12-23 10:23:33,920 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x7560a1029cc0>
+2025-12-23 10:23:34,065 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x7560a1029cc0>
+2025-12-23 10:23:34,218 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x7560a1029600>
+2025-12-23 10:23:34,370 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x7560a1029600>
+2025-12-23 10:23:34,523 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x7560a1029d80>
+2025-12-23 10:23:34,682 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x7560a1029e40>
+2025-12-23 10:23:34,841 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x7560a1029fc0>
+2025-12-23 10:23:34,995 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x7560a102a140>
+2025-12-23 10:23:35,132 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x7560a1029780>
+2025-12-23 10:23:35,646 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x7560a102a140>
+2025-12-23 10:23:35,802 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x7560a1029540>
+2025-12-23 10:23:36,533 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x7560a102a140>
+2025-12-23 10:23:36,687 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x7560a1029f00>
+2025-12-23 10:23:36,838 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x7560a102a5c0>
+2025-12-23 10:23:37,179 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x7560a102a980>
+2025-12-23 10:23:37,331 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x7560a102abc0>
+2025-12-23 10:23:40,411 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x7560a102a980>
+2025-12-23 10:23:40,879 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x7560a102a380>
+2025-12-23 10:23:41,477 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x7560a102ab00>
+2025-12-23 10:23:41,642 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x7560a102a980>
+2025-12-23 10:23:41,965 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x7560a102a680>
+2025-12-23 10:23:41,992 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x7560a102aa40>
+2025-12-23 10:23:42,012 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x7560a1029780>
+2025-12-23 10:23:42,046 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x7560a102abc0>
+2025-12-23 10:23:42,377 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x7560a102ab00>
+2025-12-23 10:23:42,505 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x7560a102a980>
+2025-12-23 10:23:42,635 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x7560a102a680>
+2025-12-23 10:23:42,772 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x7560a102aa40>
+2025-12-23 10:23:42,911 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x7560a1029780>
+2025-12-23 10:23:43,056 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x7560a102abc0>
+2025-12-23 10:23:44,900 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x7560a102a380>
+2025-12-23 10:23:45,822 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x7560a102a740>
+2025-12-23 10:23:45,849 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x7560a102a740>
+2025-12-23 10:23:45,992 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x7560a102abc0>
+2025-12-23 10:23:46,321 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x7560a102a380>
+2025-12-23 10:23:46,449 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x7560a102af80>
+2025-12-23 10:23:46,601 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x7560a102b040>
+2025-12-23 10:23:47,017 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x7560a102aec0>
+2025-12-23 10:23:47,307 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x7560a102aa40>
+2025-12-23 10:23:47,797 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x7560a102ae00>
+2025-12-23 10:23:48,021 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x7560a102ac80>
+2025-12-23 10:23:48,131 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x7560a102ae00>
+2025-12-23 10:23:48,216 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x7560a102ac80>
+2025-12-23 10:23:48,318 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x7560a102b100>
+2025-12-23 10:23:48,523 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x7560a102ab00>
+2025-12-23 10:23:48,599 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x7560a102b040>
+2025-12-23 10:23:48,605 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x7560a102aa40>
+2025-12-23 10:23:48,611 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x7560a102aec0>
+2025-12-23 10:23:48,618 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x7560a102aa40>
+2025-12-23 10:23:48,668 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x7560a102ae00>
+2025-12-23 10:23:48,673 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x7560a102a380>
+2025-12-23 10:23:48,789 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x7560a102b1c0>
+2025-12-23 10:23:48,795 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x7560a102b040>
+2025-12-23 10:23:48,918 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x7560a102af80>
+2025-12-23 10:23:48,924 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x7560a102ab00>
+2025-12-23 10:23:48,929 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x7560a102a380>
+2025-12-23 10:23:48,960 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x7560a102ae00>
+2025-12-23 10:23:49,273 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x7560a102aa40>
+2025-12-23 10:23:49,278 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x7560a102b1c0>
+2025-12-23 10:23:49,315 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x7560a102aec0>
+2025-12-23 10:23:49,493 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x7560a102af80>
+2025-12-23 10:23:50,063 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x7560a102ab00>
+2025-12-23 10:27:58,903 - birdeye.file_tree_viewer - DEBUG - init root
+2025-12-23 10:27:58,922 - asyncio - DEBUG - Using selector: EpollSelector
+2025-12-23 10:27:58,926 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x739c2ca0d6c0>
+2025-12-23 10:28:02,009 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x739c2ca0d480>
+2025-12-23 10:28:02,949 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x739c2ca0d540>
+2025-12-23 10:28:03,918 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x739c2ca0d540>
+2025-12-23 10:28:04,342 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x739c2ca0dd80>
+2025-12-23 10:28:30,277 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x739c2ca0e2c0>
+2025-12-23 10:28:30,991 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x739c2ca0e5c0>
+2025-12-23 10:28:30,995 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x739c2ca0e140>
+2025-12-23 10:28:38,805 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x739c2ca0d6c0>
+2025-12-23 10:36:49,638 - birdeye.file_tree_viewer - DEBUG - init root
+2025-12-23 10:36:49,656 - asyncio - DEBUG - Using selector: EpollSelector
+2025-12-23 10:36:49,660 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x73a2a04096c0>
+2025-12-23 10:36:56,001 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x73a2a0409c00>
+2025-12-23 10:36:57,120 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x73a2a0409d80>
+2025-12-23 10:36:57,690 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x73a2a0409d80>
+2025-12-23 10:36:57,694 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x73a2a04096c0>
+2025-12-23 10:36:57,712 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x73a2a04096c0>
+2025-12-23 10:36:57,766 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x73a2a0409c00>
+2025-12-23 10:36:57,969 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x73a2a04096c0>
+2025-12-23 10:36:57,986 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x73a2a0409cc0>
+2025-12-23 10:36:58,012 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x73a2a0409c00>
+2025-12-23 10:36:58,064 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x73a2a0409e40>
+2025-12-23 10:36:58,347 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x73a2a0409d80>
+2025-12-23 10:36:58,424 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x73a2a0409d80>
+2025-12-23 10:36:58,637 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x73a2a0409d80>
+2025-12-23 10:36:58,753 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x73a2a0409d80>
+2025-12-23 10:36:58,774 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x73a2a04096c0>
+2025-12-23 10:36:58,848 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x73a2a0409f00>
+2025-12-23 10:36:58,918 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x73a2a04096c0>
+2025-12-23 10:36:58,924 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x73a2a0409e40>
+2025-12-23 10:36:58,983 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x73a2a04096c0>
+2025-12-23 10:36:59,543 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x73a2a0409c00>
+2025-12-23 10:36:59,621 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x73a2a04096c0>
+2025-12-23 10:36:59,819 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x73a2a04096c0>
+2025-12-23 10:37:00,029 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x73a2a04096c0>
+2025-12-23 10:37:00,094 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x73a2a04096c0>
+2025-12-23 10:37:00,114 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x73a2a04096c0>
+2025-12-23 10:37:00,205 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x73a2a0409f00>
+2025-12-23 10:37:00,270 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x73a2a0409f00>
+2025-12-23 10:37:00,289 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x73a2a0409f00>
+2025-12-23 10:37:00,369 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x73a2a0409f00>
+2025-12-23 10:37:00,427 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x73a2a0409f00>
+2025-12-23 10:37:00,433 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x73a2a0409f00>
+2025-12-23 10:37:00,521 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x73a2a0409f00>
+2025-12-23 10:37:00,538 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x73a2a0409f00>
+2025-12-23 10:37:00,637 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x73a2a0409f00>
+2025-12-23 10:37:00,653 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x73a2a0409f00>
+2025-12-23 10:37:00,850 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x73a2a0409f00>
+2025-12-23 10:37:01,449 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x73a2a0409c00>
+2025-12-23 10:37:01,455 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x73a2a0409540>
+2025-12-23 10:37:01,485 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x73a2a0409540>
+2025-12-23 10:37:01,723 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x73a2a0409540>
+2025-12-23 10:37:01,728 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x73a2a0409540>
+2025-12-23 10:37:01,768 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x73a2a0409540>
+2025-12-23 10:37:01,930 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x73a2a0409540>
+2025-12-23 10:37:01,935 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x73a2a0409540>
+2025-12-23 10:37:01,965 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x73a2a04096c0>
+2025-12-23 10:44:06,538 - birdeye.file_tree_viewer - DEBUG - init root
+2025-12-23 10:44:06,557 - asyncio - DEBUG - Using selector: EpollSelector
+2025-12-23 10:44:06,561 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x708813d01780>
+2025-12-23 10:44:11,069 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x708813d01e40>
+2025-12-23 10:44:11,107 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x708813d01cc0>
+2025-12-23 10:44:11,262 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x708813d01cc0>
+2025-12-23 10:44:11,414 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x708813d01780>
+2025-12-23 10:44:11,554 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x708813d01780>
+2025-12-23 10:44:11,961 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x708813d01600>
+2025-12-23 10:44:22,636 - birdeye.file_tree_viewer - DEBUG - pressed.
+2025-12-23 10:44:22,638 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x708813d01fc0>
+2025-12-23 10:44:40,667 - birdeye.file_tree_viewer - DEBUG - init root
+2025-12-23 10:44:40,686 - asyncio - DEBUG - Using selector: EpollSelector
+2025-12-23 10:44:40,690 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x7629ec7f96c0>
+2025-12-23 10:44:44,822 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x7629ec7f9e40>
+2025-12-23 10:44:45,448 - birdeye.file_tree_viewer - DEBUG - pressed.
+2025-12-23 10:44:45,449 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x7629ec7f9d80>
+2025-12-23 10:44:46,284 - birdeye.file_tree_viewer - DEBUG - pressed.
+2025-12-23 10:44:46,285 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x7629ec7f9d80>
+2025-12-23 10:44:46,525 - birdeye.file_tree_viewer - DEBUG - pressed.
+2025-12-23 10:44:46,526 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x7629ec7f96c0>
+2025-12-23 10:44:46,530 - birdeye.file_tree_viewer - DEBUG - pressed.
+2025-12-23 10:44:46,530 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x7629ec7f96c0>
+2025-12-23 10:44:46,561 - birdeye.file_tree_viewer - DEBUG - pressed.
+2025-12-23 10:44:46,561 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x7629ec7f9e40>
+2025-12-23 10:44:46,640 - birdeye.file_tree_viewer - DEBUG - pressed.
+2025-12-23 10:44:46,640 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x7629ec7f96c0>
+2025-12-23 10:44:46,761 - birdeye.file_tree_viewer - DEBUG - pressed.
+2025-12-23 10:44:46,761 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x7629ec7f9c00>
+2025-12-23 10:44:46,789 - birdeye.file_tree_viewer - DEBUG - pressed.
+2025-12-23 10:44:46,790 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x7629ec7f9c00>
+2025-12-23 10:44:46,883 - birdeye.file_tree_viewer - DEBUG - pressed.
+2025-12-23 10:44:46,883 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x7629ec7f9c00>
+2025-12-23 10:44:46,998 - birdeye.file_tree_viewer - DEBUG - pressed.
+2025-12-23 10:44:46,999 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x7629ec7f9c00>
+2025-12-23 10:44:47,058 - birdeye.file_tree_viewer - DEBUG - pressed.
+2025-12-23 10:44:47,059 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x7629ec7f9540>
+2025-12-23 10:44:47,128 - birdeye.file_tree_viewer - DEBUG - pressed.
+2025-12-23 10:44:47,128 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x7629ec7f9540>
+2025-12-23 10:44:47,230 - birdeye.file_tree_viewer - DEBUG - pressed.
+2025-12-23 10:44:47,231 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x7629ec7f9540>
+2025-12-23 10:44:47,237 - birdeye.file_tree_viewer - DEBUG - pressed.
+2025-12-23 10:44:47,237 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x7629ec7f96c0>
+2025-12-23 10:46:11,117 - birdeye.file_tree_viewer - DEBUG - init root
+2025-12-23 10:46:11,136 - asyncio - DEBUG - Using selector: EpollSelector
+2025-12-23 10:46:11,140 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x7378621fd6c0>
+2025-12-23 10:46:12,449 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x7378621fdc00>
+2025-12-23 10:46:12,941 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x7378621fdd80>
+2025-12-23 10:46:13,123 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x7378621fdd80>
+2025-12-23 10:46:13,498 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x7378621fdd80>
+2025-12-23 10:46:13,519 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x7378621fdd80>
+2025-12-23 10:46:13,585 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x7378621fdc00>
+2025-12-23 10:46:13,691 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x7378621fdd80>
+2025-12-23 10:46:13,904 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x7378621fdcc0>
+2025-12-23 10:46:13,910 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x7378621fdc00>
+2025-12-23 10:46:13,987 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x7378621fdc00>
+2025-12-23 10:46:14,098 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x7378621fd6c0>
+2025-12-23 10:46:14,105 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x7378621fd6c0>
+2025-12-23 10:46:15,296 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x7378621fd6c0>
+2025-12-23 10:46:18,037 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x7378621fd6c0>
+2025-12-23 10:46:18,041 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x7378621fd480>
+2025-12-23 10:46:18,177 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x7378621fdf00>
+2025-12-23 10:46:18,548 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x7378621fd480>
+2025-12-23 10:46:19,829 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x7378621fdc00>
+2025-12-23 10:57:50,936 - birdeye.file_tree_viewer - DEBUG - init root
+2025-12-23 10:57:50,955 - asyncio - DEBUG - Using selector: EpollSelector
+2025-12-23 10:57:50,958 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x73625e1f56c0>
+2025-12-23 10:57:52,134 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x73625e1f5c00>
+2025-12-23 10:57:52,668 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x73625e1f5d80>
+2025-12-23 10:57:53,124 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x73625e1f5540>
+2025-12-23 10:57:53,203 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x73625e1f5540>
+2025-12-23 10:57:53,391 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x73625e1f5540>
+2025-12-23 10:57:53,441 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x73625e1f5c00>
+2025-12-23 10:57:53,628 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x73625e1f5540>
+2025-12-23 10:57:53,676 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x73625e1f56c0>
+2025-12-23 10:58:04,173 - birdeye.file_tree_viewer - DEBUG - init root
+2025-12-23 10:58:04,192 - asyncio - DEBUG - Using selector: EpollSelector
+2025-12-23 10:58:04,196 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x73e0636016c0>
+2025-12-23 10:58:08,212 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x73e063601e40>
+2025-12-23 10:58:08,692 - birdeye.file_tree_viewer - DEBUG - pressed.
+2025-12-23 10:58:08,693 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x73e063601d80>
+2025-12-23 10:58:09,152 - birdeye.file_tree_viewer - DEBUG - pressed.
+2025-12-23 10:58:09,153 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x73e063601d80>
+2025-12-23 10:58:09,231 - birdeye.file_tree_viewer - DEBUG - pressed.
+2025-12-23 10:58:09,231 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x73e063601d80>
+2025-12-23 10:58:09,422 - birdeye.file_tree_viewer - DEBUG - pressed.
+2025-12-23 10:58:09,423 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x73e063601d80>
+2025-12-23 10:58:09,471 - birdeye.file_tree_viewer - DEBUG - pressed.
+2025-12-23 10:58:09,472 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x73e063601e40>
+2025-12-23 10:58:09,648 - birdeye.file_tree_viewer - DEBUG - pressed.
+2025-12-23 10:58:09,648 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x73e063601d80>
+2025-12-23 10:58:14,827 - birdeye.file_tree_viewer - DEBUG - pressed.
+2025-12-23 10:58:14,828 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x73e063602140>
+2025-12-23 11:12:46,155 - birdeye.file_tree_viewer - DEBUG - init root
+2025-12-23 11:12:46,175 - asyncio - DEBUG - Using selector: EpollSelector
+2025-12-23 11:12:46,179 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x7ecd950016c0>
+2025-12-23 11:12:51,319 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x7ecd95001cc0>
+2025-12-23 11:12:52,266 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x7ecd95001540>
+2025-12-23 11:12:52,776 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x7ecd95001540>
+2025-12-23 11:12:53,309 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x7ecd950016c0>
+2025-12-23 11:12:53,884 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x7ecd950016c0>
+2025-12-23 11:12:55,619 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x7ecd95001540>
+2025-12-23 11:12:57,365 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x7ecd95001cc0>
+2025-12-23 11:12:58,902 - birdeye.file_tree_viewer - DEBUG - pressed.
+2025-12-23 11:12:58,902 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x7ecd95001e40>
+2025-12-23 11:13:00,750 - birdeye.file_tree_viewer - DEBUG - pressed.
+2025-12-23 11:13:00,751 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x7ecd95001d80>
+2025-12-23 11:13:01,289 - birdeye.file_tree_viewer - DEBUG - pressed.
+2025-12-23 11:13:01,289 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x7ecd95001d80>
+2025-12-23 11:13:01,743 - birdeye.file_tree_viewer - DEBUG - pressed.
+2025-12-23 11:13:01,743 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x7ecd95001cc0>
+2025-12-23 11:13:02,073 - birdeye.file_tree_viewer - DEBUG - pressed.
+2025-12-23 11:13:02,073 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x7ecd95001cc0>
+2025-12-23 11:13:02,497 - birdeye.file_tree_viewer - DEBUG - pressed.
+2025-12-23 11:13:02,498 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x7ecd95001cc0>
+2025-12-23 11:13:02,984 - birdeye.file_tree_viewer - DEBUG - pressed.
+2025-12-23 11:13:02,985 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x7ecd95001cc0>
+2025-12-23 11:13:03,468 - birdeye.file_tree_viewer - DEBUG - pressed.
+2025-12-23 11:13:03,468 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x7ecd95001f00>
+2025-12-23 11:13:03,484 - birdeye.file_tree_viewer - DEBUG - pressed.
+2025-12-23 11:13:03,485 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x7ecd95001540>
+2025-12-23 11:13:03,522 - birdeye.file_tree_viewer - DEBUG - pressed.
+2025-12-23 11:13:03,522 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x7ecd95001f00>
+2025-12-23 11:13:03,913 - birdeye.file_tree_viewer - DEBUG - pressed.
+2025-12-23 11:13:03,914 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x7ecd95001f00>
+2025-12-23 11:13:03,919 - birdeye.file_tree_viewer - DEBUG - pressed.
+2025-12-23 11:13:03,920 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x7ecd95001f00>
+2025-12-23 11:13:03,957 - birdeye.file_tree_viewer - DEBUG - pressed.
+2025-12-23 11:13:03,957 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x7ecd95001e40>
+2025-12-23 11:13:04,404 - birdeye.file_tree_viewer - DEBUG - pressed.
+2025-12-23 11:13:04,404 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x7ecd95001e40>
+2025-12-23 11:13:04,409 - birdeye.file_tree_viewer - DEBUG - pressed.
+2025-12-23 11:13:04,409 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x7ecd95001e40>
+2025-12-23 11:13:04,440 - birdeye.file_tree_viewer - DEBUG - pressed.
+2025-12-23 11:13:04,440 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x7ecd95001540>
+2025-12-23 11:13:04,864 - birdeye.file_tree_viewer - DEBUG - pressed.
+2025-12-23 11:13:04,865 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x7ecd95001cc0>
+2025-12-23 11:13:04,870 - birdeye.file_tree_viewer - DEBUG - pressed.
+2025-12-23 11:13:04,870 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x7ecd95001540>
+2025-12-23 11:13:04,894 - birdeye.file_tree_viewer - DEBUG - pressed.
+2025-12-23 11:13:04,895 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x7ecd95001540>
+2025-12-23 11:17:33,966 - birdeye.file_tree_viewer - DEBUG - init root
+2025-12-23 11:17:33,986 - asyncio - DEBUG - Using selector: EpollSelector
+2025-12-23 11:17:33,991 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x709c030016c0>
+2025-12-23 11:17:39,050 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x709c03001e40>
+2025-12-23 11:17:39,502 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x709c03001d80>
+2025-12-23 11:17:39,657 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x709c03001d80>
+2025-12-23 11:17:39,809 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x709c030016c0>
+2025-12-23 11:17:39,970 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x709c030016c0>
+2025-12-23 11:17:40,444 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x709c03001d80>
+2025-12-23 11:17:40,910 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x709c03001f00>
+2025-12-23 11:17:41,069 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x709c03002140>
+2025-12-23 11:17:41,237 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x709c03001180>
+2025-12-23 11:17:41,603 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x709c03001180>
+2025-12-23 11:17:41,751 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x709c03002080>
+2025-12-23 11:17:41,917 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x709c03002080>
+2025-12-23 11:17:42,071 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x709c03002080>
+2025-12-23 11:17:42,777 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x709c03001fc0>
+2025-12-23 11:17:43,984 - birdeye.file_tree_viewer - DEBUG - pressed.
+2025-12-23 11:17:43,984 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x709c03001e40>
+2025-12-23 11:17:44,564 - birdeye.file_tree_viewer - DEBUG - pressed.
+2025-12-23 11:17:44,564 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x709c03002080>
+2025-12-23 11:17:45,207 - birdeye.file_tree_viewer - DEBUG - pressed.
+2025-12-23 11:17:45,208 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x709c03002080>
+2025-12-23 11:17:45,351 - birdeye.file_tree_viewer - DEBUG - pressed.
+2025-12-23 11:17:45,351 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x709c03001540>
+2025-12-23 11:17:45,481 - birdeye.file_tree_viewer - DEBUG - pressed.
+2025-12-23 11:17:45,482 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x709c03001fc0>
+2025-12-23 11:17:45,529 - birdeye.file_tree_viewer - DEBUG - pressed.
+2025-12-23 11:17:45,529 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x709c03001540>
+2025-12-23 11:17:45,642 - birdeye.file_tree_viewer - DEBUG - pressed.
+2025-12-23 11:17:45,643 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x709c03001fc0>
+2025-12-23 11:17:45,715 - birdeye.file_tree_viewer - DEBUG - pressed.
+2025-12-23 11:17:45,716 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x709c03001fc0>
+2025-12-23 11:17:45,777 - birdeye.file_tree_viewer - DEBUG - pressed.
+2025-12-23 11:17:45,778 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x709c03001fc0>
+2025-12-23 11:17:45,907 - birdeye.file_tree_viewer - DEBUG - pressed.
+2025-12-23 11:17:45,908 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x709c03001fc0>
+2025-12-23 11:17:45,964 - birdeye.file_tree_viewer - DEBUG - pressed.
+2025-12-23 11:17:45,965 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x709c03001fc0>
+2025-12-23 11:17:46,024 - birdeye.file_tree_viewer - DEBUG - pressed.
+2025-12-23 11:17:46,025 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x709c03001fc0>
+2025-12-23 11:17:46,165 - birdeye.file_tree_viewer - DEBUG - pressed.
+2025-12-23 11:17:46,165 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x709c03001cc0>
+2025-12-23 11:17:46,233 - birdeye.file_tree_viewer - DEBUG - pressed.
+2025-12-23 11:17:46,234 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x709c03001cc0>
+2025-12-23 11:17:46,321 - birdeye.file_tree_viewer - DEBUG - pressed.
+2025-12-23 11:17:46,321 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x709c03001cc0>
+2025-12-23 11:17:46,455 - birdeye.file_tree_viewer - DEBUG - pressed.
+2025-12-23 11:17:46,456 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x709c03001540>
+2025-12-23 11:17:46,508 - birdeye.file_tree_viewer - DEBUG - pressed.
+2025-12-23 11:17:46,509 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x709c03001fc0>
+2025-12-23 11:17:46,567 - birdeye.file_tree_viewer - DEBUG - pressed.
+2025-12-23 11:17:46,568 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x709c03001e40>
+2025-12-23 11:17:46,689 - birdeye.file_tree_viewer - DEBUG - pressed.
+2025-12-23 11:17:46,689 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x709c03001e40>
+2025-12-23 11:17:46,730 - birdeye.file_tree_viewer - DEBUG - pressed.
+2025-12-23 11:17:46,731 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x709c03001e40>
+2025-12-23 11:17:56,109 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x709c03002080>
+2025-12-23 11:17:57,999 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x709c03001540>
+2025-12-23 11:17:58,057 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x709c03002080>
+2025-12-23 11:17:58,204 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x709c03002080>
+2025-12-23 11:17:58,583 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x709c03002080>
+2025-12-23 11:17:58,726 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x709c03002080>
+2025-12-23 11:17:58,871 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x709c03002080>
+2025-12-23 11:17:59,018 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x709c03002080>
+2025-12-23 11:17:59,172 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x709c03002080>
+2025-12-23 11:17:59,325 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x709c03002080>
+2025-12-23 11:17:59,471 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x709c03002080>
+2025-12-23 11:18:00,459 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x709c03001e40>
+2025-12-23 11:18:00,930 - birdeye.file_tree_viewer - DEBUG - pressed.
+2025-12-23 11:18:00,931 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x709c03001d80>
+2025-12-23 11:18:01,015 - birdeye.file_tree_viewer - DEBUG - pressed.
+2025-12-23 11:18:01,015 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x709c03001d80>
+2025-12-23 11:18:01,527 - birdeye.file_tree_viewer - DEBUG - pressed.
+2025-12-23 11:18:01,527 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x709c03001e40>
+2025-12-23 11:18:01,580 - birdeye.file_tree_viewer - DEBUG - pressed.
+2025-12-23 11:18:01,580 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x709c03002080>
+2025-12-23 11:18:03,717 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x709c03002080>
+2025-12-23 11:18:28,654 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x709c03002080>
+2025-12-23 11:18:28,805 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x709c03001e40>
+2025-12-23 11:18:28,953 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x709c03001e40>
+2025-12-23 11:18:29,102 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x709c03001e40>
+2025-12-23 11:18:29,259 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x709c03001e40>
+2025-12-23 11:18:29,648 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x709c03001e40>
+2025-12-23 11:18:29,810 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x709c03001e40>
+2025-12-23 11:18:29,966 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x709c03001e40>
+2025-12-23 11:18:30,124 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x709c03001e40>
+2025-12-23 11:18:30,293 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x709c03001e40>
+2025-12-23 11:18:30,597 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x709c03001540>
+2025-12-23 11:18:30,930 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x709c03001540>
+2025-12-23 11:18:31,111 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x709c03001540>
+2025-12-23 11:18:31,613 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x709c03001f00>
+2025-12-23 11:18:31,775 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x709c030022c0>
+2025-12-23 11:18:31,935 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x709c03002440>
+2025-12-23 11:18:32,087 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x709c03002680>
+2025-12-23 11:18:32,884 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x709c03002b00>
+2025-12-23 11:18:33,315 - birdeye.file_tree_viewer - DEBUG - pressed.
+2025-12-23 11:18:33,315 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x709c03002b00>
+2025-12-23 11:18:33,388 - birdeye.file_tree_viewer - DEBUG - pressed.
+2025-12-23 11:18:33,389 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x709c03002d40>
+2025-12-23 11:18:33,688 - birdeye.file_tree_viewer - DEBUG - pressed.
+2025-12-23 11:18:33,688 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x709c03001cc0>
+2025-12-23 11:18:33,933 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x709c03001cc0>
+2025-12-23 11:18:34,433 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x709c03002e00>
+2025-12-23 11:18:34,463 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x709c03001180>
+2025-12-23 11:18:34,494 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x709c030028c0>
+2025-12-23 11:18:34,525 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x709c03002d40>
+2025-12-23 11:18:34,556 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x709c03002080>
+2025-12-23 11:18:34,588 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x709c03001cc0>
+2025-12-23 11:18:34,619 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x709c03001cc0>
+2025-12-23 11:18:34,650 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x709c03002e00>
+2025-12-23 11:18:34,682 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x709c03002080>
+2025-12-23 11:18:34,713 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x709c03001180>
+2025-12-23 11:18:34,744 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x709c03002d40>
+2025-12-23 11:18:34,775 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x709c03002d40>
+2025-12-23 11:18:34,806 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x709c030028c0>
+2025-12-23 11:18:34,838 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x709c03002e00>
+2025-12-23 11:18:34,869 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x709c03002ec0>
+2025-12-23 11:18:34,900 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x709c03002b00>
+2025-12-23 11:18:34,931 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x709c030028c0>
+2025-12-23 11:18:34,963 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x709c03002d40>
+2025-12-23 11:18:34,993 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x709c03002080>
+2025-12-23 11:18:35,024 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x709c03002e00>
+2025-12-23 11:18:35,324 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x709c03002e00>
+2025-12-23 11:18:35,452 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x709c03001cc0>
+2025-12-23 11:18:35,601 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x709c030028c0>
+2025-12-23 11:18:35,748 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x709c03001180>
+2025-12-23 11:18:35,896 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x709c03002e00>
+2025-12-23 11:18:38,354 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x709c03002e00>
+2025-12-23 11:18:43,148 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x709c03002ec0>
+2025-12-23 11:18:44,669 - birdeye.file_tree_viewer - DEBUG - pressed.
+2025-12-23 11:18:44,669 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x709c030028c0>
+2025-12-23 11:18:46,172 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x709c03002ec0>
+2025-12-23 11:18:47,933 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x709c030028c0>
+2025-12-23 11:18:48,447 - birdeye.file_tree_viewer - DEBUG - pressed.
+2025-12-23 11:18:48,448 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x709c03001cc0>
+2025-12-23 11:18:48,672 - birdeye.file_tree_viewer - DEBUG - pressed.
+2025-12-23 11:18:48,673 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x709c03001cc0>
+2025-12-23 11:18:48,829 - birdeye.file_tree_viewer - DEBUG - pressed.
+2025-12-23 11:18:48,830 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x709c03002e00>
+2025-12-23 11:18:48,889 - birdeye.file_tree_viewer - DEBUG - pressed.
+2025-12-23 11:18:48,890 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x709c030028c0>
+2025-12-23 11:18:49,084 - birdeye.file_tree_viewer - DEBUG - pressed.
+2025-12-23 11:18:49,085 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x709c03001180>
+2025-12-23 11:18:49,139 - birdeye.file_tree_viewer - DEBUG - pressed.
+2025-12-23 11:18:49,139 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x709c03002f80>
+2025-12-23 11:18:51,353 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x709c03002f80>
+2025-12-23 11:20:22,643 - birdeye.file_tree_viewer - DEBUG - init root
+2025-12-23 11:20:22,663 - asyncio - DEBUG - Using selector: EpollSelector
+2025-12-23 11:20:22,667 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x7673c86116c0>
+2025-12-23 11:20:27,237 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x7673c8611e40>
+2025-12-23 11:20:27,295 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x7673c8611d80>
+2025-12-23 11:20:27,452 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x7673c8611d80>
+2025-12-23 11:20:27,614 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x7673c86116c0>
+2025-12-23 11:20:27,771 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x7673c86116c0>
+2025-12-23 11:20:27,928 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x7673c8611d80>
+2025-12-23 11:20:28,100 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x7673c8611f00>
+2025-12-23 11:20:28,258 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x7673c8612140>
+2025-12-23 11:20:28,424 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x7673c8611180>
+2025-12-23 11:20:29,047 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x7673c8612200>
+2025-12-23 11:20:30,659 - birdeye.file_tree_viewer - DEBUG - pressed.
+2025-12-23 11:20:30,659 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x7673c8612080>
+2025-12-23 11:20:31,477 - birdeye.file_tree_viewer - DEBUG - pressed.
+2025-12-23 11:20:31,477 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x7673c8612080>
+2025-12-23 11:20:32,198 - birdeye.file_tree_viewer - DEBUG - pressed.
+2025-12-23 11:20:32,199 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x7673c8612080>
+2025-12-23 11:20:32,588 - birdeye.file_tree_viewer - DEBUG - pressed.
+2025-12-23 11:20:32,589 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x7673c8611e40>
+2025-12-23 11:20:34,715 - birdeye.file_tree_viewer - DEBUG - escaping
+2025-12-23 11:20:34,715 - birdeye.file_tree_viewer - DEBUG - focussing previous
+2025-12-23 11:20:34,716 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x7673c86116c0>
+2025-12-23 11:21:55,681 - birdeye.file_tree_viewer - DEBUG - init root
+2025-12-23 11:21:55,700 - asyncio - DEBUG - Using selector: EpollSelector
+2025-12-23 11:21:55,704 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x7aa0f3a01600>
+2025-12-23 11:21:58,537 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x7aa0f3a01d80>
+2025-12-23 11:21:58,694 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x7aa0f3a01cc0>
+2025-12-23 11:21:58,847 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x7aa0f3a01cc0>
+2025-12-23 11:21:59,215 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x7aa0f3a01600>
+2025-12-23 11:21:59,671 - birdeye.file_tree_viewer - DEBUG - pressed.
+2025-12-23 11:21:59,671 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x7aa0f3a01600>
+2025-12-23 11:21:59,757 - birdeye.file_tree_viewer - DEBUG - pressed.
+2025-12-23 11:21:59,758 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x7aa0f3a01480>
+2025-12-23 11:21:59,962 - birdeye.file_tree_viewer - DEBUG - pressed.
+2025-12-23 11:21:59,963 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x7aa0f3a010c0>
+2025-12-23 11:22:00,006 - birdeye.file_tree_viewer - DEBUG - pressed.
+2025-12-23 11:22:00,006 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x7aa0f3a01600>
+2025-12-23 11:22:00,298 - birdeye.file_tree_viewer - DEBUG - pressed.
+2025-12-23 11:22:00,298 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x7aa0f3a01600>
+2025-12-23 11:22:00,343 - birdeye.file_tree_viewer - DEBUG - pressed.
+2025-12-23 11:22:00,344 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x7aa0f3a01600>
+2025-12-23 11:22:00,500 - birdeye.file_tree_viewer - DEBUG - pressed.
+2025-12-23 11:22:00,500 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x7aa0f3a01cc0>
+2025-12-23 11:22:02,947 - birdeye.file_tree_viewer - DEBUG - escaped.
+2025-12-23 11:22:02,948 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x7aa0f3a01d80>
+2025-12-23 11:22:07,192 - birdeye.file_tree_viewer - DEBUG - escaped.
+2025-12-23 11:22:07,192 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x7aa0f3a01d80>
+2025-12-23 11:23:03,590 - birdeye.file_tree_viewer - DEBUG - init root
+2025-12-23 11:23:03,611 - asyncio - DEBUG - Using selector: EpollSelector
+2025-12-23 11:23:03,615 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x76f8e89f56c0>
+2025-12-23 11:23:06,598 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x76f8e89f5e40>
+2025-12-23 11:23:16,317 - birdeye.file_tree_viewer - DEBUG - pressed.
+2025-12-23 11:23:16,318 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x76f8e89f50c0>
+2025-12-23 11:23:20,768 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x76f8e89f56c0>
+2025-12-23 11:23:23,818 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x76f8e89f56c0>
+2025-12-23 11:23:26,716 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x76f8e89f56c0>
+2025-12-23 11:23:29,058 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x76f8e89f5c00>
+2025-12-23 11:23:43,133 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x76f8e89f56c0>
+2025-12-23 11:23:47,556 - birdeye.file_tree_viewer - DEBUG - pressed.
+2025-12-23 11:23:47,557 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x76f8e89f6080>
+2025-12-23 11:25:06,386 - birdeye.file_tree_viewer - DEBUG - init root
+2025-12-23 11:25:06,393 - asyncio - DEBUG - Using selector: EpollSelector
+2025-12-23 11:25:06,395 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x77c2299e10c0>
+2025-12-23 11:25:07,268 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x77c2299e13c0>
+2025-12-23 11:25:07,282 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x77c2299e1300>
+2025-12-23 11:25:07,440 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x77c2299e1300>
+2025-12-23 11:25:07,594 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x77c2299e1300>
+2025-12-23 11:25:07,885 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x77c2299e1300>
+2025-12-23 11:25:08,465 - birdeye.file_tree_viewer - DEBUG - pressed.
+2025-12-23 11:25:08,465 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x77c2299e13c0>
+2025-12-23 11:25:08,561 - birdeye.file_tree_viewer - DEBUG - pressed.
+2025-12-23 11:25:08,562 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x77c2299e0580>
+2025-12-23 11:25:08,746 - birdeye.file_tree_viewer - DEBUG - pressed.
+2025-12-23 11:25:08,746 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x77c2299e1300>
+2025-12-23 11:25:08,808 - birdeye.file_tree_viewer - DEBUG - pressed.
+2025-12-23 11:25:08,809 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x77c2299e1300>
+2025-12-23 11:25:10,912 - birdeye.file_tree_viewer - DEBUG - escaped.
+2025-12-23 11:25:10,912 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x77c2299e1240>
+2025-12-23 11:26:11,965 - birdeye.file_tree_viewer - DEBUG - pressed.
+2025-12-23 11:26:11,965 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x77c2299e1240>
+2025-12-23 11:26:14,167 - birdeye.file_tree_viewer - DEBUG - escaped.
+2025-12-23 11:26:14,167 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x77c2299e1240>
+2025-12-23 11:26:15,607 - birdeye.file_tree_viewer - DEBUG - init root
+2025-12-23 11:26:15,613 - asyncio - DEBUG - Using selector: EpollSelector
+2025-12-23 11:26:15,614 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x70fb59ee9180>
+2025-12-23 11:26:16,266 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x70fb59ee9480>
+2025-12-23 11:26:16,398 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x70fb59ee93c0>
+2025-12-23 11:26:16,662 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x70fb59ee93c0>
+2025-12-23 11:26:18,855 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x70fb59ee93c0>
+2025-12-23 11:27:12,486 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x70fb59ee93c0>
+2025-12-23 11:27:19,968 - birdeye.file_tree_viewer - DEBUG - init root
+2025-12-23 11:27:19,988 - asyncio - DEBUG - Using selector: EpollSelector
+2025-12-23 11:27:19,993 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x746841a01780>
+2025-12-23 11:27:23,664 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x746841a01e40>
+2025-12-23 11:27:23,684 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x746841a01cc0>
+2025-12-23 11:27:23,846 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x746841a01cc0>
+2025-12-23 11:27:24,003 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x746841a01780>
+2025-12-23 11:27:24,159 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x746841a01780>
+2025-12-23 11:27:24,311 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x746841a01cc0>
+2025-12-23 11:27:24,956 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x746841a01540>
+2025-12-23 11:27:30,019 - birdeye.file_tree_viewer - DEBUG - pressed.
+2025-12-23 11:27:30,020 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x746841a02080>
+2025-12-23 11:27:35,746 - birdeye.file_tree_viewer - DEBUG - escaped
+2025-12-23 11:27:35,747 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x746841a01f00>
+2025-12-23 11:27:42,354 - birdeye.file_tree_viewer - DEBUG - escaped
+2025-12-23 11:27:42,355 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x746841a01780>
+2025-12-23 11:27:43,827 - birdeye.file_tree_viewer - DEBUG - escaped
+2025-12-23 11:27:43,828 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x746841a01780>
+2025-12-23 11:27:44,843 - birdeye.file_tree_viewer - DEBUG - escaped
+2025-12-23 11:27:44,843 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x746841a01780>
+2025-12-23 11:29:33,902 - birdeye.file_tree_viewer - DEBUG - init root
+2025-12-23 11:29:33,921 - asyncio - DEBUG - Using selector: EpollSelector
+2025-12-23 11:29:33,925 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x782cd0b0d6c0>
+2025-12-23 11:29:36,694 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x782cd0b0de40>
+2025-12-23 11:29:37,612 - birdeye.file_tree_viewer - DEBUG - pressed.
+2025-12-23 11:29:37,613 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x782cd0b0dd80>
+2025-12-23 11:29:38,368 - birdeye.file_tree_viewer - DEBUG - pressed.
+2025-12-23 11:29:38,368 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x782cd0b0dd80>
+2025-12-23 11:29:38,935 - birdeye.file_tree_viewer - DEBUG - pressed.
+2025-12-23 11:29:38,936 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x782cd0b0dd80>
+2025-12-23 11:29:40,025 - birdeye.file_tree_viewer - DEBUG - escaped
+2025-12-23 11:29:40,025 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x782cd0b0dc00>
+2025-12-23 11:30:48,022 - birdeye.file_tree_viewer - DEBUG - init root
+2025-12-23 11:30:48,045 - asyncio - DEBUG - Using selector: EpollSelector
+2025-12-23 11:30:48,049 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x7cf27331d6c0>
+2025-12-23 11:30:54,438 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x7cf27331dd80>
+2025-12-23 11:30:54,579 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x7cf27331dc00>
+2025-12-23 11:30:54,735 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x7cf27331dc00>
+2025-12-23 11:30:54,889 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x7cf27331d6c0>
+2025-12-23 11:30:55,043 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x7cf27331d6c0>
+2025-12-23 11:30:55,193 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x7cf27331dc00>
+2025-12-23 11:30:56,067 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x7cf27331d540>
+2025-12-23 11:30:56,580 - birdeye.file_tree_viewer - DEBUG - pressed.
+2025-12-23 11:30:56,581 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x7cf27331d6c0>
+2025-12-23 11:30:56,970 - birdeye.file_tree_viewer - DEBUG - pressed.
+2025-12-23 11:30:56,970 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x7cf27331dc00>
+2025-12-23 11:30:57,061 - birdeye.file_tree_viewer - DEBUG - pressed.
+2025-12-23 11:30:57,062 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x7cf27331dc00>
+2025-12-23 11:30:57,225 - birdeye.file_tree_viewer - DEBUG - pressed.
+2025-12-23 11:30:57,226 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x7cf27331dd80>
+2025-12-23 11:30:58,303 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x7cf27331d540>
+2025-12-23 11:30:59,501 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x7cf27331dfc0>
+2025-12-23 11:30:59,524 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x7cf27331e080>
+2025-12-23 11:30:59,685 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x7cf27331df00>
+2025-12-23 11:30:59,932 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x7cf27331dc00>
+2025-12-23 11:31:00,064 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x7cf27331dc00>
+2025-12-23 11:31:00,215 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x7cf27331dc00>
+2025-12-23 11:31:00,359 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x7cf27331dc00>
+2025-12-23 11:31:00,512 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x7cf27331dc00>
+2025-12-23 11:31:00,859 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x7cf27331dfc0>
+2025-12-23 11:31:01,649 - birdeye.file_tree_viewer - DEBUG - pressed.
+2025-12-23 11:31:01,649 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x7cf27331e080>
+2025-12-23 11:31:01,729 - birdeye.file_tree_viewer - DEBUG - pressed.
+2025-12-23 11:31:01,729 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x7cf27331e080>
+2025-12-23 11:31:01,735 - birdeye.file_tree_viewer - DEBUG - pressed.
+2025-12-23 11:31:01,735 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x7cf27331e080>
+2025-12-23 11:31:01,780 - birdeye.file_tree_viewer - DEBUG - pressed.
+2025-12-23 11:31:01,780 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x7cf27331dcc0>
+2025-12-23 11:31:01,916 - birdeye.file_tree_viewer - DEBUG - pressed.
+2025-12-23 11:31:01,917 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x7cf27331dcc0>
+2025-12-23 11:31:02,146 - birdeye.file_tree_viewer - DEBUG - pressed.
+2025-12-23 11:31:02,147 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x7cf27331dcc0>
+2025-12-23 11:31:02,936 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x7cf27331e080>
+2025-12-23 11:31:42,664 - birdeye.file_tree_viewer - DEBUG - init root
+2025-12-23 11:31:42,684 - asyncio - DEBUG - Using selector: EpollSelector
+2025-12-23 11:31:42,688 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x744a738f96c0>
+2025-12-23 11:31:45,714 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x744a738f9d80>
+2025-12-23 11:31:45,771 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x744a738f9c00>
+2025-12-23 11:31:45,924 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x744a738f9c00>
+2025-12-23 11:31:46,089 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x744a738f96c0>
+2025-12-23 11:31:46,249 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x744a738f96c0>
+2025-12-23 11:31:46,834 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x744a738f9540>
+2025-12-23 11:31:47,601 - birdeye.file_tree_viewer - DEBUG - pressed.
+2025-12-23 11:31:47,602 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x744a738f96c0>
+2025-12-23 11:31:48,017 - birdeye.file_tree_viewer - DEBUG - pressed.
+2025-12-23 11:31:48,017 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x744a738f9e40>
+2025-12-23 11:31:48,103 - birdeye.file_tree_viewer - DEBUG - pressed.
+2025-12-23 11:31:48,104 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x744a738f9c00>
+2025-12-23 11:31:48,277 - birdeye.file_tree_viewer - DEBUG - pressed.
+2025-12-23 11:31:48,278 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x744a738f9c00>
+2025-12-23 11:31:48,343 - birdeye.file_tree_viewer - DEBUG - pressed.
+2025-12-23 11:31:48,343 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x744a738f9540>
+2025-12-23 11:31:48,510 - birdeye.file_tree_viewer - DEBUG - pressed.
+2025-12-23 11:31:48,511 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x744a738f9540>
+2025-12-23 11:31:48,557 - birdeye.file_tree_viewer - DEBUG - pressed.
+2025-12-23 11:31:48,558 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x744a738f9540>
+2025-12-23 11:31:48,734 - birdeye.file_tree_viewer - DEBUG - pressed.
+2025-12-23 11:31:48,734 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x744a738f9540>
+2025-12-23 11:31:49,987 - birdeye.file_tree_viewer - DEBUG - escaped
+2025-12-23 11:31:49,988 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x744a738fa080>
+2025-12-23 11:31:52,674 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x744a738f9fc0>
+2025-12-23 11:31:53,773 - birdeye.file_tree_viewer - DEBUG - pressed.
+2025-12-23 11:31:53,773 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x744a738fa140>
+2025-12-23 11:31:53,920 - birdeye.file_tree_viewer - DEBUG - pressed.
+2025-12-23 11:31:53,920 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x744a738fa140>
+2025-12-23 11:31:55,021 - birdeye.file_tree_viewer - DEBUG - escaped
+2025-12-23 11:31:55,022 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x744a738f9c00>
+2025-12-23 11:33:44,647 - birdeye.file_tree_viewer - DEBUG - init root
+2025-12-23 11:33:44,665 - asyncio - DEBUG - Using selector: EpollSelector
+2025-12-23 11:33:44,669 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x7ecca09016c0>
+2025-12-23 11:33:48,621 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x7ecca0901d80>
+2025-12-23 11:33:48,654 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x7ecca0901c00>
+2025-12-23 11:33:48,806 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x7ecca0901c00>
+2025-12-23 11:33:49,169 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x7ecca09016c0>
+2025-12-23 11:33:49,573 - birdeye.file_tree_viewer - DEBUG - pressed.
+2025-12-23 11:33:49,574 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x7ecca09016c0>
+2025-12-23 11:33:49,712 - birdeye.file_tree_viewer - DEBUG - pressed.
+2025-12-23 11:33:49,713 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x7ecca0901540>
+2025-12-23 11:33:49,791 - birdeye.file_tree_viewer - DEBUG - pressed.
+2025-12-23 11:33:49,792 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x7ecca0901e40>
+2025-12-23 11:33:50,758 - birdeye.file_tree_viewer - DEBUG - escaped
+2025-12-23 11:33:50,758 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x7ecca0901540>
+2025-12-23 11:33:51,795 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x7ecca0901540>
+2025-12-23 11:33:51,839 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x7ecca0901d80>
+2025-12-23 11:33:51,994 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x7ecca0901c00>
+2025-12-23 11:33:52,134 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x7ecca0901f00>
+2025-12-23 11:33:52,376 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x7ecca0901f00>
+2025-12-23 11:33:52,513 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x7ecca0901f00>
+2025-12-23 11:33:52,650 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x7ecca0901e40>
+2025-12-23 11:33:52,803 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x7ecca0901c00>
+2025-12-23 11:33:52,952 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x7ecca0901c00>
+2025-12-23 11:34:24,030 - birdeye.file_tree_viewer - DEBUG - init root
+2025-12-23 11:34:24,049 - asyncio - DEBUG - Using selector: EpollSelector
+2025-12-23 11:34:24,054 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x7fdb798096c0>
+2025-12-23 11:34:26,409 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x7fdb79809d80>
+2025-12-23 11:34:26,446 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x7fdb79809c00>
+2025-12-23 11:34:26,605 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x7fdb79809c00>
+2025-12-23 11:34:26,989 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x7fdb798096c0>
+2025-12-23 11:34:27,379 - birdeye.file_tree_viewer - DEBUG - pressed.
+2025-12-23 11:34:27,380 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x7fdb798096c0>
+2025-12-23 11:34:27,519 - birdeye.file_tree_viewer - DEBUG - pressed.
+2025-12-23 11:34:27,519 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x7fdb79809540>
+2025-12-23 11:34:27,589 - birdeye.file_tree_viewer - DEBUG - pressed.
+2025-12-23 11:34:27,589 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x7fdb79809e40>
+2025-12-23 11:34:28,550 - birdeye.file_tree_viewer - DEBUG - escaped
+2025-12-23 11:34:28,551 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x7fdb79809540>
+2025-12-23 11:34:29,774 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x7fdb79809540>
+2025-12-23 11:34:29,778 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x7fdb798096c0>
+2025-12-23 11:34:29,938 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x7fdb79809c00>
+2025-12-23 11:34:30,083 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x7fdb79809d80>
+2025-12-23 11:40:48,098 - birdeye.file_tree_viewer - DEBUG - init root
+2025-12-23 11:40:48,117 - asyncio - DEBUG - Using selector: EpollSelector
+2025-12-23 11:40:48,120 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x75b9e4401600>
+2025-12-23 11:40:50,703 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x75b9e4401b40>
+2025-12-23 11:40:50,718 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x75b9e4401480>
+2025-12-23 11:40:50,880 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x75b9e4401600>
+2025-12-23 11:40:51,034 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x75b9e4401600>
+2025-12-23 11:40:51,314 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x75b9e4401d80>
+2025-12-23 11:40:51,770 - birdeye.file_tree_viewer - DEBUG - pressed.
+2025-12-23 11:40:51,770 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x75b9e4401cc0>
+2025-12-23 11:40:51,953 - birdeye.file_tree_viewer - DEBUG - pressed.
+2025-12-23 11:40:51,954 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x75b9e4401480>
+2025-12-23 11:40:52,299 - birdeye.file_tree_viewer - DEBUG - pressed.
+2025-12-23 11:40:52,300 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x75b9e4401d80>
+2025-12-23 11:40:52,826 - birdeye.file_tree_viewer - DEBUG - escaped
+2025-12-23 11:40:52,826 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x75b9e4401b40>
+2025-12-23 11:40:53,791 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x75b9e4401b40>
+2025-12-23 11:40:53,949 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x75b9e4401e40>
+2025-12-23 11:40:54,110 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x75b9e4401cc0>
+2025-12-23 11:40:54,262 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x75b9e4401cc0>
+2025-12-23 11:40:54,406 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x75b9e4401cc0>
+2025-12-23 11:40:54,897 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x75b9e4402140>
+2025-12-23 14:29:14,668 - birdeye.file_tree_viewer - DEBUG - init root
+2025-12-23 14:29:14,687 - asyncio - DEBUG - Using selector: EpollSelector
+2025-12-23 14:29:14,692 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x71f112805600>
+2025-12-23 14:29:17,840 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x71f112805b40>
+2025-12-23 14:29:17,911 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x71f112805480>
+2025-12-23 14:29:18,056 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x71f112805600>
+2025-12-23 14:29:18,240 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x71f112805600>
+2025-12-23 14:29:18,365 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x71f112805600>
+2025-12-23 14:29:18,702 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x71f112805d80>
+2025-12-23 14:29:19,214 - birdeye.file_tree_viewer - DEBUG - pressed.
+2025-12-23 14:29:19,214 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x71f112805e40>
+2025-12-23 14:29:19,375 - birdeye.file_tree_viewer - DEBUG - pressed.
+2025-12-23 14:29:19,375 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x71f112805480>
+2025-12-23 14:29:19,425 - birdeye.file_tree_viewer - DEBUG - pressed.
+2025-12-23 14:29:19,425 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x71f112805cc0>
+2025-12-23 14:29:19,620 - birdeye.file_tree_viewer - DEBUG - pressed.
+2025-12-23 14:29:19,620 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x71f112805d80>
+2025-12-23 14:29:19,681 - birdeye.file_tree_viewer - DEBUG - pressed.
+2025-12-23 14:29:19,681 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x71f112805d80>
+2025-12-23 14:29:20,005 - birdeye.file_tree_viewer - DEBUG - escaped
+2025-12-23 14:29:20,006 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x71f112805b40>
+2025-12-23 14:30:08,660 - birdeye.file_tree_viewer - DEBUG - init root
+2025-12-23 14:30:08,679 - asyncio - DEBUG - Using selector: EpollSelector
+2025-12-23 14:30:08,683 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x7b6ef7b15600>
+2025-12-23 14:30:10,924 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x7b6ef7b15b40>
+2025-12-23 14:30:11,026 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x7b6ef7b15480>
+2025-12-23 14:30:11,177 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x7b6ef7b15600>
+2025-12-23 14:30:11,340 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x7b6ef7b15600>
+2025-12-23 14:30:11,866 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x7b6ef7b15d80>
+2025-12-23 14:30:12,920 - birdeye.file_tree_viewer - DEBUG - escaped
+2025-12-23 14:30:12,921 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x7b6ef7b15cc0>
+2025-12-23 14:30:13,657 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x7b6ef7b15e40>
+2025-12-23 14:30:13,724 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x7b6ef7b15b40>
+2025-12-23 14:30:13,884 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x7b6ef7b15fc0>
+2025-12-23 14:30:14,043 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x7b6ef7b15fc0>
+2025-12-23 14:30:14,197 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x7b6ef7b16080>
+2025-12-23 14:30:14,363 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x7b6ef7b16080>
+2025-12-23 14:30:14,812 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x7b6ef7b15d80>
+2025-12-23 14:30:15,708 - birdeye.file_tree_viewer - DEBUG - pressed.
+2025-12-23 14:30:15,708 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x7b6ef7b15d80>
+2025-12-23 14:30:15,870 - birdeye.file_tree_viewer - DEBUG - pressed.
+2025-12-23 14:30:15,870 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x7b6ef7b16080>
+2025-12-23 14:30:15,916 - birdeye.file_tree_viewer - DEBUG - pressed.
+2025-12-23 14:30:15,916 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x7b6ef7b15d80>
+2025-12-23 14:30:25,015 - birdeye.file_tree_viewer - DEBUG - pressed.
+2025-12-23 14:30:25,015 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x7b6ef7b15480>
+2025-12-23 14:30:27,222 - birdeye.file_tree_viewer - DEBUG - escaped
+2025-12-23 14:30:27,223 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x7b6ef7b15b40>
+2025-12-23 14:30:28,539 - birdeye.file_tree_viewer - DEBUG - <generator object FileTreeViewer._update_display.<locals>.<genexpr> at 0x7b6ef7b15b40>
