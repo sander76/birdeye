@@ -13,6 +13,7 @@ from typing import Generator, Literal
 import pygit2
 from prompt_toolkit.application import get_app
 from prompt_toolkit.buffer import Buffer
+from prompt_toolkit.completion.base import ThreadedCompleter
 from prompt_toolkit.filters import Condition
 from prompt_toolkit.formatted_text import FormattedText
 from prompt_toolkit.key_binding import KeyBindings
@@ -71,6 +72,9 @@ class Search:
         return self.window
 
 
+ThreadedCompleter
+
+
 class FileTreeViewer:
     """Main application class for the file tree viewer."""
 
@@ -91,7 +95,6 @@ class FileTreeViewer:
             # key_bindings=self._setup_key_bindings(),
         )
 
-        # Create main window with scrollable pane
         main_window = ScrollablePane(Window(content=text_control, wrap_lines=True))
 
         # Create search footer
@@ -100,7 +103,6 @@ class FileTreeViewer:
             filter=Condition(lambda: self._search_visible),
         )
 
-        # Create layout
         self._container = HSplit(
             [main_window, search_footer], key_bindings=self._setup_key_bindings()
         )
