@@ -346,3 +346,27 @@ def test_no_use_gitignore(settings_with_git: Settings):
         settings_with_git.root_folder / "src",
         settings_with_git.root_folder / "tests",
     }
+
+
+def test_allnodes(settings_no_git: Settings):
+    # ..root
+    # ├── pyproject.toml
+    # ├── src
+    # │   ├── main.py
+    # │   └── my_lib
+    # │       └── base.py
+    # └── tests
+    #     └── test_main.py
+    ft = FileTreeViewer(settings_no_git)
+
+    all_nodes = list(nd.name for nd in ft._focussed_node.all_nodes())
+    assert all_nodes == [
+        settings_no_git.root_folder.name,
+        "pyproject.toml",
+        "src",
+        "main.py",
+        "my_lib",
+        "base.py",
+        "tests",
+        "test_main.py",
+    ]

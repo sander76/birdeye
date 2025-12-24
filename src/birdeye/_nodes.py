@@ -144,6 +144,11 @@ class Node(BaseNode):
 
         self.parent.bubble(event="focus_changed", event_data=new_focussed)
 
+    def all_nodes(self) -> Generator[Node | TreeNode, None, None]:
+        yield self
+        if self.down:
+            yield from self.down.all_nodes()
+
 
 class TreeNode(BaseNode):
     """Represents a node in the file tree."""
@@ -177,7 +182,14 @@ class TreeNode(BaseNode):
             self.enter()
 
     def bubble(self, event: str, event_data: object) -> None:
+        if event == "match_found":
+            self._expanded = True
         self.parent.bubble(event, event_data)
+
+    def match(self, str_to_match: str) -> None:
+        if self.name.find(str_to_match) >= 0:
+            # todo: highlight the match
+            self.parent.bubble(event="match_found", event_data=self)
 
     def focus(self, direction: Literal[-1, 1]) -> None:
         new_focussed = self.up if direction == -1 else self.down
@@ -220,10 +232,6 @@ class TreeNode(BaseNode):
 
         return new_focussed
 
-    # def render(self) -> tuple[str, str]:
-    #     _logger.debug("Render a treenode")
-    #     return self._get_style(), f"{self._ICON} {self.name}\n"
-
     def load_children(self) -> None:
         """Load child nodes if this is a directory."""
         if self._children is None:
@@ -257,6 +265,18 @@ class TreeNode(BaseNode):
             child._same_level_down = self._same_level_down
             self.last_child = child
             self._children = True
+
+    def all_nodes(self) -> Generator[Node | TreeNode, None, None]:
+        """All nodes, regardless of visibility."""
+        self.load_children()
+
+        yield self
+
+        if self._child_down:
+            yield from self._child_down.all_nodes()
+
+        elif self._same_level_down:
+            yield from self._same_level_down.all_nodes()
 
     def full_tree(self) -> Generator[Node | TreeNode, None, None]:
         """All visible nodes/treenodes."""
