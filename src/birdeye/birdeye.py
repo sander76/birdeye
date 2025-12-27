@@ -9,6 +9,7 @@ from prompt_toolkit.layout.containers import HSplit, Window
 from prompt_toolkit.layout.controls import FormattedTextControl
 from prompt_toolkit.layout.layout import Layout
 from prompt_toolkit.output.vt100 import Vt100_Output
+from prompt_toolkit.styles.style import Style
 
 from birdeye.file_tree_viewer import FileTreeViewer, Settings
 
@@ -56,6 +57,7 @@ def main(settings: Settings):
             full_screen=True,
             # mouse_support=True,
             output=Vt100_Output.from_pty(sys.stderr),
+            style=Style.from_dict(settings.to_style_dict()),
         )
 
         # https://github.com/prompt-toolkit/python-prompt-toolkit/issues/1901#issuecomment-2259116988

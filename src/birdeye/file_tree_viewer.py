@@ -8,7 +8,7 @@ from __future__ import annotations
 import logging
 from dataclasses import dataclass
 from pathlib import Path
-from typing import Generator, Literal
+from typing import Callable, Generator, Literal
 
 import pygit2
 from prompt_toolkit.application import get_app
@@ -26,6 +26,7 @@ from prompt_toolkit.layout.containers import (
 from prompt_toolkit.layout.controls import BufferControl, FormattedTextControl
 from prompt_toolkit.layout.processors import BeforeInput, Processor
 from prompt_toolkit.layout.scrollable_pane import ScrollablePane
+from prompt_toolkit.styles.style import Style
 from prompt_toolkit.widgets import TextArea
 
 from birdeye._nodes import Node, TreeNode
@@ -33,14 +34,22 @@ from birdeye._nodes import Node, TreeNode
 _logger = logging.getLogger(__name__)
 
 
-@dataclass
+@dataclass(slots=True, frozen=True)
 class Settings:
     root_folder: Path
     use_git_ignore: bool = True
+    style_node_focussed: str = "bg:#ffffff fg:#000000"
+    style_node_find_match: str = "bg:#ffff00 fg:#000000"
+
+    def to_style_dict(self) -> dict[str, str]:
+        return {
+            "node_focussed": self.style_node_focussed,
+            "node_find_match": self.style_node_find_match,
+        }
 
 
 class Search:
-    def __init__(self):
+    def __init__(self, on_start_search: Callable[[str], None]):
         self.buffer = Buffer()
         self.control = BufferControl(
             buffer=self.buffer,
@@ -48,6 +57,7 @@ class Search:
             focusable=True,
             key_bindings=self._get_key_bindings(),
         )
+        self._on_start_search = on_start_search
 
         self.window = Window(height=1, content=self.control)
 
@@ -61,10 +71,9 @@ class Search:
 
         #     _logger.debug("escaped")
 
-        @kb.add("<any>")
+        @kb.add("enter")
         def _(event) -> None:
-            self.buffer.insert_text(event.data)
-            _logger.debug("pressed.")
+            self._on_start_search(self.buffer.text)
 
         return kb
 
@@ -87,7 +96,7 @@ class FileTreeViewer:
         self._root_node = self._focussed_node = self._init_root_node()
         self._search_visible = False
 
-        self._search_input = Search()
+        self._search_input = Search(self.find)
 
         text_control = FormattedTextControl(
             text=self._update_display,
@@ -180,6 +189,10 @@ class FileTreeViewer:
             self._focussed_node = event_data
             self._focussed_node.focussed = True
 
+    def find(self, str_to_find: str) -> None:
+        for nd in self._root_node.all_nodes():
+            nd.find(str_to_find)
+
     def _update_display(self) -> FormattedText:
         """Update the display buffer with current tree state."""
 
@@ -189,7 +202,7 @@ class FileTreeViewer:
             for node in self._root_node.full_tree():
                 if node.focussed:
                     yield ("[SetCursorPosition]", "")
-                yield node.render()
+                yield from node.render()
 
         nodes = (node for node in render())
 

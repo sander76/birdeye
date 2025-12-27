@@ -1,11 +1,13 @@
 import dataclasses
 from pathlib import Path
+from unittest.mock import Mock
 
 import pygit2
 import pytest
 from dirty_equals import HasAttributes
 
-from birdeye.file_tree_viewer import FileTreeViewer, Settings, TreeNode
+from birdeye._nodes import BaseNode
+from birdeye.file_tree_viewer import FileTreeViewer, Node, Settings, TreeNode
 
 
 @pytest.fixture
@@ -270,6 +272,19 @@ def test_exit_on_node(settings_no_git: Settings):
     assert ft._focussed_node.name == "src"
 
 
+def test_empty_folder(tmp_path: Path):
+    """Handle empty folder correctly."""
+    (tmp_path / "src").mkdir()
+
+    ft = FileTreeViewer(Settings(tmp_path, use_git_ignore=False))
+
+    ft._focussed_node.focus(1)
+    assert ft._focussed_node.name == "src"
+
+    ft._focussed_node.enter()
+    assert tuple(nd.name for nd in ft._root_node.full_tree()) == (tmp_path.name, "src")
+
+
 def test_gitignore_root_level(settings_with_git: Settings):
     # ..root
     # ├── .gitignore
@@ -370,3 +385,118 @@ def test_allnodes(settings_no_git: Settings):
         "tests",
         "test_main.py",
     ]
+
+
+def test_find_single_result_is_expanded(settings_no_git: Settings):
+    # ..root
+    # ├── pyproject.toml
+    # ├── src
+    # │   ├── main.py
+    # │   └── my_lib
+    # │       └── base.py
+    # └── tests
+    #     └── test_main.py
+    ft = FileTreeViewer(settings_no_git)
+
+    ft.find("base")
+
+    _all = tuple(ft._focussed_node.full_tree())
+    assert tuple(nd.name for nd in _all) == (
+        settings_no_git.root_folder.name,
+        "pyproject.toml",
+        "src",
+        "main.py",
+        "my_lib",
+        "base.py",
+        "tests",
+    )
+
+
+def test_find_multiple_results_is_expanded(settings_no_git: Settings):
+    # ..root
+    # ├── pyproject.toml
+    # ├── src
+    # │   ├── main.py
+    # │   └── my_lib
+    # │       └── base.py
+    # └── tests
+    #     └── test_main.py
+    ft = FileTreeViewer(settings_no_git)
+
+    ft.find("main")
+
+    _all = tuple(ft._focussed_node.full_tree())
+    assert tuple(nd.name for nd in _all) == (
+        settings_no_git.root_folder.name,
+        "pyproject.toml",
+        "src",
+        "main.py",
+        "my_lib",
+        "tests",
+        "test_main.py",
+    )
+
+
+class TestRender:
+    @pytest.fixture
+    def node(self) -> BaseNode:
+        dummy_tree_node = Mock(spec=TreeNode)
+        nd = BaseNode(
+            Path("some/path/test_node"),
+            parent=dummy_tree_node,
+            level=1,
+        )
+        return nd
+
+    # todo: test 't_no' and 'node'
+    def test_find_test(self, node):
+        node.find("test")
+        result = node.render()
+
+        assert result == (
+            ("", " "),  # level indent
+            ("", "📄"),  # icon
+            ("class:node_find_match", "test"),
+            ("", "_node"),
+            ("", "\n"),
+        )
+
+    def test_find_t_no(self, node):
+        node.find("t_no")
+        result = node.render()
+
+        assert result == (
+            ("", " "),
+            ("", "📄"),  # icon
+            ("", "tes"),
+            ("class:node_find_match", "t_no"),
+            ("", "de"),
+            ("", "\n"),
+        )
+
+    def test_find_node(self, node):
+        node.find("node")
+        result = node.render()
+
+        assert result == (
+            ("", " "),
+            ("", "📄"),
+            ("", "test_"),
+            ("class:node_find_match", "node"),
+            ("", "\n"),
+        )
+
+    def test_focussed_and_highlight(self, node):
+        node.find("t_no")
+        node.focussed = True
+
+        result = node.render()
+
+        assert result == (
+            ("", " "),
+            ("", "📄"),  # icon
+            ("class:node_focussed", "tes"),
+            ("class:node_find_match", "t_no"),
+            ("class:node_focussed", "de"),
+            ("", "\n"),
+        )

@@ -11,6 +11,7 @@ from prompt_toolkit.key_binding import KeyBindings
 from prompt_toolkit.layout.containers import HSplit, Window
 from prompt_toolkit.layout.controls import FormattedTextControl
 from prompt_toolkit.layout.scrollable_pane import ScrollablePane
+from prompt_toolkit.styles.style import Style
 
 if TYPE_CHECKING:
     from birdeye.file_tree_viewer import FileTreeViewer
@@ -34,6 +35,8 @@ def use_gitignore(
 class BaseNode:
     """Base class for all node types with common comparison functionality."""
 
+    _ICON = "📄"
+
     _same_level_down: TreeNode | Node | None = None
     """Next node on the same level as this node.
     
@@ -47,15 +50,17 @@ class BaseNode:
     _same_level_up: TreeNode | Node | None = None
     _child_down: TreeNode | Node | None = None
 
-    def __init__(
-        self,
-        path: Path,
-        level: int,
-    ):
+    def __init__(self, path: Path, level: int, parent: FileTreeViewer | TreeNode):
         self.path = path
         self.name = path.name
-        self.focussed: bool = False
+        self.parent = parent
+
         self._level = level
+
+        self.focussed: bool = False
+        # If this node matches a search string this defines start/stop indices
+        # of the search string.
+        self.match_find: tuple[int, int] | None = None
 
     def __lt__(self, other) -> bool:
         """Enable sorting by name property."""
@@ -77,22 +82,57 @@ class BaseNode:
         """Enable not equal comparison."""
         return not self.name == other.name
 
-    def _get_style(self) -> str:
-        if self.focussed:
-            return "bg:#ffffff fg:#000000"
-        return ""
-
     def enter(self) -> None:
         raise NotImplementedError
 
     def exit(self) -> None:
         raise NotImplementedError
 
-    def render(self) -> tuple[str, str]:
-        res = self._get_style(), f"{' ' * self._level} {self._ICON} {self.name}\n"
-        # _logger.debug(f"Render a node: {res}")
+    def render(self) -> tuple[tuple[str, str], ...]:
+        def _markup_name() -> Generator[tuple[str, str], None, None]:
+            """Generate a styled representation of the name property.
 
-        return res
+            includes highlight, find-match etc.
+            """
+
+            # style for non-highlighted text.
+            default_style = "class:node_focussed" if self.focussed else ""
+
+            if self.match_find:
+                # this node matches a find string.
+                if self.match_find[0] > 0:
+                    yield (
+                        default_style,  # no match. use default.
+                        self.name[0 : self.match_find[0]],
+                    )
+                yield (
+                    "class:node_find_match",  # the style for the match.
+                    self.name[self.match_find[0] : self.match_find[1]],
+                )
+                if len(self.name) > self.match_find[1]:
+                    yield (
+                        default_style,
+                        self.name[self.match_find[1] :],
+                    )
+            else:
+                yield (default_style, self.name)
+
+        return (
+            ("", f"{' ' * self._level}"),
+            ("", self._ICON),
+            *_markup_name(),
+            ("", "\n"),
+        )
+
+    def find(self, str_to_match: str) -> None:
+        if (match_idx := self.name.find(str_to_match)) >= 0:
+            # todo: highlight the match
+            self.match_find = (match_idx, match_idx + len(str_to_match))
+            # if match_idx > 0:
+            #     self._name_repr = self._markup_highlight(match_idx, len(str_to_match))
+            self.parent.bubble(event="match_found", event_data=self)
+        else:
+            self.match_find = None
 
     # def focus(self, direction: Literal[-1, 1]) -> Node | TreeNode:
     #     new_focussed = self.up if direction == -1 else self.down
@@ -108,15 +148,8 @@ class BaseNode:
 class Node(BaseNode):
     _ICON = "📄"
 
-    def __init__(
-        self,
-        path: Path,
-        *,
-        parent: TreeNode,
-        level: int,
-    ) -> None:
-        super().__init__(path, level=level)
-        self.parent = parent
+    def __init__(self, path: Path, *, parent: TreeNode, level: int) -> None:
+        super().__init__(path, level=level, parent=parent)
 
     @property
     def down(self) -> Node | TreeNode | None:
@@ -164,13 +197,11 @@ class TreeNode(BaseNode):
         *,
         parent: TreeNode | FileTreeViewer,
         level: int,
-        # expanded: bool = False,
         use_gitignore: bool = True,
-        git_repo: pygit2.Repository | None,
+        git_repo: pygit2.Repository | None = None,
     ):
-        super().__init__(path, level=level)
+        super().__init__(path, level=level, parent=parent)
         self._level = level
-        self.parent = parent
 
         self.use_gitignore = use_gitignore
 
@@ -185,11 +216,6 @@ class TreeNode(BaseNode):
         if event == "match_found":
             self._expanded = True
         self.parent.bubble(event, event_data)
-
-    def match(self, str_to_match: str) -> None:
-        if self.name.find(str_to_match) >= 0:
-            # todo: highlight the match
-            self.parent.bubble(event="match_found", event_data=self)
 
     def focus(self, direction: Literal[-1, 1]) -> None:
         new_focussed = self.up if direction == -1 else self.down
@@ -255,6 +281,9 @@ class TreeNode(BaseNode):
                         yield Node(child, parent=self, level=self._level + 1)
 
             up = self
+
+            child: TreeNode | Node | None = None
+
             for idx, child in enumerate(sorted(get_children())):
                 if idx == 0:
                     up._child_down = child
@@ -262,8 +291,9 @@ class TreeNode(BaseNode):
                     up._same_level_down = child
                 child._same_level_up = up
                 up = child
-            child._same_level_down = self._same_level_down
-            self.last_child = child
+            if child is not None:
+                child._same_level_down = self._same_level_down
+                self.last_child = child
             self._children = True
 
     def all_nodes(self) -> Generator[Node | TreeNode, None, None]:
