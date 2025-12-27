@@ -8,7 +8,7 @@ from __future__ import annotations
 import logging
 from dataclasses import dataclass
 from pathlib import Path
-from typing import Callable, Generator, Literal
+from typing import Callable, Generator
 
 import pygit2
 from prompt_toolkit.application import get_app
@@ -24,10 +24,8 @@ from prompt_toolkit.layout.containers import (
     Window,
 )
 from prompt_toolkit.layout.controls import BufferControl, FormattedTextControl
-from prompt_toolkit.layout.processors import BeforeInput, Processor
+from prompt_toolkit.layout.processors import BeforeInput
 from prompt_toolkit.layout.scrollable_pane import ScrollablePane
-from prompt_toolkit.styles.style import Style
-from prompt_toolkit.widgets import TextArea
 
 from birdeye._nodes import Node, TreeNode
 

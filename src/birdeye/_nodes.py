@@ -1,17 +1,10 @@
 from __future__ import annotations
 
 import logging
-from dataclasses import dataclass
 from pathlib import Path
 from typing import TYPE_CHECKING, Generator, Literal
 
 import pygit2
-from prompt_toolkit.formatted_text import FormattedText
-from prompt_toolkit.key_binding import KeyBindings
-from prompt_toolkit.layout.containers import HSplit, Window
-from prompt_toolkit.layout.controls import FormattedTextControl
-from prompt_toolkit.layout.scrollable_pane import ScrollablePane
-from prompt_toolkit.styles.style import Style
 
 if TYPE_CHECKING:
     from birdeye.file_tree_viewer import FileTreeViewer
@@ -133,16 +126,6 @@ class BaseNode:
             self.parent.bubble(event="match_found", event_data=self)
         else:
             self.match_find = None
-
-    # def focus(self, direction: Literal[-1, 1]) -> Node | TreeNode:
-    #     new_focussed = self.up if direction == -1 else self.down
-
-    #     if new_focussed is None:
-    #         return self
-    #     else:
-    #         self.focussed = False
-    #         new_focussed.focussed = True
-    #         return new_focussed
 
 
 class Node(BaseNode):
@@ -280,7 +263,7 @@ class TreeNode(BaseNode):
                     else:
                         yield Node(child, parent=self, level=self._level + 1)
 
-            up = self
+            up: Node | TreeNode = self
 
             child: TreeNode | Node | None = None
 

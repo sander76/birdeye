@@ -4,10 +4,9 @@ from unittest.mock import Mock
 
 import pygit2
 import pytest
-from dirty_equals import HasAttributes
 
 from birdeye._nodes import BaseNode
-from birdeye.file_tree_viewer import FileTreeViewer, Node, Settings, TreeNode
+from birdeye.file_tree_viewer import FileTreeViewer, Settings, TreeNode
 
 
 @pytest.fixture
