@@ -1,28 +1,19 @@
 from __future__ import annotations
 
 import logging
-from dataclasses import dataclass
 from pathlib import Path
-from typing import TYPE_CHECKING, Generator, Literal
+from typing import Generator, TypedDict
 
 import pygit2
-from prompt_toolkit.formatted_text import FormattedText
-from prompt_toolkit.key_binding import KeyBindings
-from prompt_toolkit.layout.containers import HSplit, Window
-from prompt_toolkit.layout.controls import FormattedTextControl
-from prompt_toolkit.layout.scrollable_pane import ScrollablePane
-from prompt_toolkit.styles.style import Style
+from textual.widgets.tree import TreeNode
 
-if TYPE_CHECKING:
-    from birdeye.file_tree_viewer import FileTreeViewer
 _logger = logging.getLogger(__name__)
 
 
 def use_gitignore(
     repo: pygit2.Repository, root_folder: Path
 ) -> Generator[Path, None, None]:
-    """check whether any child inside the root_folder is being git-ignored."""
-
+    """Check whether any child inside the root_folder is being git-ignored."""
     as_path = Path(repo.workdir)
 
     for child in root_folder.iterdir():
@@ -32,286 +23,39 @@ def use_gitignore(
         yield child
 
 
-class BaseNode:
-    """Base class for all node types with common comparison functionality."""
-
-    _ICON = "📄"
-
-    _same_level_down: TreeNode | Node | None = None
-    """Next node on the same level as this node.
-    
-    .
-    ├── this-node
-    │   ├── child_node
-    │   └── other_child_node
-    └── other_node    <------------same_level_down of "this-node"
-    """
-
-    _same_level_up: TreeNode | Node | None = None
-    _child_down: TreeNode | Node | None = None
-
-    def __init__(self, path: Path, level: int, parent: FileTreeViewer | TreeNode):
-        self.path = path
-        self.name = path.name
-        self.parent = parent
-
-        self._level = level
-
-        self.focussed: bool = False
-        # If this node matches a search string this defines start/stop indices
-        # of the search string.
-        self.match_find: tuple[int, int] | None = None
-
-    def __lt__(self, other) -> bool:
-        """Enable sorting by name property."""
-        return self.name < other.name
-
-    def __le__(self, other) -> bool:
-        """Enable less than or equal comparison."""
-        return self.name <= other.name
-
-    def __gt__(self, other) -> bool:
-        """Enable greater than comparison."""
-        return self.name > other.name
-
-    def __ge__(self, other) -> bool:
-        """Enable greater than or equal comparison."""
-        return self.name >= other.name
-
-    def __ne__(self, other) -> bool:
-        """Enable not equal comparison."""
-        return not self.name == other.name
-
-    def enter(self) -> None:
-        raise NotImplementedError
-
-    def exit(self) -> None:
-        raise NotImplementedError
-
-    def render(self) -> tuple[tuple[str, str], ...]:
-        def _markup_name() -> Generator[tuple[str, str], None, None]:
-            """Generate a styled representation of the name property.
-
-            includes highlight, find-match etc.
-            """
-
-            # style for non-highlighted text.
-            default_style = "class:node_focussed" if self.focussed else ""
-
-            if self.match_find:
-                # this node matches a find string.
-                if self.match_find[0] > 0:
-                    yield (
-                        default_style,  # no match. use default.
-                        self.name[0 : self.match_find[0]],
-                    )
-                yield (
-                    "class:node_find_match",  # the style for the match.
-                    self.name[self.match_find[0] : self.match_find[1]],
-                )
-                if len(self.name) > self.match_find[1]:
-                    yield (
-                        default_style,
-                        self.name[self.match_find[1] :],
-                    )
-            else:
-                yield (default_style, self.name)
-
-        return (
-            ("", f"{' ' * self._level}"),
-            ("", self._ICON),
-            *_markup_name(),
-            ("", "\n"),
-        )
-
-    def find(self, str_to_match: str) -> None:
-        if (match_idx := self.name.find(str_to_match)) >= 0:
-            # todo: highlight the match
-            self.match_find = (match_idx, match_idx + len(str_to_match))
-            # if match_idx > 0:
-            #     self._name_repr = self._markup_highlight(match_idx, len(str_to_match))
-            self.parent.bubble(event="match_found", event_data=self)
-        else:
-            self.match_find = None
-
-    # def focus(self, direction: Literal[-1, 1]) -> Node | TreeNode:
-    #     new_focussed = self.up if direction == -1 else self.down
-
-    #     if new_focussed is None:
-    #         return self
-    #     else:
-    #         self.focussed = False
-    #         new_focussed.focussed = True
-    #         return new_focussed
+class NodeMeta(TypedDict):
+    find_match: tuple[int, int] | None
+    path: Path
 
 
-class Node(BaseNode):
-    _ICON = "📄"
-
-    def __init__(self, path: Path, *, parent: TreeNode, level: int) -> None:
-        super().__init__(path, level=level, parent=parent)
-
-    @property
-    def down(self) -> Node | TreeNode | None:
-        # self.focussed = False
-        new_focussed = self._same_level_down
-        return new_focussed
-
-    @property
-    def up(self) -> Node | TreeNode | None:
-        # self.focussed = False
-        new_focussed = self._same_level_up
-        return new_focussed
-
-    def full_tree(self) -> Generator[Node, None, None]:
-        yield self
-
-    def enter(self) -> None:
+def populate_tree_node(
+    node: TreeNode[NodeMeta],
+    path: Path,
+    *,
+    use_gitignore: bool = True,
+    git_repo: pygit2.Repository | None = None,
+) -> None:
+    """Populate a Textual TreeNode with children from the filesystem."""
+    if not path.is_dir():
         return
 
-    def exit(self) -> None:
-        self.parent.bubble(event="focus_changed", event_data=self.parent)
+    # Get children, respecting gitignore if applicable
+    if git_repo and use_gitignore:
+        from birdeye._nodes import use_gitignore as get_gitignore_children
 
-    def focus(self, direction: Literal[-1, 1]) -> None:
-        new_focussed = self.up if direction == -1 else self.down
+        children = list(get_gitignore_children(git_repo, path))
+    else:
+        children = list(path.iterdir())
 
-        self.parent.bubble(event="focus_changed", event_data=new_focussed)
+    # Sort: directories first, then files, both alphabetically
+    dirs = sorted([c for c in children if c.is_dir()], key=lambda p: p.name.lower())
+    files = sorted([c for c in children if c.is_file()], key=lambda p: p.name.lower())
 
-    def all_nodes(self) -> Generator[Node | TreeNode, None, None]:
-        yield self
-        if self.down:
-            yield from self.down.all_nodes()
+    for child_path in dirs:
+        child_node = node.add(
+            child_path.name, data=NodeMeta(find_match=None, path=child_path)
+        )
+        child_node.allow_expand = True
 
-
-class TreeNode(BaseNode):
-    """Represents a node in the file tree."""
-
-    _ICON = "📂"
-    _children: tuple[TreeNode | Node, ...] | None = None
-    last_child: TreeNode | Node | None = None
-    _expanded = False
-
-    def __init__(
-        self,
-        path: Path,
-        *,
-        parent: TreeNode | FileTreeViewer,
-        level: int,
-        use_gitignore: bool = True,
-        git_repo: pygit2.Repository | None = None,
-    ):
-        super().__init__(path, level=level, parent=parent)
-        self._level = level
-
-        self.use_gitignore = use_gitignore
-
-        self._git_repo = git_repo
-        if level == 0:
-            # dealing with the root node here.
-            self._same_level_down = None
-            self.focussed = True
-            self.enter()
-
-    def bubble(self, event: str, event_data: object) -> None:
-        if event == "match_found":
-            self._expanded = True
-        self.parent.bubble(event, event_data)
-
-    def focus(self, direction: Literal[-1, 1]) -> None:
-        new_focussed = self.up if direction == -1 else self.down
-
-        self.parent.bubble(event="focus_changed", event_data=new_focussed)
-
-    def enter(self) -> None:
-        self.load_children()
-        if self._same_level_down:
-            self._same_level_down._same_level_up = self.last_child
-        self._expanded = True
-
-    def exit(self):
-        # exiting a treenode can mean two things.
-        # 1. this node is expanded, so we collapse it.
-        # 2. this node is not expanded, so we'll treat it as
-        #    a plain node (no folder) and we'll jump to the parent
-
-        if self._expanded:
-            if self._same_level_down:
-                self._same_level_down._same_level_up = self
-            self._expanded = False
-        else:
-            self.bubble("focus_changed", self.parent)
-
-    @property
-    def down(self) -> Node | TreeNode | None:
-        """The Node or TreeNode below this node."""
-        if self._expanded:
-            new_focussed = self._child_down
-        else:
-            new_focussed = self._same_level_down
-
-        return new_focussed
-
-    @property
-    def up(self) -> Node | TreeNode | None:
-        """The Node or TreeNode above this node."""
-        new_focussed = self._same_level_up
-
-        return new_focussed
-
-    def load_children(self) -> None:
-        """Load child nodes if this is a directory."""
-        if self._children is None:
-            if self._git_repo and self.use_gitignore:
-                children = use_gitignore(self._git_repo, self.path)
-            else:
-                children = self.path.iterdir()
-
-            def get_children() -> Generator[TreeNode | Node, None, None]:
-                for child in children:
-                    if child.is_dir():
-                        yield TreeNode(
-                            child,
-                            parent=self,
-                            level=self._level + 1,
-                            use_gitignore=self.use_gitignore,
-                            git_repo=self._git_repo,
-                        )
-
-                    else:
-                        yield Node(child, parent=self, level=self._level + 1)
-
-            up = self
-
-            child: TreeNode | Node | None = None
-
-            for idx, child in enumerate(sorted(get_children())):
-                if idx == 0:
-                    up._child_down = child
-                else:
-                    up._same_level_down = child
-                child._same_level_up = up
-                up = child
-            if child is not None:
-                child._same_level_down = self._same_level_down
-                self.last_child = child
-            self._children = True
-
-    def all_nodes(self) -> Generator[Node | TreeNode, None, None]:
-        """All nodes, regardless of visibility."""
-        self.load_children()
-
-        yield self
-
-        if self._child_down:
-            yield from self._child_down.all_nodes()
-
-        elif self._same_level_down:
-            yield from self._same_level_down.all_nodes()
-
-    def full_tree(self) -> Generator[Node | TreeNode, None, None]:
-        """All visible nodes/treenodes."""
-        new = self
-        yield new
-
-        while new := new.down:
-            yield new
+    for child_path in files:
+        node.add_leaf(child_path.name, data=NodeMeta(find_match=None, path=child_path))

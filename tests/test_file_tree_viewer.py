@@ -1,13 +1,14 @@
 import dataclasses
 from pathlib import Path
-from unittest.mock import Mock
 
 import pygit2
 import pytest
-from dirty_equals import HasAttributes
+from textual.style import Style
+from textual.widgets import Tree
 
-from birdeye._nodes import BaseNode
-from birdeye.file_tree_viewer import FileTreeViewer, Node, Settings, TreeNode
+from birdeye._nodes import NodeMeta
+from birdeye.birdeye import BirdeyeApp
+from birdeye.file_tree_viewer import BirdeyeTree, FileTreeViewer, Settings
 
 
 @pytest.fixture
@@ -52,12 +53,6 @@ def test_path_with_git(test_path_no_git: Path):
 
 
 @pytest.fixture
-def root_node_no_git(test_path_no_git) -> TreeNode:
-    treenode = TreeNode(test_path_no_git, parent=None, level=0, git_repo=None)
-    return treenode
-
-
-@pytest.fixture
 def settings_no_git(test_path_no_git) -> Settings:
     settings = Settings(root_folder=test_path_no_git, use_git_ignore=False)
     return settings
@@ -69,301 +64,252 @@ def settings_with_git(test_path_with_git) -> Settings:
     return settings
 
 
-def test_single_node_up_down(settings_no_git: Settings):
-    # our root node is not expanded so
-    # selecting next or previous will always give the
-    # same node back.
-
-    # by default a root treenode is always expanded.
-    # so for this test we first un-expand it.
-    tree_viewer = FileTreeViewer(settings_no_git)
-
-    root_node = tree_viewer._focussed_node
-    root_node.path == settings_no_git.root_folder
-
-    tree_viewer._focussed_node.exit()
-    # root_node_no_git.exit()
-
-    tree_viewer._focussed_node.focus(direction=1)
-    assert tree_viewer._focussed_node == root_node
-    assert root_node.focussed is True
-
-    tree_viewer._focussed_node.focus(direction=-1)
-    assert tree_viewer._focussed_node == root_node
-    assert tree_viewer._focussed_node.focussed is True
+def create_app(settings: Settings) -> BirdeyeApp:
+    """Helper to create a BirdeyeApp for testing."""
+    return BirdeyeApp(settings)
 
 
-def test_expanded_up_down(settings_no_git: Settings):
+@pytest.mark.asyncio
+async def test_tree_shows_children(settings_no_git: Settings):
+    """Test that the tree shows children of the root folder."""
+    # ..root
+    # ├── pyproject.toml
+    # ├── src
+    # └── tests
+    app = create_app(settings_no_git)
+
+    async with app.run_test():
+        tree = app.query_one(Tree)
+
+        # Get the names of root's children
+        child_names = [node.label.plain for node in tree.root.children]
+
+        # Should have src, tests directories and pyproject.toml file
+        assert "src" in child_names
+        assert "tests" in child_names
+        assert "pyproject.toml" in child_names
+
+
+@pytest.mark.asyncio
+async def test_expand_directory(settings_no_git: Settings):
+    """Test that expanding a directory loads its children."""
     # ..root
     # ├── pyproject.toml
     # ├── src
     # │   ├── main.py
     # │   └── my_lib
-    # │       └── base.py
     # └── tests
-    #     └── test_main.py
+    app = create_app(settings_no_git)
 
-    tree_viewer = FileTreeViewer(settings_no_git)
+    async with app.run_test() as pilot:
+        tree = app.query_one(Tree)
 
-    tree_viewer._focussed_node.focus(direction=1)
-    down_1 = tree_viewer._focussed_node
-    down_1.name == "pyproject.toml"
-    down_1.focussed is True
+        src_node = next(nd for nd in tree.root.children if "src" in nd.label.plain)
 
-    tree_viewer._focussed_node.focus(direction=1)
-    down_2 = tree_viewer._focussed_node
-    down_2.focussed is True
-    down_2.name == "src"
-    down_1.focussed is False
+        src_node.expand()
+        await pilot.pause()
 
-    tree_viewer._focussed_node.focus(direction=-1)
-    assert tree_viewer._focussed_node is down_1
-    assert tree_viewer._focussed_node.focussed is True
+        # Check that src has children now
+        child_names = [node.label.plain for node in src_node.children]
+        assert "my_lib" in child_names
+        assert "main.py" in child_names
 
 
-def test_down_beyond_list(settings_no_git: Settings):
+@pytest.mark.asyncio
+async def test_navigation_down(settings_no_git: Settings):
+    """Test navigating down in the tree."""
+    app = create_app(settings_no_git)
+
+    async with app.run_test() as pilot:
+        tree = app.query_one(Tree)
+
+        # Press down to move to first child
+        await pilot.press("down")
+        await pilot.pause()
+
+        # The cursor should have moved
+        assert tree.cursor_node is not None
+        assert tree.cursor_node != tree.root
+
+
+@pytest.mark.asyncio
+async def test_navigation_up(settings_no_git: Settings):
+    """Test navigating up in the tree."""
+    app = create_app(settings_no_git)
+
+    async with app.run_test() as pilot:
+        tree = app.query_one(Tree)
+
+        # Move down first
+        await pilot.press("down")
+        await pilot.pause()
+        first_node = tree.cursor_node
+
+        # Move down again
+        await pilot.press("down")
+        await pilot.pause()
+
+        # Move back up
+        await pilot.press("up")
+        await pilot.pause()
+
+        # Should be back at first node
+        assert tree.cursor_node == first_node
+
+
+@pytest.mark.asyncio
+async def test_gitignore_filters_files(settings_with_git: Settings):
+    """Test that gitignore filtering works."""
     # ..root
-    # ├── pyproject.toml
+    # ├── .gitignore
+    # ├── pyproject.toml  # git ignored
     # ├── src
-    # │   ├── main.py
+    # │   ├── main.py  # git ignored
     # │   └── my_lib
-    # │       └── base.py
     # └── tests
-    #     └── test_main.py
+    app = create_app(settings_with_git)
 
-    # goto src folder and expand.
-    # go down until my_lib.
-    # one more down must focus tests
-    tree_viewer = FileTreeViewer(settings_no_git)
+    async with app.run_test():
+        tree = app.query_one(Tree)
 
-    tree_viewer._focussed_node.focus(1)
-    tree_viewer._focussed_node.focus(1)
+        # Get the names of root's children
+        child_names = [node.label.plain for node in tree.root.children]
 
-    src_node = tree_viewer._focussed_node
-    assert src_node.name == "src"
-
-    src_node.enter()
-
-    tree_viewer._focussed_node.focus(1)
-    tree_viewer._focussed_node.focus(1)
-    my_lib_node = tree_viewer._focussed_node
-    assert my_lib_node.name == "my_lib"
-
-    tree_viewer._focussed_node.focus(1)
-    tests_node = tree_viewer._focussed_node
-    assert tests_node.name == "tests"
+        # pyproject.toml should be filtered out
+        assert "pyproject.toml" not in child_names
+        # .gitignore should be present
+        assert ".gitignore" in child_names
+        # src and tests should be present
+        assert "src" in child_names
+        assert "tests" in child_names
 
 
-def test_up_into_list(settings_no_git: Settings):
+@pytest.mark.asyncio
+async def test_gitignore_filters_nested_files(settings_with_git: Settings):
+    """Test that gitignore filtering works for nested files."""
     # ..root
-    # ├── pyproject.toml
+    # ├── .gitignore
     # ├── src
-    # │   ├── main.py
+    # │   ├── main.py  # git ignored
     # │   └── my_lib
-    # │       └── base.py
-    # └── tests
-    #     └── test_main.py
+    app = create_app(settings_with_git)
 
-    # goto src folder, expand
-    # scroll down till test is reached
+    async with app.run_test() as pilot:
+        tree = app.query_one(Tree)
 
-    # scroll up and expect to highlight my_lib.
-    tv = FileTreeViewer(settings_no_git)
+        # Find and expand src node
+        src_node = None
+        for node in tree.root.children:
+            if "src" in node.label.plain:
+                src_node = node
+                break
 
-    tv._focussed_node.focus(1)
-    tv._focussed_node.focus(1)
-    src_node = tv._focussed_node
-    assert src_node.name == "src"
+        assert src_node is not None
+        src_node.expand()
+        await pilot.pause()
 
-    src_node.enter()
-
-    tv._focussed_node.focus(1)
-    tv._focussed_node.focus(1)
-    my_lib_node = tv._focussed_node
-    assert my_lib_node.name == "my_lib"
-
-    tv._focussed_node.focus(1)
-    assert tv._focussed_node.name == "tests"
-
-    tv._focussed_node.focus(-1)
-    assert tv._focussed_node.name == "my_lib"
+        # main.py should be filtered out
+        child_names = [node.label.plain for node in src_node.children]
+        assert "main.py" not in child_names
+        assert "my_lib" in child_names
 
 
-def test_up_after_twice_into_list(settings_no_git: Settings):
-    # ..root
-    # ├── pyproject.toml
-    # ├── src
-    # │   ├── main.py
-    # │   └── my_lib
-    # │       └── base.py
-    # └── tests
-    #     └── test_main.py
+@pytest.mark.asyncio
+async def test_no_gitignore_shows_all_files(settings_with_git: Settings):
+    """Test that disabling gitignore shows all files."""
+    # Create settings with gitignore disabled
+    new_settings = dataclasses.replace(settings_with_git, use_git_ignore=False)
+    app = create_app(new_settings)
 
-    # goto src folder, expand, goto my_lib folder, expand
-    # scroll down till test is reached
+    async with app.run_test():
+        tree = app.query_one(Tree)
 
-    # scroll up and expect to highlight base.py
+        # Get the names of root's children
+        child_names = [node.label.plain for node in tree.root.children]
 
-    tv = FileTreeViewer(settings_no_git)
-    tv._focussed_node.focus(1)
-    tv._focussed_node.focus(1)
-
-    tv._focussed_node.name == "src"
-    tv._focussed_node.enter()
-
-    tv._focussed_node.focus(1)
-    tv._focussed_node.focus(1)
-    tv._focussed_node.name == "my_lib"
-    tv._focussed_node.enter()
-
-    tv._focussed_node.focus(1)
-    tv._focussed_node.name == "base.py"
-
-    tv._focussed_node.focus(1)
-    tv._focussed_node.name = "tests"
-
-    tv._focussed_node.focus(-1)
-    tv._focussed_node.name = "base.py"
+        # pyproject.toml should now be visible
+        assert "pyproject.toml" in child_names
+        # .git folder should also be visible
+        assert ".git" in child_names
 
 
-def test_enter_on_node(settings_no_git: Settings):
-    # ..root
-    # ├── pyproject.toml
-    # ├── src
-    # │   ├── main.py
-    # │   └── my_lib
-    # │       └── base.py
-    # └── tests
-    #     └── test_main.py
-    # when we call expand=True on a node (so a single file) we do nothing.
-
-    ft = FileTreeViewer(settings_no_git)
-    ft._focussed_node.focus(1)
-
-    assert ft._focussed_node.name == "pyproject.toml"
-
-    ft._focussed_node.enter()
-    assert ft._focussed_node.focussed is True
-
-
-def test_exit_on_node(settings_no_git: Settings):
-    # ..root
-    # ├── pyproject.toml
-    # ├── src
-    # │   ├── main.py
-    # │   └── my_lib
-    # │       └── base.py
-    # └── tests
-    #     └── test_main.py
-
-    # when we call expand=False on a node we do not collapse, but focus parent.
-
-    # navigating to the my_lib node
-    ft = FileTreeViewer(settings_no_git)
-    ft._focussed_node.focus(1)
-    ft._focussed_node.focus(1)
-    ft._focussed_node.enter()
-    ft._focussed_node.focus(1)
-    ft._focussed_node.focus(1)
-
-    assert ft._focussed_node.name == "my_lib"
-
-    ft._focussed_node.exit()
-    assert ft._focussed_node.name == "src"
-
-
-def test_empty_folder(tmp_path: Path):
+@pytest.mark.asyncio
+async def test_empty_folder(tmp_path: Path):
     """Handle empty folder correctly."""
     (tmp_path / "src").mkdir()
 
-    ft = FileTreeViewer(Settings(tmp_path, use_git_ignore=False))
+    settings = Settings(tmp_path, use_git_ignore=False)
+    app = create_app(settings)
 
-    ft._focussed_node.focus(1)
-    assert ft._focussed_node.name == "src"
+    async with app.run_test() as pilot:
+        tree = app.query_one(Tree)
 
-    ft._focussed_node.enter()
-    assert tuple(nd.name for nd in ft._root_node.full_tree()) == (tmp_path.name, "src")
+        # Find and expand src node
+        src_node = None
+        for node in tree.root.children:
+            if "src" in node.label.plain:
+                src_node = node
+                break
 
+        assert src_node is not None
+        src_node.expand()
+        await pilot.pause()
 
-def test_gitignore_root_level(settings_with_git: Settings):
-    # ..root
-    # ├── .gitignore
-    # ├── pyproject.toml  # git ignored.
-    # ├── src
-    # │   ├── main.py  # git ignored.
-    # │   └── my_lib
-    # │       └── base.py
-    # └── tests
-    #     └── test_main.py
-    # file to ignore is on the same level as the gitignore file.
-    ft = FileTreeViewer(settings_with_git)
-
-    _all = tuple(ft._focussed_node.full_tree())
-
-    assert set([node.path for node in _all]) == {
-        settings_with_git.root_folder,
-        settings_with_git.root_folder / ".gitignore",
-        settings_with_git.root_folder / "src",
-        settings_with_git.root_folder / "tests",
-    }
+        # src should have no children
+        assert len(src_node.children) == 0
 
 
-def test_gitignore_higher_level(settings_with_git: Settings):
-    # ..root
-    # ├── .gitignore
-    # ├── pyproject.toml  # git ignored.
-    # ├── src
-    # │   ├── main.py  # git ignored.
-    # │   └── my_lib
-    # │       └── base.py
-    # └── tests
-    #     └── test_main.py
+@pytest.mark.asyncio
+async def test_search_shows_input(settings_no_git: Settings):
+    """Test that search shows the input field."""
+    app = create_app(settings_no_git)
 
-    # file to ignore is on a level lower than the gitignore file.
-    ft = FileTreeViewer(settings_with_git)
-    root_node = ft._focussed_node
-    ft._focussed_node.focus(1)
-    ft._focussed_node.focus(1)
-    ft._focussed_node.enter()
+    async with app.run_test() as pilot:
+        from textual.widgets import Input
 
-    _all = tuple(root_node.full_tree())
+        search_input = app.query_one("#search-input", Input)
 
-    assert set([node.path for node in _all]) == {
-        settings_with_git.root_folder,
-        settings_with_git.root_folder / ".gitignore",
-        settings_with_git.root_folder / "src",
-        settings_with_git.root_folder / "src" / "my_lib",
-        settings_with_git.root_folder / "tests",
-    }
+        # Initially hidden
+        assert search_input.display is False
+
+        # Press / to show search
+        await pilot.press("slash")
+
+        # Now visible
+        assert search_input.display is True
 
 
-def test_no_use_gitignore(settings_with_git: Settings):
-    # ..root
-    # ├── .gitignore
-    # ├── pyproject.toml  # git ignored.
-    # ├── src
-    # │   ├── main.py  # git ignored.
-    # │   └── my_lib
-    # │       └── base.py
-    # └── tests
-    #     └── test_main.py
-    new_settings = dataclasses.replace(settings_with_git, use_git_ignore=False)
+@pytest.mark.asyncio
+async def test_search_hides_on_submit(settings_no_git: Settings):
+    """Test that search input hides after submitting."""
+    app = create_app(settings_no_git)
 
-    ft = FileTreeViewer(new_settings)
+    async with app.run_test() as pilot:
+        search_input = app.query_one("#search-input")
 
-    _all = tuple(ft._focussed_node.full_tree())
+        # Show search
+        await pilot.press("slash")
+        assert search_input.display is True
 
-    assert set([node.path for node in _all]) == {
-        settings_with_git.root_folder,
-        settings_with_git.root_folder / ".git",
-        settings_with_git.root_folder / "pyproject.toml",  # normally in gitignored.
-        settings_with_git.root_folder / ".gitignore",
-        settings_with_git.root_folder / "src",
-        settings_with_git.root_folder / "tests",
-    }
+        # Type and submit
+        await pilot.press(*"test")
+        await pilot.press("enter")
+
+        # Should be hidden again
+        assert search_input.display is False
 
 
-def test_allnodes(settings_no_git: Settings):
+def test_render_label():
+    tree = BirdeyeTree(label="abc")
+    nd = tree.root.add_leaf(label="some_text", data=NodeMeta(find_match=(1, 3)))
+
+    result = tree.render_label(nd, base_style=Style(), style=Style())
+
+    assert result.markup == "s[on yellow]om[/on yellow]e_text"
+
+
+@pytest.mark.asyncio
+async def test_highlight_next(settings_no_git: Settings):
     # ..root
     # ├── pyproject.toml
     # ├── src
@@ -372,131 +318,30 @@ def test_allnodes(settings_no_git: Settings):
     # │       └── base.py
     # └── tests
     #     └── test_main.py
-    ft = FileTreeViewer(settings_no_git)
+    app = create_app(settings_no_git)
+    async with app.run_test() as pilot:
+        await pilot.press("slash")
+        await pilot.press(*"main")
+        await pilot.press("enter")
 
-    all_nodes = list(nd.name for nd in ft._focussed_node.all_nodes())
-    assert all_nodes == [
-        settings_no_git.root_folder.name,
-        "pyproject.toml",
-        "src",
-        "main.py",
-        "my_lib",
-        "base.py",
-        "tests",
-        "test_main.py",
-    ]
+        tree_viewer = app.query_one("FileTreeViewer", FileTreeViewer)
 
+        # check the root of the node is selected.
+        assert tree_viewer._tree.cursor_node.line == 0
 
-def test_find_single_result_is_expanded(settings_no_git: Settings):
-    # ..root
-    # ├── pyproject.toml
-    # ├── src
-    # │   ├── main.py
-    # │   └── my_lib
-    # │       └── base.py
-    # └── tests
-    #     └── test_main.py
-    ft = FileTreeViewer(settings_no_git)
+        await pilot.press("n")
+        assert tree_viewer._tree.cursor_node.label.plain == "main.py"
 
-    ft.find("base")
+        await pilot.press("n")
+        assert tree_viewer._tree.cursor_node.label.plain == "test_main.py"
 
-    _all = tuple(ft._focussed_node.full_tree())
-    assert tuple(nd.name for nd in _all) == (
-        settings_no_git.root_folder.name,
-        "pyproject.toml",
-        "src",
-        "main.py",
-        "my_lib",
-        "base.py",
-        "tests",
-    )
+        # end of the list reached.
+        await pilot.press("n")
+        assert tree_viewer._tree.cursor_node.label.plain == "test_main.py"
 
+        await pilot.press("p")
+        assert tree_viewer._tree.cursor_node.label.plain == "main.py"
 
-def test_find_multiple_results_is_expanded(settings_no_git: Settings):
-    # ..root
-    # ├── pyproject.toml
-    # ├── src
-    # │   ├── main.py
-    # │   └── my_lib
-    # │       └── base.py
-    # └── tests
-    #     └── test_main.py
-    ft = FileTreeViewer(settings_no_git)
-
-    ft.find("main")
-
-    _all = tuple(ft._focussed_node.full_tree())
-    assert tuple(nd.name for nd in _all) == (
-        settings_no_git.root_folder.name,
-        "pyproject.toml",
-        "src",
-        "main.py",
-        "my_lib",
-        "tests",
-        "test_main.py",
-    )
-
-
-class TestRender:
-    @pytest.fixture
-    def node(self) -> BaseNode:
-        dummy_tree_node = Mock(spec=TreeNode)
-        nd = BaseNode(
-            Path("some/path/test_node"),
-            parent=dummy_tree_node,
-            level=1,
-        )
-        return nd
-
-    # todo: test 't_no' and 'node'
-    def test_find_test(self, node):
-        node.find("test")
-        result = node.render()
-
-        assert result == (
-            ("", " "),  # level indent
-            ("", "📄"),  # icon
-            ("class:node_find_match", "test"),
-            ("", "_node"),
-            ("", "\n"),
-        )
-
-    def test_find_t_no(self, node):
-        node.find("t_no")
-        result = node.render()
-
-        assert result == (
-            ("", " "),
-            ("", "📄"),  # icon
-            ("", "tes"),
-            ("class:node_find_match", "t_no"),
-            ("", "de"),
-            ("", "\n"),
-        )
-
-    def test_find_node(self, node):
-        node.find("node")
-        result = node.render()
-
-        assert result == (
-            ("", " "),
-            ("", "📄"),
-            ("", "test_"),
-            ("class:node_find_match", "node"),
-            ("", "\n"),
-        )
-
-    def test_focussed_and_highlight(self, node):
-        node.find("t_no")
-        node.focussed = True
-
-        result = node.render()
-
-        assert result == (
-            ("", " "),
-            ("", "📄"),  # icon
-            ("class:node_focussed", "tes"),
-            ("class:node_find_match", "t_no"),
-            ("class:node_focussed", "de"),
-            ("", "\n"),
-        )
+        # upper end of list reached.
+        await pilot.press("p")
+        assert tree_viewer._tree.cursor_node.label.plain == "main.py"
