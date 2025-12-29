@@ -27,6 +27,7 @@ from prompt_toolkit.layout.controls import BufferControl, FormattedTextControl
 from prompt_toolkit.layout.processors import BeforeInput
 from prompt_toolkit.layout.scrollable_pane import ScrollablePane
 
+from birdeye._events import FOCUS_CHANGED
 from birdeye._nodes import Node, TreeNode
 
 _logger = logging.getLogger(__name__)
@@ -62,13 +63,6 @@ class Search:
     def _get_key_bindings(self) -> KeyBindings:
         kb = KeyBindings()
 
-        # @kb.add("escape", eager=True)
-        # def _(event) -> None:
-        #     self.window
-        #     get_app().layout.focus_previous()
-
-        #     _logger.debug("escaped")
-
         @kb.add("enter")
         def _(event) -> None:
             self._on_start_search(self.buffer.text)
@@ -77,9 +71,6 @@ class Search:
 
     def __pt_container__(self) -> Container:
         return self.window
-
-
-ThreadedCompleter
 
 
 class FileTreeViewer:
@@ -180,7 +171,7 @@ class FileTreeViewer:
         return kb
 
     def bubble(self, event: str, event_data: object) -> None:
-        if event == "focus_changed":
+        if event == FOCUS_CHANGED:
             if event_data is None:
                 return
             self._focussed_node.focussed = False

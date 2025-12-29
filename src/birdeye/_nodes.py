@@ -6,8 +6,11 @@ from typing import TYPE_CHECKING, Generator, Literal
 
 import pygit2
 
+from birdeye._events import FOCUS_CHANGED, MATCH_FOUND
+
 if TYPE_CHECKING:
     from birdeye.file_tree_viewer import FileTreeViewer
+
 _logger = logging.getLogger(__name__)
 
 
@@ -119,11 +122,8 @@ class BaseNode:
 
     def find(self, str_to_match: str) -> None:
         if (match_idx := self.name.find(str_to_match)) >= 0:
-            # todo: highlight the match
             self.match_find = (match_idx, match_idx + len(str_to_match))
-            # if match_idx > 0:
-            #     self._name_repr = self._markup_highlight(match_idx, len(str_to_match))
-            self.parent.bubble(event="match_found", event_data=self)
+            self.parent.bubble(event=MATCH_FOUND, event_data=self)
         else:
             self.match_find = None
 
@@ -153,12 +153,12 @@ class Node(BaseNode):
         return
 
     def exit(self) -> None:
-        self.parent.bubble(event="focus_changed", event_data=self.parent)
+        self.parent.bubble(event=FOCUS_CHANGED, event_data=self.parent)
 
     def focus(self, direction: Literal[-1, 1]) -> None:
         new_focussed = self.up if direction == -1 else self.down
 
-        self.parent.bubble(event="focus_changed", event_data=new_focussed)
+        self.parent.bubble(event=FOCUS_CHANGED, event_data=new_focussed)
 
     def all_nodes(self) -> Generator[Node | TreeNode, None, None]:
         yield self
@@ -196,14 +196,14 @@ class TreeNode(BaseNode):
             self.enter()
 
     def bubble(self, event: str, event_data: object) -> None:
-        if event == "match_found":
+        if event == MATCH_FOUND:
             self._expanded = True
         self.parent.bubble(event, event_data)
 
     def focus(self, direction: Literal[-1, 1]) -> None:
         new_focussed = self.up if direction == -1 else self.down
 
-        self.parent.bubble(event="focus_changed", event_data=new_focussed)
+        self.parent.bubble(event=FOCUS_CHANGED, event_data=new_focussed)
 
     def enter(self) -> None:
         self.load_children()
@@ -222,7 +222,7 @@ class TreeNode(BaseNode):
                 self._same_level_down._same_level_up = self
             self._expanded = False
         else:
-            self.bubble("focus_changed", self.parent)
+            self.bubble(FOCUS_CHANGED, self.parent)
 
     @property
     def down(self) -> Node | TreeNode | None:
