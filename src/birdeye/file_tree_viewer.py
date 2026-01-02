@@ -13,7 +13,6 @@ from typing import Callable, Generator
 import pygit2
 from prompt_toolkit.application import get_app
 from prompt_toolkit.buffer import Buffer
-from prompt_toolkit.completion.base import ThreadedCompleter
 from prompt_toolkit.filters import Condition
 from prompt_toolkit.formatted_text import FormattedText
 from prompt_toolkit.key_binding import KeyBindings
@@ -27,7 +26,7 @@ from prompt_toolkit.layout.controls import BufferControl, FormattedTextControl
 from prompt_toolkit.layout.processors import BeforeInput
 from prompt_toolkit.layout.scrollable_pane import ScrollablePane
 
-from birdeye._events import FOCUS_CHANGED
+from birdeye._events import FOCUS_CHANGED, MATCH_FOUND
 from birdeye._nodes import Node, TreeNode
 
 _logger = logging.getLogger(__name__)
@@ -57,8 +56,11 @@ class Search:
             key_bindings=self._get_key_bindings(),
         )
         self._on_start_search = on_start_search
-
-        self.window = Window(height=1, content=self.control)
+        self.visible = False
+        self.window = ConditionalContainer(
+            Window(height=1, content=self.control),
+            filter=Condition(lambda: self.visible),
+        )
 
     def _get_key_bindings(self) -> KeyBindings:
         kb = KeyBindings()
@@ -67,10 +69,40 @@ class Search:
         def _(event) -> None:
             self._on_start_search(self.buffer.text)
 
+        @kb.add(
+            "escape",
+            eager=True,
+        )
+        def cancel_search(event):
+            """Hide search input widget."""
+            _logger.debug("escaped")
+            self.visible = False
+            # get_app().layout.focus_previous()
+
         return kb
 
     def __pt_container__(self) -> Container:
         return self.window
+
+
+class Footer:
+    """Footer object managing what shortcuts are available."""
+
+    def __init__(self, settings: Settings) -> None:
+        self._window = Window(FormattedTextControl(text=self.get_contents), height=1)
+
+        self.show_navigate: bool = True
+        self.show_quit: bool = True
+        self.show_search: bool = True
+        self.show_highlights: bool = False
+
+        self.bindings: list[str] = ["[↑↓→←] navigate", "[q] quit", "[/] find"]
+
+    def get_contents(self) -> str:
+        return ",".join(self.bindings)
+
+    def __pt_container__(self) -> Container:
+        return self._window
 
 
 class FileTreeViewer:
@@ -83,7 +115,6 @@ class FileTreeViewer:
         self.root_path = settings.root_folder.resolve()
         self._settings = settings
         self._root_node = self._focussed_node = self._init_root_node()
-        self._search_visible = False
 
         self._search_input = Search(self.find)
 
@@ -95,14 +126,10 @@ class FileTreeViewer:
 
         main_window = ScrollablePane(Window(content=text_control, wrap_lines=True))
 
-        # Create search footer
-        search_footer = ConditionalContainer(
-            content=self._search_input,
-            filter=Condition(lambda: self._search_visible),
-        )
-
+        self._footer = Footer()
         self._container = HSplit(
-            [main_window, search_footer], key_bindings=self._setup_key_bindings()
+            [main_window, self._search_input, self._footer],
+            key_bindings=self._setup_key_bindings(),
         )
 
     def __pt_container__(self):
@@ -125,48 +152,34 @@ class FileTreeViewer:
         return root_node
 
     def _setup_key_bindings(self) -> KeyBindings:
-        """Setup key bindings for navigation."""
         kb = KeyBindings()
 
-        @kb.add("up", filter=Condition(lambda: not self._search_visible))
+        @kb.add("up")
         def move_up(event):
             self._focussed_node.focus(-1)
 
-        @kb.add("down", filter=Condition(lambda: not self._search_visible))
+        @kb.add("down")
         def move_down(event):
             self._focussed_node.focus(1)
 
-        @kb.add("right", filter=Condition(lambda: not self._search_visible))
+        @kb.add("right")
         def enter_node(event):
             self._focussed_node.enter()
 
-        @kb.add("left", filter=Condition(lambda: not self._search_visible))
+        @kb.add("left")
         def exit_node(event):
             self._focussed_node.exit()
 
-        @kb.add("q", filter=Condition(lambda: not self._search_visible))
+        @kb.add("q")
         @kb.add("c-c")
         def quit_app(event):
             event.app.exit()
 
-        @kb.add("/", filter=Condition(lambda: not self._search_visible))
+        @kb.add("/")
         def start_search(event):
             """Show search input widget."""
-            self._search_visible = True
+            self._search_input.visible = True
             get_app().layout.focus(self._search_input)
-
-        @kb.add(
-            "escape",
-            filter=Condition(lambda: self._search_visible),
-            eager=True,
-        )
-        def cancel_search(event):
-            """Hide search input widget."""
-            _logger.debug("escaped")
-            self._search_visible = False
-            get_app().layout.focus_previous()
-
-        #     self._refresh_tree()
 
         return kb
 
@@ -177,6 +190,8 @@ class FileTreeViewer:
             self._focussed_node.focussed = False
             self._focussed_node = event_data
             self._focussed_node.focussed = True
+        elif event == MATCH_FOUND:
+            pass
 
     def find(self, str_to_find: str) -> None:
         for nd in self._root_node.all_nodes():
@@ -184,8 +199,6 @@ class FileTreeViewer:
 
     def _update_display(self) -> FormattedText:
         """Update the display buffer with current tree state."""
-
-        # nodes = list((node.render() for node in self._root_node.full_tree()))
 
         def render() -> Generator[tuple[str, str], None, None]:
             for node in self._root_node.full_tree():
