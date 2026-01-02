@@ -47,7 +47,10 @@ class Settings:
 
 
 class Search:
-    def __init__(self, on_start_search: Callable[[str], None]):
+    def __init__(self, on_start_search: Callable[[str], None], footer: Footer):
+        self._footer = footer
+        self._on_start_search = on_start_search
+
         self.buffer = Buffer()
         self.control = BufferControl(
             buffer=self.buffer,
@@ -55,12 +58,15 @@ class Search:
             focusable=True,
             key_bindings=self._get_key_bindings(),
         )
-        self._on_start_search = on_start_search
-        self.visible = False
+        self._visible = False
         self.window = ConditionalContainer(
             Window(height=1, content=self.control),
-            filter=Condition(lambda: self.visible),
+            filter=Condition(lambda: self._visible),
         )
+
+    def show(self) -> None:
+        self._footer.set_help("[enter] find", "[esc] close")
+        self._visible = True
 
     def _get_key_bindings(self) -> KeyBindings:
         kb = KeyBindings()
@@ -76,8 +82,7 @@ class Search:
         def cancel_search(event):
             """Hide search input widget."""
             _logger.debug("escaped")
-            self.visible = False
-            # get_app().layout.focus_previous()
+            self._visible = False
 
         return kb
 
@@ -88,17 +93,22 @@ class Search:
 class Footer:
     """Footer object managing what shortcuts are available."""
 
+    bindings: list[str]
+
     def __init__(self, settings: Settings) -> None:
         self._window = Window(FormattedTextControl(text=self.get_contents), height=1)
+        # self._dirty: bool = True
 
-        self.show_navigate: bool = True
-        self.show_quit: bool = True
-        self.show_search: bool = True
-        self.show_highlights: bool = False
+        self._contents: str = ""
 
-        self.bindings: list[str] = ["[↑↓→←] navigate", "[q] quit", "[/] find"]
+    def set_help(self, *messages: str) -> None:
+        # self._dirty = True
+        self.bindings = list(messages)
 
     def get_contents(self) -> str:
+        # if not self._dirty:
+        # return self._contents
+        # self._dirty = False
         return ",".join(self.bindings)
 
     def __pt_container__(self) -> Container:
@@ -116,8 +126,6 @@ class FileTreeViewer:
         self._settings = settings
         self._root_node = self._focussed_node = self._init_root_node()
 
-        self._search_input = Search(self.find)
-
         text_control = FormattedTextControl(
             text=self._update_display,
             focusable=True,
@@ -126,7 +134,8 @@ class FileTreeViewer:
 
         main_window = ScrollablePane(Window(content=text_control, wrap_lines=True))
 
-        self._footer = Footer()
+        self._footer = Footer(settings)
+        self._search_input = Search(self.find, footer=self._footer)
         self._container = HSplit(
             [main_window, self._search_input, self._footer],
             key_bindings=self._setup_key_bindings(),
@@ -178,8 +187,10 @@ class FileTreeViewer:
         @kb.add("/")
         def start_search(event):
             """Show search input widget."""
-            self._search_input.visible = True
+            self._search_input.show()
             get_app().layout.focus(self._search_input)
+
+        self._footer.set_help("[↑↓→←] navigate", "[q] quit", "[/] find")
 
         return kb
 
