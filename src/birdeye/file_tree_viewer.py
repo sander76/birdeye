@@ -1,5 +1,5 @@
 """
-A full screen file tree viewer using prompt_toolkit.
+A full screen file tree viewer using Textual.
 Navigate with arrow keys, expand/collapse with Enter or Space.
 """
 
@@ -8,26 +8,19 @@ from __future__ import annotations
 import logging
 from dataclasses import dataclass
 from pathlib import Path
-from typing import Callable, Generator
+from typing import ClassVar
 
 import pygit2
-from prompt_toolkit.application import get_app
-from prompt_toolkit.buffer import Buffer
-from prompt_toolkit.filters import Condition
-from prompt_toolkit.formatted_text import FormattedText
-from prompt_toolkit.key_binding import KeyBindings
-from prompt_toolkit.layout.containers import (
-    ConditionalContainer,
-    Container,
-    HSplit,
-    Window,
-)
-from prompt_toolkit.layout.controls import BufferControl, FormattedTextControl
-from prompt_toolkit.layout.processors import BeforeInput
-from prompt_toolkit.layout.scrollable_pane import ScrollablePane
+from rich.style import Style
+from rich.text import Text
+from textual.binding import Binding, BindingType
+from textual.containers import Vertical
+from textual.reactive import reactive
+from textual.widgets import Footer, Input, Tree
+from textual.widgets._tree import TOGGLE_STYLE
+from textual.widgets.tree import TreeNode
 
-from birdeye._events import FOCUS_CHANGED, MATCH_FOUND
-from birdeye._nodes import Node, TreeNode
+from birdeye._nodes import NodeMeta, populate_tree_node
 
 _logger = logging.getLogger(__name__)
 
@@ -36,189 +29,205 @@ _logger = logging.getLogger(__name__)
 class Settings:
     root_folder: Path
     use_git_ignore: bool = True
-    style_node_focussed: str = "bg:#ffffff fg:#000000"
-    style_node_find_match: str = "bg:#ffff00 fg:#000000"
-
-    def to_style_dict(self) -> dict[str, str]:
-        return {
-            "node_focussed": self.style_node_focussed,
-            "node_find_match": self.style_node_find_match,
-        }
 
 
-class Search:
-    def __init__(self, on_start_search: Callable[[str], None], footer: Footer):
-        self._footer = footer
-        self._on_start_search = on_start_search
+class BirdeyeTree(Tree[NodeMeta]):
+    BINDINGS: ClassVar[list[BindingType]] = [
+        Binding("left", "collapse_or_parent", "Exit", show=False),
+        Binding("right", "enter", "Select", show=False),
+        Binding("up", "cursor_up", "Cursor Up", show=False),
+        Binding("down", "cursor_down", "Cursor Down", show=False),
+    ]
 
-        self.buffer = Buffer()
-        self.control = BufferControl(
-            buffer=self.buffer,
-            input_processors=[BeforeInput("search: ")],
-            focusable=True,
-            key_bindings=self._get_key_bindings(),
-        )
-        self._visible = False
-        self.window = ConditionalContainer(
-            Window(height=1, content=self.control),
-            filter=Condition(lambda: self._visible),
-        )
+    def action_collapse_or_parent(self) -> None:
+        node = self.get_node_at_line(self.cursor_line)
+        if node is None:
+            return
+        if node.allow_expand and node.is_expanded:
+            node.collapse()
+        else:
+            self.move_cursor(node.parent)
 
-    def show(self) -> None:
-        self._footer.set_help("[enter] find", "[esc] close")
-        self._visible = True
+    def action_enter(self) -> None:
+        node = self.get_node_at_line(self.cursor_line)
+        if node is None:
+            return
 
-    def _get_key_bindings(self) -> KeyBindings:
-        kb = KeyBindings()
+        if node.allow_expand:
+            if node.is_collapsed:
+                node.expand()
 
-        @kb.add("enter")
-        def _(event) -> None:
-            self._on_start_search(self.buffer.text)
+    def render_label(
+        self, node: TreeNode[NodeMeta], base_style: Style, style: Style
+    ) -> Text:
+        def _markup_name() -> Text:
+            """Generate a styled representation of the name property.
 
-        @kb.add(
-            "escape",
-            eager=True,
-        )
-        def cancel_search(event):
-            """Hide search input widget."""
-            _logger.debug("escaped")
-            self._visible = False
+            includes highlight, find-match etc.
+            """
 
-        return kb
+            node_label = node._label.copy()
 
-    def __pt_container__(self) -> Container:
-        return self.window
+            if find_match := node.data["find_match"]:
+                node_label.stylize(style)
+                node_label.stylize(
+                    Style(bgcolor="yellow"),
+                    start=find_match[0],
+                    end=find_match[1],
+                )
+                return node_label
+            else:
+                node_label.stylize(style)
+                return node_label
+
+        if node._allow_expand:
+            prefix = (
+                self.ICON_NODE_EXPANDED if node.is_expanded else self.ICON_NODE,
+                base_style + TOGGLE_STYLE,
+            )
+        else:
+            prefix = ("", base_style)
+
+        text = Text.assemble(prefix, _markup_name())
+        return text
+
+    def move_to_next_highlight(self) -> None:
+        for nd in self._tree_lines[self.cursor_line + 1 :]:
+            if nd.node.data["find_match"]:
+                self.move_cursor(nd.node)
+                break
+
+    def move_to_previous_highlight(self) -> None:
+        for nd in reversed(self._tree_lines[: self.cursor_line]):
+            if nd.node.data["find_match"]:
+                self.move_cursor(nd.node)
+                break
 
 
-class Footer:
-    """Footer object managing what shortcuts are available."""
+class FileTreeViewer(Vertical):
+    """Main widget for the file tree viewer."""
 
-    bindings: list[str]
+    BINDINGS = [
+        ("slash", "start_search", "Search"),
+        ("n", "next_highlight", "Next highlight"),
+        ("p", "previous_highlight", "Previous highlight"),
+    ]
 
-    def __init__(self, settings: Settings) -> None:
-        self._window = Window(FormattedTextControl(text=self.get_contents), height=1)
-        # self._dirty: bool = True
-
-        self._contents: str = ""
-
-    def set_help(self, *messages: str) -> None:
-        # self._dirty = True
-        self.bindings = list(messages)
-
-    def get_contents(self) -> str:
-        # if not self._dirty:
-        # return self._contents
-        # self._dirty = False
-        return ",".join(self.bindings)
-
-    def __pt_container__(self) -> Container:
-        return self._window
-
-
-class FileTreeViewer:
-    """Main application class for the file tree viewer."""
-
-    _root_node: TreeNode
-    _focussed_node: TreeNode | Node
+    # reactive attribute to control visibility of the highlight commands.
+    found_matches = reactive(False, bindings=True)
 
     def __init__(self, settings: Settings):
-        self.root_path = settings.root_folder.resolve()
+        super().__init__()
         self._settings = settings
-        self._root_node = self._focussed_node = self._init_root_node()
+        self.root_path = settings.root_folder.resolve()
 
-        text_control = FormattedTextControl(
-            text=self._update_display,
-            focusable=True,
-            # key_bindings=self._setup_key_bindings(),
-        )
-
-        main_window = ScrollablePane(Window(content=text_control, wrap_lines=True))
-
-        self._footer = Footer(settings)
-        self._search_input = Search(self.find, footer=self._footer)
-        self._container = HSplit(
-            [main_window, self._search_input, self._footer],
-            key_bindings=self._setup_key_bindings(),
-        )
-
-    def __pt_container__(self):
-        return self._container
-
-    def _init_root_node(self) -> TreeNode:
-        _logger.debug("init root")
+        # Determine git repo if available
         if (self.root_path / ".git").exists():
-            repository = pygit2.Repository(self.root_path)
+            self._git_repo = pygit2.Repository(self.root_path)
         else:
-            repository = None
+            self._git_repo = None
 
-        root_node = TreeNode(
-            self.root_path,
-            parent=self,
-            level=0,
-            use_gitignore=self._settings.use_git_ignore,
-            git_repo=repository,
+    def check_action(self, action: str, parameters: tuple[object, ...]) -> bool | None:
+        """Check whether certain actions should be visible."""
+        if action == "next_highlight" and not self.found_matches:
+            return False
+
+        if action == "previous_highlight" and not self.found_matches:
+            return False
+
+        return True
+
+    def compose(self):
+        self._tree = BirdeyeTree(
+            str(self.root_path), data=NodeMeta(find_match=None, path=self.root_path)
         )
-        return root_node
+        self._tree.root.expand()
 
-    def _setup_key_bindings(self) -> KeyBindings:
-        kb = KeyBindings()
+        # Populate the root node
+        populate_tree_node(
+            self._tree.root,
+            self.root_path,
+            use_gitignore=self._settings.use_git_ignore,
+            git_repo=self._git_repo,
+        )
 
-        @kb.add("up")
-        def move_up(event):
-            self._focussed_node.focus(-1)
+        yield self._tree
+        yield Input(placeholder="Search...", id="search-input")
+        yield Footer()
 
-        @kb.add("down")
-        def move_down(event):
-            self._focussed_node.focus(1)
+    def on_mount(self) -> None:
+        self._tree.focus()
+        self.query_one("#search-input", Input).display = False
 
-        @kb.add("right")
-        def enter_node(event):
-            self._focussed_node.enter()
+    def on_tree_node_expanded(self, event: Tree.NodeExpanded) -> None:
+        """Handle tree node expansion - lazy load children."""
+        node: TreeNode[NodeMeta] = event.node
+        path = node.data["path"]
 
-        @kb.add("left")
-        def exit_node(event):
-            self._focussed_node.exit()
+        if path and path.is_dir() and not node.children:
+            populate_tree_node(
+                node,
+                path,
+                use_gitignore=self._settings.use_git_ignore,
+                git_repo=self._git_repo,
+            )
 
-        @kb.add("q")
-        @kb.add("c-c")
-        def quit_app(event):
-            event.app.exit()
+    def action_start_search(self) -> None:
+        """Show and focus the search input."""
+        search_input = self.query_one("#search-input", Input)
+        search_input.display = True
+        search_input.focus()
 
-        @kb.add("/")
-        def start_search(event):
-            """Show search input widget."""
-            self._search_input.show()
-            get_app().layout.focus(self._search_input)
+    def on_input_submitted(self, event: Input.Submitted) -> None:
+        """Handle search submission."""
+        search_term = event.value
+        if search_term:
+            self._find_in_tree(search_term)
 
-        self._footer.set_help("[↑↓→←] navigate", "[q] quit", "[/] find")
+        event.input.display = False
+        self._tree.focus()
 
-        return kb
+    def _find_in_tree(self, search_term: str) -> None:
+        """Find and highlight nodes matching the search term."""
+        self.found_matches = False
 
-    def bubble(self, event: str, event_data: object) -> None:
-        if event == FOCUS_CHANGED:
-            if event_data is None:
-                return
-            self._focussed_node.focussed = False
-            self._focussed_node = event_data
-            self._focussed_node.focussed = True
-        elif event == MATCH_FOUND:
-            pass
+        def load_children(node: TreeNode[NodeMeta]) -> None:
+            if node.data["path"].is_dir() and not node.children:
+                populate_tree_node(
+                    node,
+                    node.data["path"],
+                    use_gitignore=self._settings.use_git_ignore,
+                    git_repo=self._git_repo,
+                )
+            for child in node.children:
+                load_children(child)
 
-    def find(self, str_to_find: str) -> None:
-        for nd in self._root_node.all_nodes():
-            nd.find(str_to_find)
+        def search_node(node: TreeNode[NodeMeta]) -> None:
+            """Recursively search and expand nodes. Returns True if match found in subtree."""
 
-    def _update_display(self) -> FormattedText:
-        """Update the display buffer with current tree state."""
+            lbl = node.label.plain
 
-        def render() -> Generator[tuple[str, str], None, None]:
-            for node in self._root_node.full_tree():
-                if node.focussed:
-                    yield ("[SetCursorPosition]", "")
-                yield from node.render()
+            if (match_idx := lbl.find(search_term)) >= 0:
+                self.found_matches = True
+                node.data["find_match"] = (match_idx, match_idx + len(search_term))
+                if node.allow_expand:
+                    node.expand()
 
-        nodes = (node for node in render())
+                prnt = node.parent
+                while prnt:
+                    prnt.expand()
+                    prnt = prnt.parent
+            else:
+                node.data["find_match"] = None
 
-        _logger.debug(nodes)
+            for child in node.children:
+                search_node(child)
 
-        return FormattedText(nodes)
+        load_children(self._tree.root)
+        search_node(self._tree.root)
+
+    def action_next_highlight(self) -> None:
+        self._tree.move_to_next_highlight()
+
+    def action_previous_highlight(self) -> None:
+        self._tree.move_to_previous_highlight()

@@ -14,8 +14,8 @@ authors = [
 requires-python = ">=3.13"
 classifiers = [ "Programming Language :: Python :: 3 :: Only", "Programming Language :: Python :: 3.13" ]
 dependencies = [
-  "prompt-toolkit>=3.0.51",
   "pygit2>=1.19",
+  "textual>=0.79",
 ]
 
 scripts.birdeye = "birdeye.cli:run"
@@ -27,7 +27,7 @@ dev = [
   "mypy>=1.17.1",
   "pyproject-fmt>=2.6",
   "pytest>=8.4.1",
-  "pytest-asyncio>=1.3.0",
+  "pytest-asyncio>=1.3",
   "pytest-icdiff>=0.9",
   "ruff>=0.12.7",
 ]
