@@ -6,6 +6,7 @@ Navigate with arrow keys, expand/collapse with Enter or Space.
 from __future__ import annotations
 
 import logging
+import subprocess
 from dataclasses import dataclass
 from pathlib import Path
 from typing import ClassVar
@@ -37,6 +38,7 @@ class BirdeyeTree(Tree[NodeMeta]):
         Binding("right", "enter", "Select", show=False),
         Binding("up", "cursor_up", "Cursor Up", show=False),
         Binding("down", "cursor_down", "Cursor Down", show=False),
+        Binding("o", "open_file", "Open file"),
     ]
 
     def action_collapse_or_parent(self) -> None:
@@ -56,6 +58,11 @@ class BirdeyeTree(Tree[NodeMeta]):
         if node.allow_expand:
             if node.is_collapsed:
                 node.expand()
+
+    def action_open_file(self) -> None:
+        node = self.get_node_at_line(self.cursor_line)
+
+        subprocess.run(f"code {node.data['path']!s}", shell=True)
 
     def render_label(
         self, node: TreeNode[NodeMeta], base_style: Style, style: Style
