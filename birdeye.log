@@ -2706,3 +2706,4 @@ AttributeError: 'rich.style.Style' object has no attribute '_bgcolor'. Did you m
 2026-02-13 17:08:21,106 - asyncio - DEBUG - Using selector: EpollSelector
 2026-02-13 17:08:45,507 - asyncio - DEBUG - Using selector: EpollSelector
 2026-02-13 17:12:19,257 - asyncio - DEBUG - Using selector: EpollSelector
+2026-02-13 17:28:41,217 - asyncio - DEBUG - Using selector: EpollSelector

@@ -1,11 +1,13 @@
 import dataclasses
 from pathlib import Path
+from unittest.mock import Mock
 
 import pygit2
 import pytest
 from textual.style import Style
 from textual.widgets import Tree
 
+from birdeye import file_tree_viewer
 from birdeye._nodes import NodeMeta
 from birdeye.birdeye import BirdeyeApp
 from birdeye.file_tree_viewer import BirdeyeTree, FileTreeViewer, Settings
@@ -345,3 +347,28 @@ async def test_highlight_next(settings_no_git: Settings):
         # upper end of list reached.
         await pilot.press("p")
         assert tree_viewer._tree.cursor_node.label.plain == "main.py"
+
+
+@pytest.mark.asyncio
+async def test_open_main(settings_no_git: Settings, monkeypatch):
+    # ..root
+    # ├── pyproject.toml
+    # ├── src
+    # │   ├── main.py
+    # │   └── my_lib
+    # │       └── base.py
+    # └── tests
+    #     └── test_main.py
+
+    monkeypatch.setattr(file_tree_viewer.subprocess, "run", Mock())
+    app = create_app(settings_no_git)
+
+    async with app.run_test() as pilot:
+        await pilot.press("down")
+        await pilot.press("down")
+        await pilot.press("down")
+        await pilot.press("o")
+
+        file_tree_viewer.subprocess.run.assert_called_once_with(
+            f"code {settings_no_git.root_folder / 'pyproject.toml'}", shell=True
+        )

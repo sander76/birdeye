@@ -5,7 +5,7 @@ requires = [ "hatchling" ]
 
 [project]
 name = "birdeye"
-version = "0.5.0"
+version = "0.6.0"
 description = "A terminal-based file tree navigator."
 readme = "README.md"
 authors = [
