@@ -18,4 +18,25 @@ birdeye is an interactive file tree viewer that allows you to navigate directory
 
 or better use `pipx` or `uv tool` and you'll have a birdeye command available in your prompt.
 
+## Configuration
+
+birdeye looks for configuration files in your system's config directory:
+
+- **Linux**: `~/.config/birdeye/`
+- **macOS**: `~/Library/Application Support/birdeye/`
+- **Windows**: `%APPDATA%\birdeye\`
+
+### File Openers
+
+Create `opener.json` to customize which program opens each file type when you press Enter:
+
+```json
+{
+  ".py": "code",
+  ".toml": "code",
+  ".md": "typora"
+}
+```
+
+If the file doesn't exist, birdeye defaults to opening `.py` and `.toml` files with `code`, and all other files with `open`.
 

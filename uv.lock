@@ -4,9 +4,10 @@ requires-python = ">=3.13"
 
 [[package]]
 name = "birdeye"
-version = "0.5.0"
+version = "0.7.0"
 source = { editable = "." }
 dependencies = [
+    { name = "platformdirs" },
     { name = "pygit2" },
     { name = "textual" },
 ]
@@ -25,6 +26,7 @@ dev = [
 
 [package.metadata]
 requires-dist = [
+    { name = "platformdirs", specifier = ">=4" },
     { name = "pygit2", specifier = ">=1.19" },
     { name = "textual", specifier = ">=0.79" },
 ]

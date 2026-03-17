@@ -21,6 +21,7 @@ from textual.widgets import Footer, Input, Tree
 from textual.widgets._tree import TOGGLE_STYLE
 from textual.widgets.tree import TreeNode
 
+from birdeye._config import load_opener
 from birdeye._nodes import NodeMeta, populate_tree_node
 
 _logger = logging.getLogger(__name__)
@@ -30,9 +31,7 @@ _logger = logging.getLogger(__name__)
 class Settings:
     root_folder: Path
     use_git_ignore: bool = True
-    opener: dict[str, str] = field(
-        default_factory=lambda: {".py": "code", ".toml": "code"}
-    )
+    opener: dict[str, str] = field(default_factory=load_opener)
 
 
 class BirdeyeTree(Tree[NodeMeta]):
